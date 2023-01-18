@@ -166,10 +166,22 @@ class Barcos:
 
     def colocar_barcos(self):
         coordenadas=[]
+        ok=False
 
-        while len(self.board.barcos_colocados) < len(self.barcos): # Premisa, si no están todos los barcos colocados seguimos ejecutando.
+        while len(self.board.barcos_colocados) < len(self.barcos):# Premisa, si no están todos los barcos colocados seguimos ejecutando.
+            while ok==False:
+                try:
+                    barco_elegido = input("Elige el barco a colocar (1=acorazado, 2=crucero, 3=submarino): ")
+                    barco_elegido=int(barco_elegido) # Selector de barcos.
+                    if barco_elegido <0 or barco_elegido>3:
+                        print("Barco incorrecto")
+                    else:
+                        barco_elegido=str(barco_elegido)
+                        ok=True
+                except ValueError:
+                    print("Has introducido una letra, debes introducir 1, 2 o 3")
+                    ok==False
 
-            barco_elegido = input("Elige el barco a colocar (1=acorazado, 2=crucero, 3=submarino): ") # Selector de barcos.
             longitud = self.barcos[barco_elegido] # Extraemos su longitud
 
             if barco_elegido in self.board.barcos_colocados: # Comprobamos que no esté ya colocado.
@@ -188,18 +200,27 @@ class Barcos:
                 submarino_user["L"]=longitud
 
             while barco_colocado == False: # Si no está colocado.
-                
-                orientacion = input("Orientación (v/h): ") # Atributos del barco.
+                try:
+                    orientacion = input("Orientación (v/h): ")
+                except ValueError: # Atributos del barco.
+                    print("Orientación invalida, introduzca v o h. vertical/horizontal")
+                    barco_colocado=False
                 try:
                     fila = int(input("Fila colocación: "))
+                    if fila <0 or fila>9:
+                        print("Debe introducir un valor entre 0 y 9")
+                        fila = int(input("Fila colocación: "))
                 except ValueError:
                     print("Debe introducir un valor entre 0 y 9")
                     fila = int(input("Fila colocación: "))
                 try:
                     columna = int(input("Columna Colocación: "))
+                    if columna <0 or columna>9:
+                        print("Debe introducir un valor entre 0 y 9")
+                        columna = int(input("Columna colocación: "))
                 except ValueError:
                     print("Debe introducir un valor entre 0 y 9")
-                    fila = int(input("Fila colocación: "))
+                    columna = int(input("Columna colocación: "))
 
 
                 # Antes de pasar a poner los barcos en el tablero comprobamos que se puedan colocar en la posición especificada.
@@ -488,7 +509,7 @@ class BarcosComputer:
 
 
 
-def obtener_disparo():
+def obtener_disparo(disparos_user):
 
     ok = False
     while ok == False:
@@ -501,10 +522,13 @@ def obtener_disparo():
             
             else:
                 disparo=str(fila+columna)
-                ok=True
+                if  disparo in disparos_user:
+                    print("Número repetido, intente de nuevo")
+                else:
+                    ok=True
         except:
             print("Entrada incorrecta - por favor, intentelo de nuevo")
-
+    disparos_user.append(disparo)
     return disparo
 
 def obtener_disparo_computer(acierto_computer, disparos_computer):
@@ -609,6 +633,7 @@ def quien_gana():
 acierto=[]
 perdido=[]
 disparos_computer=[]
+disparos_user=[]
 acierto_computer=[]
 perdido_computer=[]
 
@@ -636,7 +661,7 @@ juego_user.view_board(acierto,perdido)
 ganado=False
 while (len(total_coordenadas)>0 or len(total_coordenadas_Usuario)>0) and ganado==False:
     print("Juega el usuario")
-    disparo = obtener_disparo()
+    disparo = obtener_disparo(disparos_user)
     comprobar_disparo(disparo)
     print(disparo)
     print("acierto",acierto,"perdido",perdido)
