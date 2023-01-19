@@ -169,18 +169,13 @@ class Barcos:
         ok=False
 
         while len(self.board.barcos_colocados) < len(self.barcos):# Premisa, si no están todos los barcos colocados seguimos ejecutando.
-            while ok==False:
-                try:
-                    barco_elegido = input("Elige el barco a colocar (1=acorazado, 2=crucero, 3=submarino): ")
-                    barco_elegido=int(barco_elegido) # Selector de barcos.
-                    if barco_elegido <0 or barco_elegido>3:
-                        print("Barco incorrecto")
-                    else:
-                        barco_elegido=str(barco_elegido)
-                        ok=True
-                except ValueError:
-                    print("Has introducido una letra, debes introducir 1, 2 o 3")
-                    ok==False
+            barco_elegido = input("Elige el barco a colocar (1=acorazado, 2=crucero, 3=submarino): ") # Selector de barcos.
+            longitud = self.barcos[barco_elegido] # Extraemos su longitud
+
+            if barco_elegido in self.board.barcos_colocados: # Comprobamos que no esté ya colocado.
+                print(f"El barco {barco_elegido} ya esta colocado.") # <== Si lo está.
+                continue
+            barco_colocado = False
 
             longitud = self.barcos[barco_elegido] # Extraemos su longitud
 
@@ -225,7 +220,7 @@ class Barcos:
 
                 # Antes de pasar a poner los barcos en el tablero comprobamos que se puedan colocar en la posición especificada.
                 if orientacion == "h": # Si queremos poner el barco en hoizontal.
-                    if columna + longitud > 9:
+                    if columna + longitud > 10:
                         print("Barco fuera del tablero.")
                         barco_colocado = False
                     else:
@@ -235,7 +230,7 @@ class Barcos:
                         # Al ser un cuadrado no importa la fila con la que se realice la comprobación.
 
                 elif orientacion == "v":                              # Realizamos la misma operación si queremos que el barco esté en vertical.
-                    if fila + longitud > 9:
+                    if fila + longitud > 10:
                         print("Barco fuera del tablero.")
                         barco_colocado = False 
                     else:
@@ -374,12 +369,12 @@ class BarcosComputer:
                 #print("columna",columna)
 
                 # Antes de pasar a poner los barcos en el tablero comprobamos que se puedan colocar en la posición especificada.
-                if orientacionRandom == "h" and columna + longitud > 9: # Si queremos poner el barco en horizontal.
+                if orientacionRandom == "h" and columna + longitud > 10: # Si queremos poner el barco en horizontal.
                     #print(f"Barco {barco_elegido} fuera del tablero, en fila.{columna+longitud}")
                     barco_colocado=False
 
 
-                elif orientacionRandom == "v" and  fila + longitud > 9:                              # Realizamos la misma operación si queremos que el barco esté en vertical.
+                elif orientacionRandom == "v" and  fila + longitud > 10:                              # Realizamos la misma operación si queremos que el barco esté en vertical.
                     #print(f"Barco {barco_elegido} fuera del tablero, en columna. {fila+longitud}")
                     barco_colocado=False
 
