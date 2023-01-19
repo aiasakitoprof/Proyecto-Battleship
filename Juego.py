@@ -59,16 +59,18 @@ class Juego:
 
     def print_ambos_tableros(self):
         print("\n")
-        print("         Radar                     Barcos")
-        print("  0 1 2 3 4 5 6 7 8 9       0 1 2 3 4 5 6 7 8 9")
+        print("           Radar                        Barcos")
+        print("    0 1 2 3 4 5 6 7 8 9          0 1 2 3 4 5 6 7 8 9")
+        print("  ┌─────────────────────┐      ┌─────────────────────┐")
 
         # Imprimir el radar y tablero en una forma de matriz.
         for i in range(self.radar.height):
-            print(i, end=" ")
-            print(" ".join(self.radar.radar[i]), end=" ")
+            print(i, end=" │ ")
+            print(" ".join(self.radar.radar[i]), end=" │")
             print(" "*4, end="")
-            print(i, end=" ")
-            print(" ".join(self.tablero.tablero[i]))
+            print(i, end=" │ ")
+            print(" ".join(self.tablero.tablero[i]), "│")
+        print("  └─────────────────────┘      └─────────────────────┘")
         print("\n")
 
 
@@ -85,5 +87,5 @@ class Juego:
                 break
 
 partida = Juego()
-partida.jugar()
-print(partida.barcos_ia)
+partida.print_ambos_tableros()
+# print(partida.barcos_ia)
