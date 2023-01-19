@@ -55,9 +55,18 @@ class Barcos:
             barco_colocado = False
             
             while not barco_colocado: # Si no está colocado.
+                
                 orientacion = input("Orientación (v/h): ") # Atributos del barco.
-                fila = int(input("Fila colocación: "))
-                columna = int(input("Columna Colocación: "))
+                while orientacion not in ["v","h"]:
+                    orientacion = input("Orientación incorrecta, introduce v o h: ")
+                
+                coord = input("Coordenadas de colocación: ")
+                if coord < 0 or coord > 99:
+                    while coord < 0 or coord > 99:
+                        coord = input("Introduce una coordenada válida: ")
+                
+                fila = int(coord[0])
+                columna = int(coord[1])
                 
                 # Comprobación de orientación.
                 if orientacion not in ["v", "h"]: # Comprobación de errores

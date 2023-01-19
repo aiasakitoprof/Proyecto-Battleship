@@ -87,5 +87,5 @@ class Juego:
                 break
 
 partida = Juego()
-partida.print_ambos_tableros()
+partida.jugar()
 # print(partida.barcos_ia)
