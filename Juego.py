@@ -1,5 +1,5 @@
-from jugador import *
-from ia import *
+from Bd_Sh_player import *
+from Rd_Sh_ai import *
 
 class Juego:
     def __init__(self):
