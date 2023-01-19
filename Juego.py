@@ -181,7 +181,7 @@ class Barcos:
         while len(self.board.barcos_colocados) < len(self.barcos):# Premisa, si no están todos los barcos colocados seguimos ejecutando.
           
             barco_elegido = input("Elige el barco a colocar (1=acorazado, 2=crucero, 3=submarino): ")# Selector de barcos.
-            barco_elegido=int("barco_elegido")
+            #barco_elegido=int("barco_elegido")
             longitud = self.barcos[barco_elegido] # Extraemos su longitud
 
             if barco_elegido in self.board.barcos_colocados: # Comprobamos que no esté ya colocado.
