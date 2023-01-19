@@ -20,15 +20,14 @@ class Tablero:
     
     def view_tablero(self): # Printeo de tablero.
         
-        print("  ", end="") # Hueco separador de coordenadas.
-        
-        for i in range(len(self.tablero[0])): # Coordenadas de columnas (Encima del tablero).
-            print(i, end=" ")
-        print()
+        print("          Tablero")
+        print("    0 1 2 3 4 5 6 7 8 9")
+        print("  ┌─────────────────────┐")
         
         for i, row in enumerate(self.tablero): # Coordenadas de filas (A la derecha del tablero).
-            print(i, end=" ")
-            print(" ".join(row))
+            print(i, end=" │ ")
+            print(" ".join(row),"│")
+        print("  └─────────────────────┘")
     
     def barco_colocado(self, barco):
         self.barcos_colocados[barco] = True
@@ -47,11 +46,11 @@ class Barcos:
             
             clear_terminal()
             self.tablero.view_tablero()
-            barco_elegido = int(input("Elige el barco a colocar (acorazado, portaaviones, crucero, submarino o destructor): ")) # Selector de barcos.
+            barco_elegido = int(input("Elige el barco a colocar (0 = acorazado,  1 = portaaviones, 2 = crucero, 3 = submarino, 4 = destructor)\n\n >  ")) # Selector de barcos.
             longitud = self.barcos[self.barcos_input[barco_elegido]] # Extraemos su longitud
             
             if barco_elegido in self.tablero.barcos_colocados: # Comprobamos que no esté ya colocado.
-                print(f"El barco {barco_elegido} ya esta colocado.") # <== Si lo está.
+                print(f"El barco {self.barcos_input[barco_elegido]} ya esta colocado.") # <== Si lo está.
                 continue
             barco_colocado = False
             
@@ -61,8 +60,9 @@ class Barcos:
                 while orientacion not in ["v","h"]:
                     orientacion = input("Orientación incorrecta, introduce v o h: ")
                 
-                fila = int(input("Introduce la coordenada de la fila: "))
-                columna = int(input("Introduce la coordenada de la columna: "))
+                coord = input("Introduce la coordenada para colocar el barco (ejemplo: '00' ): ")
+                fila = int(coord[0])
+                columna = int(coord[1])
                 
                 # Comprobación de orientación.
                 if orientacion not in ["v", "h"]: # Comprobación de errores
@@ -96,14 +96,14 @@ class Barcos:
                 if not posicion_ocupada: 
                     if orientacion == "h": 
                         for i in range(longitud): 
-                            self.tablero.tablero[fila][columna + i] = barco_elegido[0]
+                            self.tablero.tablero[fila][columna + i] = self.barcos_input[barco_elegido][0]
                         barco_colocado = True
-                        self.tablero.barco_colocado(barco_elegido)
-                        print(f"Barco {barco_elegido} colocado en posición {fila}, {columna} con orientación horizontal.")
+                        self.tablero.barco_colocado(self.barcos_input[barco_elegido])
+                        print(f"Barco {self.barcos_input[barco_elegido]} colocado en posición {fila}, {columna} con orientación horizontal.")
                         
                     elif orientacion == "v":
                         for i in range(longitud):
-                            self.tablero.tablero[fila + i][columna] = barco_elegido[0]
+                            self.tablero.tablero[fila + i][columna] = self.barcos_input[barco_elegido][0]
                         barco_colocado = True
-                        self.tablero.barco_colocado(barco_elegido)
-                        print(f"Barco {barco_elegido} colocado en posición {fila}, {columna} con orientación vertical.")
+                        self.tablero.barco_colocado(self.barcos_input[barco_elegido])
+                        print(f"Barco {self.barcos_input[barco_elegido]} colocado en posición {fila}, {columna} con orientación vertical.")
