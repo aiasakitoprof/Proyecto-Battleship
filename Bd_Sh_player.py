@@ -21,13 +21,14 @@ class Tablero:
     def view_tablero(self): # Printeo de tablero.
         
         print("          Tablero")
-        print("    0 1 2 3 4 5 6 7 8 9")
+        print("    0 1 2 3 4 5 6 7 8 9") # Cabecera del tablero
         print("  ┌─────────────────────┐")
         
         for i, row in enumerate(self.tablero): # Coordenadas de filas (A la derecha del tablero).
             print(i, end=" │ ")
             print(" ".join(row),"│")
-        print("  └─────────────────────┘")
+        
+        print("  └─────────────────────┘") # Pie del tablero.
     
     def barco_colocado(self, barco):
         self.barcos_colocados[barco] = True
@@ -56,8 +57,9 @@ class Barcos:
             
             while not barco_colocado: # Si no está colocado.
                 
-                orientacion = input("Orientación (v/h): ") # Atributos del barco.
-                while orientacion not in ["v","h"]:
+                # --------| Atributos del barco |--------
+                orientacion = input("Orientación (v/h): ") # Orientación (siempre se orienta de proa a popa).
+                while orientacion not in ["v","h"]: # Control de errores.
                     orientacion = input("Orientación incorrecta, introduce v o h: ")
                 
                 coord = input("Introduce la coordenada para colocar el barco (ejemplo: '00' ): ")
