@@ -37,17 +37,18 @@ class Barcos:
 
     def __init__(self, tablero): # Llamada del objeto tablero.
         
-        self.tablero = tablero # Importa el tablero
+        self.tablero = tablero # Importa el tablero.
+        self.barcos_input = {0:"acorazado", 1:"portaaviones", 2:"crucero", 3:"submarino", 4:"destructor",} # Acceso rápido a los barcos.
         self.barcos = {"acorazado": 5, "portaaviones":4, "crucero": 3, "submarino": 2, "destructor":2,} # Diccionario con los barcos y sus longitudes.
-
+        
     def colocar_barcos(self):
         
         while len(self.tablero.barcos_colocados) < len(self.barcos): # Premisa, si no están todos los barcos colocados seguimos ejecutando.
             
             clear_terminal()
             self.tablero.view_tablero()
-            barco_elegido = input("Elige el barco a colocar (acorazado, portaaviones, crucero, submarino o destructor): ") # Selector de barcos.
-            longitud = self.barcos[barco_elegido] # Extraemos su longitud
+            barco_elegido = int(input("Elige el barco a colocar (acorazado, portaaviones, crucero, submarino o destructor): ")) # Selector de barcos.
+            longitud = self.barcos[self.barcos_input[barco_elegido]] # Extraemos su longitud
             
             if barco_elegido in self.tablero.barcos_colocados: # Comprobamos que no esté ya colocado.
                 print(f"El barco {barco_elegido} ya esta colocado.") # <== Si lo está.
@@ -60,13 +61,8 @@ class Barcos:
                 while orientacion not in ["v","h"]:
                     orientacion = input("Orientación incorrecta, introduce v o h: ")
                 
-                coord = input("Coordenadas de colocación: ")
-                if coord < 0 or coord > 99:
-                    while coord < 0 or coord > 99:
-                        coord = input("Introduce una coordenada válida: ")
-                
-                fila = int(coord[0])
-                columna = int(coord[1])
+                fila = int(input("Introduce la coordenada de la fila: "))
+                columna = int(input("Introduce la coordenada de la columna: "))
                 
                 # Comprobación de orientación.
                 if orientacion not in ["v", "h"]: # Comprobación de errores
@@ -74,13 +70,13 @@ class Barcos:
                     continue
                 
                 if orientacion == "h" and (columna + longitud > len(self.tablero.tablero[0])): # Si queremos poner el barco en hoizontal.
-                    print("Barco fuera del tablero.") # Comprobamos que el barco no sobresalga del tablero. Premisa: Si sumamos la longitud del
-                    continue                          # barco al numero de la columna y supera la longitud de la fila, está fuera del tablero
-                                                      # Al ser un cuadrado no importa la fila con la que se realice la comprobación.
+                    print("Barco fuera del tablero.")                                          # Comprobamos que el barco no sobresalga del tablero. Premisa: Si sumamos la longitud del
+                    continue                                                                   # barco al numero de la columna y supera la longitud de la fila, está fuera del tablero
+                                                                                               # Al ser un cuadrado no importa la fila con la que se realice la comprobación.
 
                 if orientacion == "v" and (fila + longitud > len(self.tablero.tablero)): # Realizamos la misma operación si queremos que el barco esté en vertical.  
-                    print("Barco fuera del tablero.") # Premisa: Si sumamos la longitud del barco al número de la fila y el resultado            
-                    continue                          # es mayor que la longitud del tablero (Si su índice es mayor que el del tablero), está fuera del tablero.                                     
+                    print("Barco fuera del tablero.")                                    # Premisa: Si sumamos la longitud del barco al número de la fila y el resultado            
+                    continue                                                             # es mayor que la longitud del tablero (Si su índice es mayor que el del tablero), está fuera del tablero.                                     
                 
                 # Comprobación de coordenadas.
                 posicion_ocupada = False
