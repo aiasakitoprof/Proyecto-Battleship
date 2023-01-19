@@ -1,3 +1,5 @@
+import random
+
 class Radar:
     def __init__(self, width=10, height=10):
         self.width = width
@@ -15,8 +17,6 @@ class Radar:
             print(" ".join(row))
 
 class Barcos_ia:
-    import random
-    
     def __init__(self, radar):
         self.radar = radar
         self.barcos = {"acorazado": 5, "portaaviones": 4, "crucero": 3, "submarino": 2, "destructor": 2}
