@@ -89,30 +89,34 @@ class Barcos_ia: # Creamos la clase barcos ia
             posicion_ocupada = True # Posicion ocupada la inicializamos en true
             while posicion_ocupada:     #Utilizamos este ciclo para asegurarnos que la posicion elegida no esta ocupada
                 posicion_ocupada = False
-                orientacion = random.choice(['h', 'v'])
-                if orientacion == 'h':
-                    fila = random.randint(0, self.tablero.height - 1)
+                orientacion = random.choice(['h', 'v']) #Elegimos orientacion aleatoria
+                if orientacion == 'h': # Si la orientacion elegida es horizontal
+                    fila = random.randint(0, self.tablero.height - 1)   # Elegimos posicion aleatoria
                     columna = random.randint(0, self.tablero.width - longitud)
-                    for i in range(longitud):
+                    for i in range(longitud):   #Verificamos si la posicion esta ocupada
                         if self.tablero.tablero[fila][columna + i] != "·":
                             posicion_ocupada = True
                             break
                     if posicion_ocupada:
                         continue
                     for i in range(longitud):
-                        self.tablero.tablero[fila][columna + i] = barco_elegido[0].upper()
-                else:
-                    fila = random.randint(0, self.tablero.height - longitud)
-                    columna = random.randint(0, self.tablero.width - 1)
-                    for i in range(longitud):
-                        if self.tablero.tablero[fila + i][columna] != "·":
-                            posicion_ocupada = True
-                            break
-                    if posicion_ocupada:
+                        self.tablero.tablero[fila][columna + i] = barco_elegido[0].upper()  # Colocamos el barco en el tablero
+                else:   # Si la orientacion elegida es vertical
+                    fila = random.randint(0, self.tablero.height - longitud)    # Elegimos poscion aleatoria en el tablero
+                    columna = random.randint(0, self.tablero.width - 1) 
+                    for i in range(longitud): # Verificamos si la posicion esta ocuapda
+                        if self.tablero.tablero[fila + i][columna] != "·":  # Si esta ocupada se estalablece posion_ocupada 'True'
+                            posicion_ocupada = True 
+                            break   # Se saldria del bucle for y se estableceria una nueva posicion
+                    if posicion_ocupada:    # De lo contrario seguiriamos el bucle para colocar el barco
                         continue
                     for i in range(longitud):
-                        self.tablero.tablero[fila + i][columna] = barco_elegido[0].upper()
+                        self.tablero.tablero[fila + i][columna] = barco_elegido[0].upper() # Colocamos el barco en el tablero
+# Creamos un objeto de la clase Tablero
 tablero = Tablero()
+# Creamos un objeto de la clase Barcos_ia pasamos el objeto tablero como argumento
 barcos_ia = Barcos_ia(tablero)
+# Lllamamos a la funcion colocar_barcos_ia en el objeto barcos_ia para poder colocar los barcos en el tablero
 barcos_ia.colocar_barcos_ia()
+# Llamamos a la funcion view_tablero en el objeto tablero para imprimir el tablero con los barcos ya colocados
 tablero.view_tablero()
