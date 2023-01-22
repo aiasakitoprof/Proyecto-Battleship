@@ -49,8 +49,8 @@ class Barcos_ia:
                     for i in range(longitud):
                         self.radar.coordenadas_barcos_ia.append((fila, columna + i))
                         # Proceso para guardar las coordenadas del ordenador
-                        self.radar.coordenadas_barcos_computer.append(str(fila)+str(columna+i))
-                        coordenadas=str(fila)+str(columna+i)
+                        #self.radar.coordenadas_barcos_computer.append(str(fila)+str(columna+i))
+                        coordenadas=(fila,columna+i)
                         if barco_elegido=="acorazado":
                             acorazado_ia.append(coordenadas)
                         if barco_elegido=="portaaviones":
@@ -73,8 +73,8 @@ class Barcos_ia:
                     for i in range(longitud):
                         self.radar.coordenadas_barcos_ia.append((fila + i, columna))
                         #Proceso para guardar las coordenadas del ordenador
-                        self.radar.coordenadas_barcos_computer.append(str(fila+i)+str(columna))
-                        coordenadas=str(fila+i)+str(columna)
+                        #self.radar.coordenadas_barcos_computer.append((fila+i,columna))
+                        coordenadas=(fila+i,columna)
                         if barco_elegido=="acorazado":
                             acorazado_ia.append(coordenadas)
                         if barco_elegido=="portaaviones":

@@ -4,6 +4,8 @@ from colorama import init, Fore, Back, Style
 init()
 class Juego:
     def __init__(self):
+        # Guardamos todas las tiradas posibles del juego para emplearlas en las posibles tiradas
+        # del ordenador, se van restando así como se vayan utilizando
         self.tiradasPosibles= [(fila,columna) for fila in range(10) for columna in range(10)]
         self.tablero = Tablero()
         self.radar = Radar()
@@ -12,8 +14,8 @@ class Juego:
         self.disparos_realizados_jg = []
         self.disparos_realizados_ai = []
         self.aciertos_computer=[]
-        self.aciertos_ia=[]
-        self.fallos_computer=[]
+        #self.aciertos_ia=[]
+        #self.fallos_computer=[]
         self.disparos_computer=[]
         self.barcos_hundidos=[]
         self.barcos_hundidos_ia=[]
@@ -54,7 +56,7 @@ class Juego:
                 print("Valor incorrecto, debe introducir un número entre 0 y 9, es una letra")
                 numeroC=True
         disparo = (fila, columna)
-        tiros=str(fila)+str(columna)
+        #tiros=str(fila)+str(columna)
 
         if disparo in self.radar.coordenadas_barcos_ia and seguir==True:
             self.disparos_realizados_jg.append(disparo)
@@ -62,8 +64,8 @@ class Juego:
             self.radar.coordenadas_barcos_ia.remove(disparo)
             for key, value in todos_barcos_ia.items():
                         for element in value:
-                            if element == tiros:
-                                todos_barcos_ia[key].remove(tiros)
+                            if element == disparo:
+                                todos_barcos_ia[key].remove(disparo)
                             if len(todos_barcos_ia[key]) == 0:
                                 print("Has undido un ",key)
                                 self.barcos_hundidos_ia.append(key)
@@ -148,7 +150,7 @@ class Juego:
         return eleccion
 
 
-    def disparo_ia(self,todos_barcos,coordenadas_barcos,coordenadas_user):
+    def disparo_ia(self,todos_barcos,coordenadas_user):
         # Inicializamos las variables del ambito del la función
         # Disparo que se realizará en el tablero
         disparo = 0
@@ -167,37 +169,37 @@ class Juego:
             if self.modo=="buscar":
                 # En este modo hace una tirada al azar
                 fila, columna = self.posicion_azar()
-                tiros = str(fila) + str(columna)
+                #tiros = str(fila) + str(columna)
                 disparo = (fila, columna)
 
-                if tiros in self.disparos_computer:
+                if disparo in self.disparos_realizados_ai:
                     continue
                 # si los tiros no estan en el array de disparos, se guardaran
                 # en sus listas correspondientes
-                self.disparos_computer.append(tiros)
+                #self.disparos_computer.append(tiros)
                 self.disparos_realizados_ai.append(disparo)
                 # Si el tiro coincide con las coordenadas de los barcos, será
                 # un acierto y se borrará de la lista de coordenadas
-                if tiros in coordenadas_barcos:
+                if disparo in coordenadas_user:
                     self.tablero.tablero[fila][columna] = Fore.GREEN+"X"
-                    self.aciertos_computer.append(tiros)
-                    coordenadas_barcos.remove(tiros)
+                    self.aciertos_computer.append(disparo)
+                    coordenadas_user.remove(disparo)
                     #Eliminamos los el tiro realizado de las tiradas posibles para 
                     # Validar en otra función que tiradas disponemos
                     self.tiradasPosibles.remove(disparo)
                     self.contadorTiros+=1
                     self.modo = "hundir"
-                if disparo in coordenadas_user:
-                    coordenadas_user.remove(disparo)
+                # if disparo in coordenadas_user:
+                #     coordenadas_user.remove(disparo)
                     #disparar=False
                     # En el siguiente bucle comparamos los tiros con los valores
                     # del diccionario
                     for key, value in todos_barcos.items():
                             for element in value:
-                                if element == tiros:
+                                if element == disparo:
                                     # en caso de que haya un acierto se eliminará
                                     # del diccionario
-                                    todos_barcos[key].remove(tiros)
+                                    todos_barcos[key].remove(disparo)
                                 # si el tamaño de la lista que corresponde al barco
                                 # está vacia, el ordenador habrá undido un barco
                                 if len(todos_barcos[key]) == 0:
@@ -208,7 +210,7 @@ class Juego:
                     # En caso de fallo, mostramos el simbolo correspondiente en
                     # el tablero y lo añadimos a la lista de fallos
                     self.tablero.tablero[fila][columna] = Fore.RED+"O"
-                    self.fallos_computer.append(tiros)
+                    #self.fallos_computer.append(tiros)
                     self.tiradasPosibles.remove(disparo)
                     print("Agua")
                     if self.contadorTiros>0:
@@ -221,24 +223,24 @@ class Juego:
             elif self.modo == "hundir":
                 # llamamos a la función buscar_alrededor que tiene la lógica de tiro
                 fila,columna = self.buscar_alrededor()
-                tiros = str(fila) + str(columna)
+                #tiros = str(fila) + str(columna)
                 disparo = (fila, columna)
                 # Si el tiro está en la lista volverá a tirar
-                if tiros in self.disparos_computer:
+                if disparo in self.disparos_realizados_ai:
                     continue
                 # Se guardan los datos de disparo en las listas correspondientes
-                self.disparos_computer.append(tiros)
+                #self.disparos_computer.append(tiros)
                 self.disparos_realizados_ai.append(disparo)
                 # Si el tiro ha sido un acierto se mostrará el simbolo correspondiente.
                 # Se guarda en la lista de aciertos y se borra de las coordenadas del barco
-                if tiros in coordenadas_barcos:
+                if disparo in coordenadas_user:
                     # Si el disparo coincide con una coordenada del barco del usuario
                     # sustituimos, marcamos la casilla con X
                     self.tablero.tablero[fila][columna] = Fore.GREEN+"X"
                     # Guardamos el acierto en la lista y borramos el acierto de la lista
                     # de coordenadas del usuario
-                    self.aciertos_computer.append(tiros)
-                    coordenadas_barcos.remove(tiros)
+                    self.aciertos_computer.append(disparo)
+                    coordenadas_user.remove(disparo)
                     # Eliminamos el tiro de la lista de tiradas posibles
                     self.tiradasPosibles.remove(disparo)
                     self.contadorTiros+=1
@@ -247,8 +249,8 @@ class Juego:
                     # Verificamos si el tiro ha hundido un barco
                     for key, value in todos_barcos.items():
                         for element in value:
-                            if element == tiros:
-                                todos_barcos[key].remove(tiros)
+                            if element == disparo:
+                                todos_barcos[key].remove(disparo)
                             if len(todos_barcos[key]) == 0:
                                 print(key, "undido")
                                 # En caso de que se haya undido un barco lo guardamos
@@ -302,7 +304,7 @@ class Juego:
                 # Ejecutamos la función turno_usuario
                 self.realizar_disparo(todos_barcos_ia)
                 self.print_ambos_tableros()
-                if len(self.barcos_hundidos_ia) == 5:
+                if len(self.barcos_hundidos_ia) == len(todos_barcos_ia):
                     self.game_over()
                     print(Fore.RESET+"¡Has ganado!")
                     juego_terminado=True
@@ -312,9 +314,9 @@ class Juego:
                 
             else:
                 # Ejecutamos la función turno_ia
-                self.disparo_ia(todos_barcos,coordenadas_barcos, coordenadas_user)
+                self.disparo_ia(todos_barcos, coordenadas_user)
                 self.print_ambos_tableros()
-                if len(self.barcos_hundidos) == 5:
+                if len(self.barcos_hundidos) == len(todos_barcos):
                     self.game_over()
                     print(Fore.RESET+"El ordenador ganó")
                     juego_terminado=True

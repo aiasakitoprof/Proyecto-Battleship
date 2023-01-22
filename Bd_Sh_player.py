@@ -3,7 +3,7 @@ from colorama import init, Fore, Back, Style
 # Iniciamos la herramienta
 init()
 # Listas para guardar datos que empleamos en otras partes del juego
-coordenadas_barcos=[]
+#coordenadas_barcos=[]
 coordenadas_user=[]
 acorazado=[]
 portaaviones=[]
@@ -147,8 +147,8 @@ class Barcos:
                                 self.tablero.tablero[fila][columna + i] = Fore.RESET+barco_elegido[0]
                                 # Guardamos las coordenadas en sus listas correspondientes
                                 coordenadas_user.append((fila,columna+i))
-                                coordenadas_barcos.append(str(fila)+str(columna+i))
-                                coordenadas=str(fila)+str(columna+i)
+                                #coordenadas_barcos.append(str(fila)+str(columna+i))
+                                coordenadas=(fila,columna+i)
                                 if barco_elegido=="acorazado":
                                     acorazado.append(coordenadas)
                                 if barco_elegido=="portaaviones":
@@ -170,8 +170,8 @@ class Barcos:
                                 self.tablero.tablero[fila + i][columna] = Fore.RESET+barco_elegido[0]
                                 # Guardamos las coordenadas en sus listas correspondientes
                                 coordenadas_user.append((fila+i,columna))
-                                coordenadas_barcos.append(str(fila+i)+str(columna))
-                                coordenadas=str(fila+i)+str(columna)
+                                #coordenadas_barcos.append(str(fila+i)+str(columna))
+                                coordenadas=(fila+i,columna)
                                 if barco_elegido=="acorazado":
                                     acorazado.append(coordenadas)
                                 if barco_elegido=="portaaviones":

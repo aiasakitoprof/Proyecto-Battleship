@@ -31,7 +31,7 @@ class Barcos:
                 if orientacion == "h" and (columna + longitud > len(self.tablero.tablero[0])): # Si queremos poner el barco en hoizontal.
                     print("Barco fuera del tablero.") # Comprobamos que el barco no sobresalga del tablero. Premisa: Si sumamos la longitud del
                     continue                          # barco al numero de la columna y supera la longitud de la fila, está fuera del tablero
-                                                      # Al ser un cuadrado no importa la fila con la que se realice la comprobación.
+                                                    # Al ser un cuadrado no importa la fila con la que se realice la comprobación.
 
                 if orientacion == "v" and (fila + longitud > len(self.tablero.tablero)): # Realizamos la misma operación si queremos que el barco esté en vertical.  
                     print("Barco fuera del tablero.") # Premisa: Si sumamos la longitud del barco al número de la fila y el resultado            
@@ -66,5 +66,5 @@ class Barcos:
                         barco_colocado = True
                         self.tablero.barco_colocado(barco_elegido)
                         print(f"Barco {barco_elegido} colocado en posición {fila}, {columna} con orientación vertical.")
-            limpiar_terminal()
+            #limpiar_terminal()
             self.tablero.view_tablero()
