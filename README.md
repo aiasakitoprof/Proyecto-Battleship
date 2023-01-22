@@ -13,4 +13,4 @@ La estrategia a seguir en caso de que solo haya un acierto es hacer un tiro apro
 En caso de que el tiro aproximado ya este en la lista de disparos realizados, el disparo se hará en una posición disponible.  
 La elección de modos se realiza en la función disparo_ia()  
 El primer modo, al iniciar el juego es el de "buscar"; en caso de que haya un acierto en el disparo, cambiaremos al modo "hundir".  
-El modo "hundir" pretende acabar con los barcos, así que si al obtener un acierto, seguirá en este modo; en caso de que hunda un barco o el número de tiradas acertadas no sea mayor a 0, volverá al modo "buscar".  
+El modo "hundir" pretende acabar con los barcos, así que si obtiene un acierto, seguirá en este modo; en caso de que hunda un barco o el número de tiradas acertadas no sea mayor a 0, volverá al modo "buscar".  
