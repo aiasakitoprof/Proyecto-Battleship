@@ -1,4 +1,12 @@
 import random
+# He creado las siguientes listas para facilitar la información del usuario
+# y decidir quien ha ganado la partida
+acorazado_ia=[]
+portaaviones_ia=[]
+crucero_ia=[]
+submarino_ia=[]
+destructor_ia=[]
+todos_barcos_ia={}
 
 class Radar:
     def __init__(self, width=10, height=10):
@@ -6,6 +14,8 @@ class Radar:
         self.height = height
         self.radar = [["·" for i in range(width)] for i in range(height)]
         self.coordenadas_barcos_ia = []
+        # En la siguiente lista guardo las coordenadas del barco en formato string
+        self.coordenadas_barcos_computer=[]
 
     def view_radar(self):
         print("  ", end="")
@@ -38,6 +48,19 @@ class Barcos_ia:
                         continue
                     for i in range(longitud):
                         self.radar.coordenadas_barcos_ia.append((fila, columna + i))
+                        # Proceso para guardar las coordenadas del ordenador
+                        self.radar.coordenadas_barcos_computer.append(str(fila)+str(columna+i))
+                        coordenadas=str(fila)+str(columna+i)
+                        if barco_elegido=="acorazado":
+                            acorazado_ia.append(coordenadas)
+                        if barco_elegido=="portaaviones":
+                            portaaviones_ia.append(coordenadas)
+                        if barco_elegido=="crucero":
+                            crucero_ia.append(coordenadas)
+                        if barco_elegido=="submarino":
+                            submarino_ia.append(coordenadas)
+                        if barco_elegido=="destructor":
+                            destructor_ia.append(coordenadas)
                 else:
                     fila = random.randint(0, self.radar.height - longitud)
                     columna = random.randint(0, self.radar.width - 1)
@@ -49,3 +72,22 @@ class Barcos_ia:
                         continue
                     for i in range(longitud):
                         self.radar.coordenadas_barcos_ia.append((fila + i, columna))
+                        #Proceso para guardar las coordenadas del ordenador
+                        self.radar.coordenadas_barcos_computer.append(str(fila+i)+str(columna))
+                        coordenadas=str(fila+i)+str(columna)
+                        if barco_elegido=="acorazado":
+                            acorazado_ia.append(coordenadas)
+                        if barco_elegido=="portaaviones":
+                            portaaviones_ia.append(coordenadas)
+                        if barco_elegido=="crucero":
+                            crucero_ia.append(coordenadas)
+                        if barco_elegido=="submarino":
+                            submarino_ia.append(coordenadas)
+                        if barco_elegido=="destructor":
+                            destructor_ia.append(coordenadas)
+                    # Finalmente guardamos los barcos con sus coordenadas en un diccionario
+                    todos_barcos_ia["acorazado"]=acorazado_ia
+                    todos_barcos_ia["portaaviones"]=portaaviones_ia
+                    todos_barcos_ia["crucero"]=crucero_ia
+                    todos_barcos_ia["submarino"]=submarino_ia
+                    todos_barcos_ia["destructor"]=destructor_ia
