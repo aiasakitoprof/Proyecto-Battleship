@@ -4,6 +4,12 @@ from tabulate import tabulate
 
 colorama.init()
 
+# Creamos una clase para los barcos
+class Ship:
+    def __init__(self, name, length):
+        self.name = name # Nombre del barco
+        self.length = length # Longitud del barco
+        
 # Creamos una clase para el tablero
 class Board:
     def __init__ (self, name, size):
