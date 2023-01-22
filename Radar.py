@@ -10,6 +10,6 @@ class Radar: # Definimos la clase radar
         for i in range(self.width): #Se imprimen las coordenadas de las columnas en el radar
             print(i, end=" ")
         print()
-        for i, row in enumerate(self.radar):  # Se impriment las coordenadas de las filas en el radar
+        for i, row in enumerate(self.radar):  # Se imprimen las coordenadas de las filas en el radar
             print(i, end=" ")
             print(" ".join(row))  
