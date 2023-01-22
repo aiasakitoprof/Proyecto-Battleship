@@ -58,18 +58,21 @@ class Barcos:
             while not barco_colocado: # Si no está colocado.
                 
                 # --------| Atributos del barco |--------
-                orientacion = input("Orientación (v/h): ") # Orientación (siempre se orienta de proa a popa).
+
+                clear_terminal()
+                self.tablero.view_tablero()
+                orientacion = input(f"Barco elegido: {self.barcos_input[barco_elegido]}\nElige la oriantación del barco (v/h). El barco siempre se orienta de proa a popa.\n\n >  ") # Orientación (siempre se orienta de proa a popa).
                 while orientacion not in ["v","h"]: # Control de errores.
-                    orientacion = input("Orientación incorrecta, introduce v o h: ")
+                    clear_terminal()
+                    self.tablero.view_tablero()
+                    orientacion = input(f"Barco elegido: {self.barcos_input[barco_elegido]}\nElige una oriantación válida (v/h).\nRecuarda que barco siempre se orienta de proa a popa.\n\n >  ")
                 
-                coord = input("Introduce la coordenada para colocar el barco (ejemplo: '00' ): ")
+
+                clear_terminal()
+                self.tablero.view_tablero()
+                coord = input(f"Barco elegido: {self.barcos_input[barco_elegido]} / Oriantación elegida: {orientacion}\nIntroduce la coordenada para colocar el barco (ejemplo: '00')\n\n >  ")
                 fila = int(coord[0])
                 columna = int(coord[1])
-                
-                # Comprobación de orientación.
-                if orientacion not in ["v", "h"]: # Comprobación de errores
-                    print("Orientación inválida")
-                    continue
                 
                 if orientacion == "h" and (columna + longitud > len(self.tablero.tablero[0])): # Si queremos poner el barco en hoizontal.
                     print("Barco fuera del tablero.")                                          # Comprobamos que el barco no sobresalga del tablero. Premisa: Si sumamos la longitud del
