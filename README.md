@@ -1,5 +1,5 @@
 # Proyecto-Battleship
-Lógica de la ia en el juego
+## Lógica de la ia en el juego
 ___________________________
 Cuando es el turno del ordenador se inicia la función disparo_ia().  
 Esta tiene dos modos de juego, el modo "buscar" y el modo "hundir"  
