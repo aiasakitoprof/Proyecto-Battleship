@@ -140,6 +140,7 @@ class Juego:
                 else:
                     # En caso contrario se eligira una tirada de las posiciones
                     # restantes
+                    random.shuffle(self.tiradasPosibles)
                     for posibles in self.tiradasPosibles:
                         eleccion=posibles
                         break               
