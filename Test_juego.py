@@ -32,14 +32,23 @@ def instrucciones():
     irán fallando y acertando los disparos hasta que uno de los jugadores se quede sin barcos (los barcos se consideran hundidos si todas sus coordenadas han                 8 │ · · · · p p p p · · │            
     sido impactadas por disparos del adversario)                                                                                                                              9 │ · · · · · · · · · · │                                           
                                                                                                                                                                                 └─────────────────────┘
-        
+    A continuación se muestra una partida empezada como referencia:
     
-    
-    
-    
-    
-    
-    ''')
+           Radar                       Barcos
+    0 1 2 3 4 5 6 7 8 9          0 1 2 3 4 5 6 7 8 9
+  ┌─────────────────────┐      ┌─────────────────────┐
+0 │ · · · · O X · · · · │    0 │ · · · O · · · O · · │
+1 │ · · · O · X · · O · │    1 │ · · O · d X · c · O │
+2 │ · · · · · X · · · · │    2 │ O · p O · O · c · · │
+3 │ · · · · · X · · · · │    3 │ · · p · · · · c O · │
+4 │ · · · O · X · · · · │    4 │ O · p O · · · · · · │
+5 │ · · · · · O · · · · │    5 │ · · p · · · · · · · │
+6 │ · · · · O · · · · · │    6 │ · · · · · · · · · · │
+7 │ · · · · · · · O · · │    7 │ · · · · O a a X a a │
+8 │ O · O · · · · · · · │    8 │ O · · · · · · · · · │
+9 │ · · · · O · · · · · │    9 │ s s · · · · · · · · │
+  └─────────────────────┘      └─────────────────────┘
+''')
 
 
 
