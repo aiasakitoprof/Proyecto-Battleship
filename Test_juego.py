@@ -14,7 +14,7 @@ def titulo():
   ▀█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▀''')
 
 def instrucciones():
-    print('''Bienvenido a las instrucciones de Battleship. 
+    print(f'''\n\nBienvenido a las instrucciones de Battleship. 
     
     Para jugar al battleship (Hundir la flota en castellano) ambos jugadores reciben dos tableros, la flota (Tablero en este programa) y el radar. 
     
@@ -51,43 +51,28 @@ def instrucciones():
 ''')
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def menu():
     
     clear_terminal()
     titulo()
     
-    starter = str(input("\n\nBienvenvenido, selecciona como quieres proceder:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  q - Para salir\n\n >  "))
+    starter = str(input("\n\nBienvenvenido, selecciona como quieres proceder:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\n >  "))
     while starter not in ["0","1","2","q"]:
         clear_terminal()
         titulo()
-        starter = str(input("\n\nSelecciona una opción válida de las propuestas:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  q - Para salir\n\n >  "))
+        starter = str(input("\n\nSelecciona una opción válida de las propuestas:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\n >  "))
     
-    if starter == 0:
+    if starter == "0":
         clear_terminal()
         titulo()
-        modo = int(input("\n\nSelecciona el modo de juego:\n\n  0 - Juagador vs AI\n  1 - Juagador vs jugador\n\n >  "))
-    elif starter == 1:
+        modo = int(input("\n\nSelecciona el modo de juego:\n\n  0 - Juagador vs AI\n  1 - Juagador vs jugador\n  q - Para salir\n\n >  "))
+    
+    elif starter == "1":
         clear_terminal()
         titulo()
-        tipo = int(input("\n\nSelecciona el modo de juego:\n\n  0 - Modo normal\n  1 - Modo rápido\n\n >  "))
-    elif starter == 2:
+        instrucciones()
+    
+    elif starter == "2":
         print("Github-link")
     
     else: print("Error")
