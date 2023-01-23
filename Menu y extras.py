@@ -65,7 +65,7 @@ def menu():
     if starter == "0":
         clear_terminal()
         titulo()
-        modo = int(input("\n\nSelecciona el modo de juego:\n\n  0 - Juagador vs AI\n  1 - Juagador vs jugador\n  q - Para salir\n\n >  "))
+        modo = int(input("\n\nSelecciona el modo de juego:\n\n  0 - Juego rápido\n  1 - Colocación manual\n  q - Para salir\n\n >  "))
     
     elif starter == "1":
         clear_terminal()
@@ -75,5 +75,13 @@ def menu():
     elif starter == "2":
         print("Github-link")
     
+    elif starter == "q":
+      clear_terminal()
+      titulo()
+      print("\n\nQue tengas un buen día.\n")
+      exit()
+    
     else: print("Error")
+    
+    return modo
 menu()
