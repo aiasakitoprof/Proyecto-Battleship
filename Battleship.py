@@ -86,6 +86,10 @@ class Juego:
             if self.disparo_ia():
                 break
 
-partida = Juego()
-partida.jugar()
+# partida = Juego()
+# partida.jugar()
 # print(partida.barcos_ia)
+
+from Menu_y_extras import menu
+
+menu()
