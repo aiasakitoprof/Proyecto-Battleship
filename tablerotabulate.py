@@ -1,4 +1,5 @@
 import random
+import colorama
 from tabulate import tabulate
 
 # Creamos una clase para los barcos
@@ -24,11 +25,11 @@ class Board:
         # Creamos las cabeceras de las columnas
         header = []
         for i in range(self.columns):
-            header.append(i+1)
+            header.append(colorama.Fore.LIGHTMAGENTA_EX + str(i+0) + colorama.Fore.RESET) 
         # Creamos las cabeceras de las filas
         rows = []
         for i in range(self.rows):
-            rows.append(chr(i+65)) #Empezamos a partir del 65 que en ASCI es = a "A"
+            rows.append(colorama.Fore.LIGHTMAGENTA_EX + chr(i+65) + colorama.Fore.RESET) #Empezamos a partir del 65 que en ASCI es = a "A"
 
         table = self.board
         print(tabulate(table, header, showindex=rows, numalign="center", stralign="center", tablefmt="fancy_grid"))
@@ -36,6 +37,7 @@ class Board:
     def place_ship (self, ship):
         coordinates = [] # Creamos una lista para guardar las coordenadas de la ocupacion de los barcos
         unique = False  # Variable para verificar si se ha encontrado una posicion valida o no para el barco
+        colorama.init()
         while unique != True:
             orientation = random.choice(["horizontal", "vertical"]) # Escoge una orientacion al azar para el barco
             if orientation == "horizontal":
@@ -52,7 +54,16 @@ class Board:
                             break
                 if unique: # Si siguiera siendo verdadero
                     for i in range(ship.length):
-                        self.board[start[0]][start[1]+i] = ship.name[0] # Coloca el primer caracter del nombre del barco en la posicion
+                        if ship.name == "Acorazado":
+                            self.board[start[0]][start[1]+i] = colorama.Fore.LIGHTYELLOW_EX + ship.name[0] + colorama.Fore.RESET
+                        elif ship.name == "Portaaviones":
+                            self.board[start[0]][start[1]+i] = colorama.Fore.CYAN + ship.name[0] + colorama.Fore.RESET
+                        elif ship.name == "Crucero":
+                            self.board[start[0]][start[1]+i] = colorama.Fore.RED + ship.name[0] + colorama.Fore.RESET
+                        elif ship.name == "Submarino":
+                            self.board[start[0]][start[1]+i] = colorama.Fore.GREEN + ship.name[0] + colorama.Fore.RESET
+                        elif ship.name == "Destructor":
+                            self.board[start[0]][start[1]+i] = colorama.Fore.BLUE + ship.name[0] + colorama.Fore.RESET
                         coordinates.append([start[0],start[1]+i]) # Se guardaria las coordenadar en la lista
             else:   # Ahora se haria el mismo bucle pero para la orientacion en vertical
                 start = [random.randint(0,self.rows-ship.length), random.randint(0, self.columns-1)]
@@ -64,9 +75,19 @@ class Board:
                             break
                 if unique:
                     for i in range(ship.length):
-                        self.board[start[0]+i][start[1]] = ship.name[0]
+                        if ship.name == "Acorazado":
+                            self.board[start[0]+i][start[1]] = colorama.Fore.LIGHTYELLOW_EX + ship.name[0] + colorama.Fore.RESET
+                        elif ship.name == "Portaaviones":
+                            self.board[start[0]+i][start[1]] = colorama.Fore.CYAN + ship.name[0] + colorama.Fore.RESET
+                        elif ship.name == "Crucero":
+                            self.board[start[0]+i][start[1]] = colorama.Fore.RED + ship.name[0] + colorama.Fore.RESET
+                        elif ship.name == "Submarino":
+                            self.board[start[0]+i][start[1]] = colorama.Fore.GREEN + ship.name[0] + colorama.Fore.RESET
+                        elif ship.name == "Destructor":
+                            self.board[start[0]+i][start[1]] = colorama.Fore.BLUE + ship.name[0] + colorama.Fore.RESET
                         coordinates.append([start[0]+i,start[1]])
-        return coordinates   #Finalmente nos retorna las coordenadas
+        colorama.deinit()
+        return coordinates
 
 # Creamos un objeto tablero con el tamaño de 10x10
 board = Board("Test Board", [10, 10])
