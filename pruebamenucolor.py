@@ -13,9 +13,9 @@ def clear_terminal():
         clear()
 
 def titulo():
-    print(Fore.GREEN + '''  ▄█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█▄
+    print(Fore.GREEN + f'''  {Fore.BLACK+'▄█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█▄' + Style.RESET_ALL}
 ▄█▀                                                                                                                       ▀█▄
-█   ████████▄     ▄█▀▀▀▀▀▀█▄    ██       ██       ██         ▄█▀▀▀▀▀▀▀▀   ▄███████▄    ▄█        █▄     ██     ▄██████▄     █
+{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE + '████████▄     ▄█▀▀▀▀▀▀█▄    ██       ██       ██         ▄█▀▀▀▀▀▀▀▀   ▄███████▄    ▄█        █▄     ██     ▄██████▄'+ Style.RESET_ALL}     █
 █   ██      ██   ██        ██   ██       ██       ██         ██          ██       ██   ██        ██            ██      ██   █
 █   ██      ██   ██        ██   ██▀▀▀▀   ██▀▀▀▀   ██         ██          ▀█▄           ██        ██     ██     ██      ██   █
 █   █████████    ██▀▀▀▀▀▀▀▀██   ██       ██       ██         ██▄▄▄▄▄▄      ██████▄     ██▄▄▄▄▄▄▄▄██     ██     ███████▀     █
@@ -62,18 +62,19 @@ def instrucciones():
   └─────────────────────┘      └─────────────────────┘
 ''')
 
-
 def menu():
     
     clear_terminal()
     titulo()
     
-    starter = str(input("\n\nBienvenvenido, selecciona como quieres proceder:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\n >  "))
+    
+    print(Fore.GREEN + "\n\nBienvenvenido, selecciona como quieres proceder:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\n >  " + Style.RESET_ALL)
+    starter = str(input())
     while starter not in ["0","1","2","q"]:
         clear_terminal()
         titulo()
-        starter = str(input("\n\nSelecciona una opción válida de las propuestas:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\n >  "))
-    
+        print(Fore.GREEN + "\n\nSelecciona una opción válida de las propuestas:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\n >  " + Style.RESET_ALL)
+        starter = str(input())
     if starter == "0":
         clear_terminal()
         titulo()
@@ -97,3 +98,5 @@ def menu():
     
     return modo
 menu()
+
+
