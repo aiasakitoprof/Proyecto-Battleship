@@ -108,5 +108,5 @@ board.place_ship(portaaviones)
 board.place_ship(crucero)
 board.place_ship(submarino)
 board.place_ship(destructor)
-# Printeamos el tablero
+# Printeamos el tablero.
 board.print_board()
