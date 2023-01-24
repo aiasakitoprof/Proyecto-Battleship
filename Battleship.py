@@ -19,12 +19,15 @@ class Juego:
 
     def realizar_disparo(self):
 
-        coord = input("Selecciona coordenadas de disparo:\n >  ")
-        while len(coord) < 2 or len(coord) > 2 or int(coord[0]) < 0 or int(coord[0]) > 9 or int(coord[1]) < 0 or int(coord[1]) > 9: # Control de errores.
+        coord = input("Selecciona unas coordenadas de disparo (formato '00'):\n >  ")
+        while True:
+            if len(coord) == 2:
+                if coord[0] in ["0","1","2","3","4","5","6","7","8","9"]:
+                    if coord[1] in ["0","1","2","3","4","5","6","7","8","9"]:
+                        break
             clear_terminal()
             self.print_ambos_tableros()
-            coord = input("Selecciona coordenadas válidas de disparo:\n >  ")
-                
+            coord = input("Selecciona unas coordenadas válidas de disparo (formato '00'):\n >  ")
         fila = int(coord[0])
         columna = int(coord[1])
         disparo = (fila, columna)
