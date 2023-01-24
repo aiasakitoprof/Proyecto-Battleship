@@ -7,45 +7,36 @@ class Radar:
         self.radar = [["·" for i in range(width)] for i in range(height)]  # Matriz del radar.
         self.coordenadas_barcos_ia = []  # Lista para los barcos de la ia.
 
-    def view_radar(self):
-        print("  ", end="")
-        for i in range(self.width):
-            print(i, end=" ")
-        print()
-        for i, row in enumerate(self.radar):
-            print(i, end=" ")
-            print(" ".join(row))
-
 class Barcos_ia:
     def __init__(self, radar):
         self.radar = radar
-        self.barcos = {"acorazado": 5, "portaaviones": 4, "crucero": 3, "submarino": 2, "destructor": 2}
+        self.barcos = {"acorazado": 5, "portaaviones": 4, "crucero": 3, "submarino": 2, "destructor": 2}  # Posibles barcos.
 
     def colocar_barcos_ia(self):
-        for barco_elegido, longitud in self.barcos.items():
-            posicion_ocupada = True
+        for barco_elegido, longitud in self.barcos.items():  # Seleccionamos barco y longitud.
+            posicion_ocupada = True  # Bool de control.
             while posicion_ocupada:
                 posicion_ocupada = False
-                orientacion = random.choice(['h', 'v'])
-                if orientacion == 'h':
-                    fila = random.randint(0, self.radar.height - 1)
+                orientacion = random.choice(['h', 'v'])  # Seleccion aleatoria de orientación.
+                if orientacion == 'h':  # Horizontal.
+                    fila = random.randint(0, self.radar.height - 1)  # Coordenadas de posición aleatorias.
                     columna = random.randint(0, self.radar.width - longitud)
-                    for i in range(longitud):
-                        if (fila, columna + i) in self.radar.coordenadas_barcos_ia:
+                    for i in range(longitud):  # Rango = longitud del barco.
+                        if (fila, columna + i) in self.radar.coordenadas_barcos_ia:  # Si durante el bucle se sale del tablero rompemos el bucle.
                             posicion_ocupada = True
                             break
-                    if posicion_ocupada:
+                    if posicion_ocupada:  # En caso positivo reiniciamos.
                         continue
                     for i in range(longitud):
-                        self.radar.coordenadas_barcos_ia.append((fila, columna + i))
-                else:
+                        self.radar.coordenadas_barcos_ia.append((fila, columna + i))  # En caso de poderse colocar guardamos las coordenadas en la lista.
+                else:  # Vertical
                     fila = random.randint(0, self.radar.height - longitud)
-                    columna = random.randint(0, self.radar.width - 1)
-                    for i in range(longitud):
-                        if (fila + i, columna) in self.radar.coordenadas_barcos_ia:
+                    columna = random.randint(0, self.radar.width - 1)  # Coordenadas de posición aleatorias.
+                    for i in range(longitud):  # Rango = longitud del barco.
+                        if (fila + i, columna) in self.radar.coordenadas_barcos_ia:  # Si durante el bucle se sale del tablero rompemos el bucle.
                             posicion_ocupada = True
                             break
-                    if posicion_ocupada:
+                    if posicion_ocupada:  # En caso positivo reiniciamos.
                         continue
                     for i in range(longitud):
-                        self.radar.coordenadas_barcos_ia.append((fila + i, columna))
+                        self.radar.coordenadas_barcos_ia.append((fila + i, columna))   # En caso de poderse colocar guardamos las coordenadas en la lista.
