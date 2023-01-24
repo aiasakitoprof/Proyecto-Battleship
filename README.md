@@ -171,11 +171,9 @@ https://freesound.org/people/bareform/sounds/218721/
 * 6 videos de juego battleships  
 https://www.youtube.com/watch?v=GmWHhAGvaQA&list=PLpeS0xTwoWAsn3SwQbSsOZ26pqZ-0CG6i&index=6
 
-* visual studio code y github  
-https://www.youtube.com/watch?v=qdec2M4NwT0
-
-http://programarcadegames.com/index.php?lang=es&chapter=labs
-
+* visual studio code y github<br>
+https://www.youtube.com/watch?v=qdec2M4NwT0  
+http://programarcadegames.com/index.php?lang=es&chapter=labs  
 https://github.com/GrizzlyH/Battleship_Walkthrough
 
 * Colorama  
@@ -187,8 +185,8 @@ https://python-para-impacientes.blogspot.com/2017/01/tablas-con-estilo-con-tabul
 * W3chools
 https://www.w3schools.com/python/default.asp
 
-* Chat-GPT (Solución de errores y aprendizaje de programación orientada a objetos)
-https://chat.openai.com/chat
+* Chat-GPT (Solución de errores y aprendizaje de programación orientada a objetos)<br>
+https://chat.openai.com/chat  
 https://openai.com/blog/chatgpt/qwe.sh/%2F../
 
 * Python-tutor
