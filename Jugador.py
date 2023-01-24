@@ -51,9 +51,14 @@ class Barcos:
             barco_elegido = int(input("Elige el barco a colocar (0 = acorazado,  1 = portaaviones, 2 = crucero, 3 = submarino, 4 = destructor)\n\n >  ")) # Selector de barcos.
             longitud = self.barcos[self.barcos_input[barco_elegido]] # Extraemos su longitud
             
-            if barco_elegido in self.tablero.barcos_colocados: # Comprobamos que no esté ya colocado.
+            while barco_elegido in self.tablero.barcos_colocados: # Comprobamos que no esté ya colocado.
+                
+                clear_terminal()
+                self.tablero.view_tablero()
                 print(f"El barco {self.barcos_input[barco_elegido]} ya esta colocado.") # <== Si lo está.
+                barco_elegido = int(input("Elige otro barco a colocar (0 = acorazado,  1 = portaaviones, 2 = crucero, 3 = submarino, 4 = destructor)\n\n >  "))
                 continue
+            
             barco_colocado = False
             
             while not barco_colocado: # Si no está colocado.
@@ -62,19 +67,19 @@ class Barcos:
 
                 clear_terminal()
                 self.tablero.view_tablero()
-                orientacion = input(f"Barco elegido: {self.barcos_input[barco_elegido]}\nElige la oriantación del barco (v/h). El barco siempre se orienta de proa a popa.\n\n >  ") # Orientación (siempre se orienta de proa a popa).
+                orientacion = input(f"Barco elegido: {self.barcos_input[barco_elegido]}, Lon: {self.barcos[self.barcos_input[barco_elegido]]} \nElige la oriantación del barco (v/h). El barco siempre se orienta de proa a popa.\n\n >  ") # Orientación (siempre se orienta de proa a popa).
                 while orientacion not in ["v","h"]: # Control de errores.
                     clear_terminal()
                     self.tablero.view_tablero()
-                    orientacion = input(f"Barco elegido: {self.barcos_input[barco_elegido]}\nElige una oriantación válida (v/h).\nRecuarda que barco siempre se orienta de proa a popa.\n\n >  ")
+                    orientacion = input(f"Barco elegido: {self.barcos_input[barco_elegido]}, Lon: {self.barcos[self.barcos_input[barco_elegido]]} \nElige una oriantación válida (v/h).\nRecuarda que barco siempre se orienta de proa a popa.\n\n >  ")
                 
 
                 clear_terminal()
                 self.tablero.view_tablero()
-                coord = input(f"Barco elegido: {self.barcos_input[barco_elegido]} / Oriantación elegida: {orientacion}\nIntroduce la coordenada para colocar el barco (ejemplo: '00')\n\n >  ")
+                coord = input(f"Barco elegido: {self.barcos_input[barco_elegido]}, Lon: {self.barcos[self.barcos_input[barco_elegido]]} / Oriantación elegida: {orientacion}\nIntroduce la coordenada para colocar el barco (ejemplo: '00')\n\n >  ")
                 
-                while len(coord) < 2 or len(coord) > 2 or coord[0] < 0 or coord[0] > 9 or coord[1] < 0 or coord[1]:
-                    coord = input(f"Barco elegido: {self.barcos_input[barco_elegido]} / Oriantación elegida: {orientacion}\nIntroduce unas coordenadas válidas para colocar el barco (ejemplo: '00')\n\n >  ")
+                while len(coord) < 2 or len(coord) > 2 or int(coord[0]) < 0 or int(coord[0]) > 9 or int(coord[1]) < 0 or int(coord[1]) > 9:
+                    coord = input(f"Barco elegido: {self.barcos_input[barco_elegido]}, Lon: {self.barcos[self.barcos_input[barco_elegido]]} / Oriantación elegida: {orientacion}\nIntroduce unas coordenadas válidas para colocar el barco (ejemplo: '00')\n\n >  ")
                 
                 fila = int(coord[0])
                 columna = int(coord[1])
@@ -108,12 +113,12 @@ class Barcos:
                         for i in range(longitud): 
                             self.tablero.tablero[fila][columna + i] = self.barcos_input[barco_elegido][0].upper()
                         barco_colocado = True
-                        self.tablero.barco_colocado(self.barcos_input[barco_elegido])
+                        self.tablero.barco_colocado(barco_elegido)
                         print(f"Barco {self.barcos_input[barco_elegido]} colocado en posición {fila}, {columna} con orientación horizontal.")
                         
                     elif orientacion == "v":
                         for i in range(longitud):
                             self.tablero.tablero[fila + i][columna] = self.barcos_input[barco_elegido][0].upper()
                         barco_colocado = True
-                        self.tablero.barco_colocado(self.barcos_input[barco_elegido])
+                        self.tablero.barco_colocado(barco_elegido)
                         print(f"Barco {self.barcos_input[barco_elegido]} colocado en posición {fila}, {columna} con orientación vertical.")
