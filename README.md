@@ -188,7 +188,8 @@ https://python-para-impacientes.blogspot.com/2017/01/tablas-con-estilo-con-tabul
 https://www.w3schools.com/python/default.asp
 
 * Chat-GPT (Solución de errores y aprendizaje de programación orientada a objetos)
-https://chat.openai.com/chat  /  https://openai.com/blog/chatgpt/qwe.sh/%2F../
+https://chat.openai.com/chat
+https://openai.com/blog/chatgpt/qwe.sh/%2F../
 
 * Python-tutor
 https://pythontutor.com/visualize.html#mode=edit
