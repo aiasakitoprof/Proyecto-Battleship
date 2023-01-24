@@ -103,11 +103,14 @@ Cómo jugar al Battleship (1persona vs IA)
 
 * Al finalizar saldra el mensaje de si el jugador ha ganado o ha perdido
 
-## Creación del documento CCF(Codificación y creación de funciones)  
+## Creación del documento CCF  
+###(Codificación y creación de funciones)  
 
 El primer paso ha sido crear archivos diferentes con las clases empleadas en el proyecto de juego.  
 
-A continuación hemos definido las variables utilizadas en el código, estas han sido modificadas a lo largo de la ejecución del proyecto así como añadir varibles nuevas.    
+A continuación hemos definido las variables utilizadas en el código, estas han sido modificadas a lo largo de la ejecución del proyecto así como añadir varibles nuevas.  
+Hemos empleado las librerias "random" para la creación de las posiciones del los barcos por parte del ordenador y la libreria "colorama" para introducir algunos colores y hacer el juego mas vistoso.
+También se han empleado la libreria "os" que permite introducir funcionalidades que dependen del sistema operativo y la libreria "platform" que permite verificar la identidad del sistema operativo.  
 
 A continuación se han ido haciendo funciones en cada clase para ir llamandolas según se han ido necesitando para el desarrollo del juego. También hemos creado una función que nos limpia la pantalla despues de cada jugada.  
 Tenemos las siguientes clases, cada una con sus funciones correspondientes:  
