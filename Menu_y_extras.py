@@ -56,6 +56,7 @@ def menu():
     
     while True:
       starter = "b"
+      modo = ""
       break
     
 
@@ -65,11 +66,11 @@ def menu():
         
         clear_terminal()
         titulo()
-        print(Fore.GREEN + "\n\nBienvenvenido, selecciona como quieres proceder:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\n >  " + Style.RESET_ALL)
-        starter = str(input())
+        print(Fore.GREEN + f"\n\nBienvenvenido, selecciona como quieres proceder:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\n" + Style.RESET_ALL)
+        starter = str(input(" >  "))
         
         
-        while starter not in ["0","1","2","q"]:
+        while starter not in ["0","1","2","q"]: # Control de errores.
             clear_terminal()
             titulo()
             print(Fore.GREEN + "\n\nBienvenvenido, selecciona como quieres proceder:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\n >  " + Style.RESET_ALL)
@@ -89,7 +90,7 @@ def menu():
           print(Fore.GREEN + "\n\nSelecciona el modo de juego:\n\n  0 - Juego rápido\n  1 - Colocación manual\n  b - Volver atrás\n  q - Para salir\n\n Selecciona una opción válida >  " + Style.RESET_ALL)
           modo = str(input())
 
-        if modo in ["b","q"]:
+        if modo in ["b","q"]: # Control de errores.
           starter = modo
 
       elif starter == "1":
@@ -100,7 +101,7 @@ def menu():
         print(Fore.GREEN + "\n  b - Volver atrás\n  q - Para salir\n\n >  " + Style.RESET_ALL)
         starter = str(input())
         
-        while starter not in ["b","q"]:
+        while starter not in ["b","q"]: # Control de errores.
           
           clear_terminal()
           titulo()
@@ -116,7 +117,7 @@ def menu():
         print(Fore.GREEN + "\n  b - Volver atrás\n  q - Para salir\n\n >  " + Style.RESET_ALL)
         starter = str(input())
         
-        while starter not in ["b","q"]:
+        while starter not in ["b","q"]: # Control de errores.
 
           clear_terminal()
           titulo()
@@ -132,7 +133,7 @@ def menu():
       
       else: print(Fore.RED + "Error" + Style.RESET_ALL)
 
-      if modo in ["0","1"]:
+      if modo in ["0","1"]: # Control de errores.
         break
       else: pass
     return modo
