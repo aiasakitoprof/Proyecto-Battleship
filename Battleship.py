@@ -2,7 +2,7 @@ from Jugador import *
 from Jugador_rapido import *
 from AI import *
 from Menu_y_extras import *
-from colorama import Fore,Style    # Fore.BLACK +     + Style.RESET_ALL
+from colorama import Fore,Style
 
 class Juego:
     def __init__(self):
@@ -15,12 +15,12 @@ class Juego:
         
         self.disparos_realizados_jg = []
         self.disparos_realizados_ai = []
-        self.vida = 16
+        self.vida = 16  # Vida del jugador.
 
     def realizar_disparo(self):
 
         coord = input("Selecciona unas coordenadas de disparo (formato '00'):\n >  ")
-        while True:
+        while True:  # Control de errores.
             if len(coord) == 2:
                 if coord[0] in ["0","1","2","3","4","5","6","7","8","9"]:
                     if coord[1] in ["0","1","2","3","4","5","6","7","8","9"]:
@@ -28,11 +28,12 @@ class Juego:
             clear_terminal()
             self.print_ambos_tableros()
             coord = input("Selecciona unas coordenadas válidas de disparo (formato '00'):\n >  ")
-        fila = int(coord[0])
-        columna = int(coord[1])
-        disparo = (fila, columna)
+        
+        fila = int(coord[0])  # Nos quedamos co el primer elemento de coords para la fila.
+        columna = int(coord[1])  # Segundo elemento de coords para columnas.
+        disparo = (fila, columna)  # Juntamos las fila y columna para dejarlo en el formato deseado. (Pasamos de 00 a 0,0)
 
-        while disparo in self.disparos_realizados_jg:
+        while disparo in self.disparos_realizados_jg:  # Si el disparo ya ha sido realizado pedimos otro.
             clear_terminal()
             self.print_ambos_tableros()
             coord = input("Selecciona coordenadas de disparo no repetidas:\n >  ")
@@ -116,9 +117,6 @@ class Juego:
         
         while True:
             clear_terminal()
-            print(self.radar.coordenadas_barcos_ia)
-            print(self.disparos_realizados_jg)
-            print(self.disparos_realizados_ai)
             self.print_ambos_tableros()
             if self.realizar_disparo():
                 break
@@ -127,4 +125,3 @@ class Juego:
 
 partida = Juego()
 partida.jugar()
-# print(partida.barcos_ia)00
