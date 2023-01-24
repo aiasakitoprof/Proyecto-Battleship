@@ -1,17 +1,18 @@
 from Jugador import clear_terminal
+from colorama import Fore,Style
 
 def titulo():
-    print('''  ▄█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█▄
-▄█▀                                                                                                                       ▀█▄
-█   ████████▄     ▄█▀▀▀▀▀▀█▄    ██       ██       ██         ▄█▀▀▀▀▀▀▀▀   ▄███████▄    ▄█        █▄     ██     ▄██████▄     █
-█   ██      ██   ██        ██   ██       ██       ██         ██          ██       ██   ██        ██            ██      ██   █
-█   ██      ██   ██        ██   ██▀▀▀▀   ██▀▀▀▀   ██         ██          ▀█▄           ██        ██     ██     ██      ██   █
-█   █████████    ██▀▀▀▀▀▀▀▀██   ██       ██       ██         ██▄▄▄▄▄▄      ██████▄     ██▄▄▄▄▄▄▄▄██     ██     ███████▀     █
-█   ██      ██   ██        ██   ██       ██       ██         ██                  ▀█▄   ██        ██     ██     ██           █
-█   ██      ██   ██        ██   ██       ██       ██         ██          ██       ██   ██        ██     ██     ██           █
-█   ████████▀    ██        ██    ▀█▄▄▄    ▀█▄▄▄   ██▄▄▄▄▄▄   ▀█▄▄▄▄▄▄▄▄   ▀███████▀    ▀█        █▀     ██     ██           █
-▀█▄                                                                                                                       ▄█▀
-  ▀█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▀''')
+    print( f'''  {Fore.BLACK+'▄█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█▄' + Style.RESET_ALL}
+{Fore.BLACK+'▄█▀'+Style.RESET_ALL}                                                                                                                       {Fore.BLACK+ '▀█▄'+ Style.RESET_ALL}
+{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE+'████████▄     ▄█▀▀▀▀▀▀█▄    ██       ██       ██         ▄█▀▀▀▀▀▀▀▀   ▄███████▄    ▄█        █▄     ██     ▄██████▄'+ Style.RESET_ALL}     {Fore.BLACK+'█'+Style.RESET_ALL}
+{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE+'██      ██   ██        ██   ██       ██       ██         ██          ██       ██   ██        ██            ██      ██'+ Style.RESET_ALL}   {Fore.BLACK+'█'+Style.RESET_ALL}
+{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE+'██      ██   ██        ██   ██▀▀▀▀   ██▀▀▀▀   ██         ██          ▀█▄           ██        ██     ██     ██      ██'+ Style.RESET_ALL}   {Fore.BLACK+'█'+Style.RESET_ALL}
+{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE+'█████████    ██▀▀▀▀▀▀▀▀██   ██       ██       ██         ██▄▄▄▄▄▄      ██████▄     ██▄▄▄▄▄▄▄▄██     ██     ███████▀'+ Style.RESET_ALL}     {Fore.BLACK+'█'+Style.RESET_ALL}
+{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE+'██      ██   ██        ██   ██       ██       ██         ██                  ▀█▄   ██        ██     ██     ██'+ Style.RESET_ALL}           {Fore.BLACK+'█'+Style.RESET_ALL}
+{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE+'██      ██   ██        ██   ██       ██       ██         ██          ██       ██   ██        ██     ██     ██'+ Style.RESET_ALL}           {Fore.BLACK+'█'+Style.RESET_ALL}
+{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE+'████████▀    ██        ██    ▀█▄▄▄    ▀█▄▄▄   ██▄▄▄▄▄▄   ▀█▄▄▄▄▄▄▄▄   ▀███████▀    ▀█        █▀     ██     ██'+ Style.RESET_ALL}           {Fore.BLACK+'█'+Style.RESET_ALL}
+{Fore.BLACK+'▀█▄'+ Style.RESET_ALL}                                                                                                                       {Fore.BLACK+'▄█▀'+ Style.RESET_ALL}
+{Fore.BLACK+   '  ▀█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▀'+ Style.RESET_ALL}''')
 
 def instrucciones():
     print(f'''\n\nBienvenido a las instrucciones de Battleship. 
@@ -55,7 +56,7 @@ def menu():
     
     while True:
       starter = "b"
-      modo = "-1"
+      modo = ""
       break
     
 
@@ -65,70 +66,74 @@ def menu():
         
         clear_terminal()
         titulo()
-        starter = str(input("\n\nBienvenvenido, selecciona como quieres proceder:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\n >  "))
+        print(Fore.GREEN + f"\n\nBienvenvenido, selecciona como quieres proceder:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\n" + Style.RESET_ALL)
+        starter = str(input(" >  "))
         
         
-        while starter not in ["0","1","2","q"]:
+        while starter not in ["0","1","2","q"]: # Control de errores.
             clear_terminal()
             titulo()
-            starter = str(input("\n\nBienvenvenido, selecciona como quieres proceder:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\n Selecciona una opción válida >  "))
+            print(Fore.GREEN + "\n\nBienvenvenido, selecciona como quieres proceder:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\nSelecciona una opción válida." + Style.RESET_ALL)
+            starter = str(input(" >  "))
     
     
       if starter == "0":
         
         clear_terminal()
         titulo()
-        modo = str(input("\n\nSelecciona el modo de juego:\n\n  0 - Juego rápido\n  1 - Colocación manual\n  b - Volver atrás\n  q - Para salir\n\n >  "))
-        
+        print(Fore.GREEN + "\n\nSelecciona el modo de juego:\n\n  0 - Juego rápido\n  1 - Colocación manual\n  b - Volver atrás\n  q - Para salir\n\n" + Style.RESET_ALL)
+        modo = str(input(" >  "))
         while modo not in ["0","1","b","q"]:
           
           clear_terminal()
           titulo()
-          modo = str(input("\n\nSelecciona el modo de juego:\n\n  0 - Juego rápido\n  1 - Colocación manual\n  b - Volver atrás\n  q - Para salir\n\n Selecciona una opción válida >  "))
+          print(Fore.GREEN + "\n\nSelecciona el modo de juego:\n\n  0 - Juego rápido\n  1 - Colocación manual\n  b - Volver atrás\n  q - Para salir\n\nSelecciona una opción válida." + Style.RESET_ALL)
+          modo = str(input(" >  "))
 
-          if modo in ["b","q"]:
-            starter = modo
+        if modo in ["b","q"]: # Control de errores.
+          starter = modo
 
       elif starter == "1":
         
         clear_terminal()
         titulo()
         instrucciones()
-        starter = str(input("\n  b - Volver atrás\n  q - Para salir\n\n >  "))
+        print(Fore.GREEN + "\n  b - Volver atrás\n  q - Para salir\n\n" + Style.RESET_ALL)
+        starter = str(input(" >  "))
         
-        
-        while starter not in ["b","q"]:
+        while starter not in ["b","q"]: # Control de errores.
           
           clear_terminal()
           titulo()
           instrucciones()
-          starter = str(input("\n  b - Volver atrás\n  q - Para salir\n\n Selecciona una opción válida >  "))
-    
+          print(Fore.GREEN + "\n  b - Volver atrás\n  q - Para salir\n\nSelecciona una opción válida." + Style.RESET_ALL)
+          starter = str(input(" >  "))
     
       elif starter == "2":
         
         clear_terminal()
         titulo()
-        print("\n\nGithub-link")
-        starter = str(input("\n  b - Volver atrás\n  q - Para salir\n\n >  "))
+        print(Fore.GREEN+ "\n\nGithub-link" + Style.RESET_ALL)
+        print(Fore.GREEN + "\n  b - Volver atrás\n  q - Para salir\n\n" + Style.RESET_ALL)
+        starter = str(input(" >  "))
         
-        
-        while starter not in ["b","q"]:
+        while starter not in ["b","q"]: # Control de errores.
 
           clear_terminal()
           titulo()
-          print("\n\nGithub-link")
-          starter = str(input("\n  b - Volver atrás\n  q - Para salir\n\n Selecciona una opción válida >  "))
-      
+          print(Fore.GREEN + "\n\nGithub-link" + Style.RESET_ALL)
+          print(Fore.GREEN + "\n  b - Volver atrás\n  q - Para salir\n\nSelecciona una opción válida." + Style.RESET_ALL)
+          starter = str(input(" >  "))
+
       elif starter == "q":
         clear_terminal()
         titulo()
-        print("\n\nQue tengas un buen día.\n")
+        print(Fore.GREEN + "\n\nQue tengas un buen día.\n" + Style.RESET_ALL)
         exit()
       
-      else: print("Error")
+      else: print(Fore.RED + "Error" + Style.RESET_ALL)
 
-      if modo in ["0","1"]:
+      if modo in ["0","1"]: # Control de errores.
         break
       else: pass
     return modo
