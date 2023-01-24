@@ -104,7 +104,7 @@ Cómo jugar al Battleship (1persona vs IA)
 * Al finalizar saldra el mensaje de si el jugador ha ganado o ha perdido
 
 ## Creación del documento CCF  
-###(Codificación y creación de funciones)  
+### (Codificación y creación de funciones)  
 
 El primer paso ha sido crear archivos diferentes con las clases empleadas en el proyecto de juego.  
 
