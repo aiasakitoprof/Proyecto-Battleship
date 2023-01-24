@@ -74,7 +74,7 @@ def menu():
             clear_terminal()
             titulo()
             print(Fore.GREEN + "\n\nBienvenvenido, selecciona como quieres proceder:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\n >  " + Style.RESET_ALL)
-            starter = str(input())
+            starter = str(input(" >  "))
     
     
       if starter == "0":
@@ -99,7 +99,7 @@ def menu():
         titulo()
         instrucciones()
         print(Fore.GREEN + "\n  b - Volver atrás\n  q - Para salir\n\n >  " + Style.RESET_ALL)
-        starter = str(input())
+        starter = str(input(" >  "))
         
         while starter not in ["b","q"]: # Control de errores.
           
@@ -107,7 +107,7 @@ def menu():
           titulo()
           instrucciones()
           print(Fore.GREEN + "\n  b - Volver atrás\n  q - Para salir\n\n Selecciona una opción válida >  " + Style.RESET_ALL)
-          starter = str(input())
+          starter = str(input(" >  "))
     
       elif starter == "2":
         
@@ -115,7 +115,7 @@ def menu():
         titulo()
         print(Fore.GREEN+ "\n\nGithub-link" + Style.RESET_ALL)
         print(Fore.GREEN + "\n  b - Volver atrás\n  q - Para salir\n\n >  " + Style.RESET_ALL)
-        starter = str(input())
+        starter = str(input(" >  "))
         
         while starter not in ["b","q"]: # Control de errores.
 
@@ -123,7 +123,7 @@ def menu():
           titulo()
           print(Fore.GREEN + "\n\nGithub-link" + Style.RESET_ALL)
           print(Fore.GREEN + "\n  b - Volver atrás\n  q - Para salir\n\n Selecciona una opción válida >  " + Style.RESET_ALL)
-          starter = str(input())
+          starter = str(input(" >  "))
 
       elif starter == "q":
         clear_terminal()
