@@ -15,51 +15,69 @@ class Juego:
         
         self.disparos_realizados_jg = []
         self.disparos_realizados_ai = []
+        self.vida = 16
 
     def realizar_disparo(self):
-        fila = int(input("Introduce la fila para realizar el disparo: "))
-        columna = int(input("Introduce la columna para realizar el disparo: "))
+
+        coord = input("Selecciona coordenadas de disparo:\n >  ")
+        while len(coord) < 2 or len(coord) > 2 or int(coord[0]) < 0 or int(coord[0]) > 9 or int(coord[1]) < 0 or int(coord[1]) > 9: # Control de errores.
+            clear_terminal()
+            self.print_ambos_tableros()
+            coord = input("Selecciona coordenadas válidas de disparo:\n >  ")
+                
+        fila = int(coord[0])
+        columna = int(coord[1])
         disparo = (fila, columna)
-        
+
         while disparo in self.disparos_realizados_jg:
-            fila = int(input("Introduce una fila no repetida para realizar el disparo: "))
-            columna = int(input("Introduce una columna no repetida para realizar el disparo: "))
+            clear_terminal()
+            self.print_ambos_tableros()
+            coord = input("Selecciona coordenadas de disparo no repetidas:\n >  ")
+            while len(coord) < 2 or len(coord) > 2 or int(coord[0]) < 0 or int(coord[0]) > 9 or int(coord[1]) < 0 or int(coord[1]) > 9: # Control de errores.
+                clear_terminal()
+                self.print_ambos_tableros()
+                coord = input("Selecciona coordenadas válidas de disparo:\n >  ")
+                
+            fila = int(coord[0])
+            columna = int(coord[1])
             disparo = (fila, columna)
         
+        self.disparos_realizados_jg.append(disparo)
+        
         if disparo in self.radar.coordenadas_barcos_ia:
-            self.disparos_realizados_jg.append(disparo)
             self.radar.radar[fila][columna] = Fore.RED +"X"+ Style.RESET_ALL
             self.radar.coordenadas_barcos_ia.remove(disparo)
-            print("¡Hundiste un barco!")
             if len(self.radar.coordenadas_barcos_ia) == 0:
                 print("¡Has ganado!")
                 return True
         else:
             self.radar.radar[fila][columna] = Fore.BLUE +"O"+ Style.RESET_ALL
-            print("Disparo fallido")
         return False
 
 
     def disparo_ia(self):
-        
+
         fila = random.randint(0,9)
         columna = random.randint(0,9)
         disparo = (fila, columna)
-        vida = 16
+        
+        
+        while disparo in self.disparos_realizados_ai:
+            fila = random.randint(0,9)
+            columna = random.randint(0,9)
+            disparo = (fila, columna)
         
         if disparo not in self.disparos_realizados_ai:
             self.disparos_realizados_ai.append(disparo)
             
             if self.tablero.tablero[fila][columna] != "·":
                 self.tablero.tablero[fila][columna] = Fore.RED +"X"+ Style.RESET_ALL
-                print("Tocado")
-                vida -= 1
+                self.vida -= 1
             else: 
                 self.tablero.tablero[fila][columna] = Fore.BLUE +"O"+ Style.RESET_ALL
-                print("Agua")
             
-            if vida == 0:
-                print("El ordenador ganó")
+            if self.vida == 0:
+                print("Has perdido")
                 return True
 
 
@@ -96,6 +114,8 @@ class Juego:
         while True:
             clear_terminal()
             print(self.radar.coordenadas_barcos_ia)
+            print(self.disparos_realizados_jg)
+            print(self.disparos_realizados_ai)
             self.print_ambos_tableros()
             if self.realizar_disparo():
                 break
