@@ -61,4 +61,48 @@ Se mostrará por pantalla un menú en el que el jugador podra escoger si quiere 
 
 Si escoge partida rapida los barcos se colocaran con un random aleatoriamente en su tablero y en el de la IA
 
+Se le pedira al jugador que escoja unas coordenadas para disparar (fila, columna)
+
+Se mostrara si el usuario ha acertado a uno de los barcos 'X' o no 'O'
+
+Se mostrara si el jugador ha ganado la partida o ha perdido
+
+Si escoge partida normal
+
+El usuario debera colocaro los barcos asignando sus coordenadas de donde sera la punta del barco usando un bucle
+
+Tambien debera asignarle si lo quiere colocar en vertical o horizontal usando un buble
+
+Asi hasta el total de 5 barcos
+
+Seguidamente se le pedira al usuario que escoja unas coordenadas para disparar (fila, columna)
+
+Se mostrara si el usuario ha acertado a uno de los barcos 'X' o no 'O'
+
+Se mostrara si el jugador ha ganado la partida o  ha perdido
+
+### Interacción de la IA
+
+En los dos modos de juego se asignaran con un random los barcos a la IA
+
+En cada turno de la IA en su tablero aparecera si ha acertado con una 'X' o si ha fallado con 'O'
+
+Cada turno de la IA sera con un random
+
+Se hara un bucle para que si acierta se le sume o se le reste cerca de la posicion, asi haremos que la IA sea mas inteligente y descubra un barco entero en menos disparos
+
+### Terminar Partida
+
+Cuando el bucle principal a medida que le vamos restando las posciones donde se encuentra cada uno de los barcos hasta llegar a 0.
+
+Si el jugador llega antes a 0 ganará el jugador
+
+En el caso contrario ganará la IA
+
+No puede haber empate
+
+Al finalizar saldra el mensaje de si el jugador ha ganado o ha perdido
+
+
+
 
