@@ -124,4 +124,4 @@ class Juego:
 
 partida = Juego()
 partida.jugar()
-# print(partida.barcos_ia)
+# print(partida.barcos_ia)00
