@@ -6,6 +6,7 @@ pygame.init()
 #Medidas de la pantalla de juego
 ANCHO = 1100
 ALTO = 700
+
 #Medida de una celda del tablero
 cell_size = ANCHO/30
 font = pygame.font.SysFont(None, 20)
@@ -13,31 +14,53 @@ texto=pygame.font.SysFont(None, 30)
 tiradasPosibles= [(fila,columna) for fila in range(10) for columna in range(10)]
 # En el diccionario de barcos tenemos el tipo de barco, su longitud y color por defecto
 barcos={"acorazado": [5,(255,128,0)], "portaaviones":[4,(204,204,0)], "crucero": [3,(0,204,102)], "submarino": [2,(255,51,51)], "destructor":[2,(0,0,255)]}
-barcos_colocados = {} # Guarda los barcos ya colocados.
+# Diccionario creado para disponer de los indices para que cuando se colocan los barcos del usuario, no se vuelva a repetir el barco a colocar
+barcos_indice={"1":["acorazado",5,(255,128,0)], "2":["portaaviones",4,(204,204,0)], "3":["crucero",3,(0,204,102)], "4":["submarino",2,(255,51,51)], "5":["destructor",2,(0,0,255)]}
+# Con la siguiente lista verifico cual es el barco que se ha hundido
 todos_barcos={}
+# Lista para guardar las coordenadas de los barcos del usuario
 coordenadas = []
+# La misma lista pero en formato string, necesito esta lista para validar que no
+# se vuelven a escoger las mismas coordenadas
 coordenadas_str=[]
+# Lista para guardar los disparos del ordenador, necesaria para la logica de tiro
 disparos_realizados_ai=[]
+# Coordenadas de los barcos del ordenador, necesaria para validar quien ha ganado
 coordenadas_ia=[]
+# Lista de disparos realizados por el usuario, necesaria para no volver a repetir la tirada
 disparos_realizados_user=[]
+# Lista que guarda los aciertos del ordenador, necesaria para la logica de tiro
 aciertos_computer=[]
+# Se guardan los barcos hundidos por el ordenador en una lista (actualmente esta lista no se emplea)
+# Se podría emplear para cambiar el modo de indicar quien gana
 barcos_hundidos=[]
+# Listas para guardar las coordenadas de cada tipo de barco, estos se guardan en un diccionario
+# en un diccionario
 acorazado=[]
 portaaviones=[]
 crucero=[]
 submarino=[]
 destructor=[]
+# Inicializamos el modo de tiro del ordenador a "buscar" (tirada random), en caso de que se haga 
+# un acierto se cambiará el modo a "hundir"
 modo="buscar"
+# La opción de disparar se inicia con el turno del usuario
 turno="usuario"
+# Variable necesaria para validar cuantos tiros han sido aciertos, en caso de que haya más de uno
+# Se priorizará el modo "hundir"
 contadorTiros=0
-
+# Variable necesaria para que no se pueda volver a colocar un barco que ya ha sido colocado
+barco_actual = 1
+# Variable que indica que el modo de juego está activo
 running=True
 
-
+# Variable que inicia la ventana con las medidas definidas
 screen = pygame.display.set_mode((ANCHO,ALTO))
+# Título del juego que se muestra en la parte superior de la pantalla
 pygame.display.set_caption("Hundir la flota")
 
-
+# Actualizar la pantalla
+pygame.display.update()
 
 # Tablero 1
 for i in range(0, 10):
@@ -86,81 +109,83 @@ for i in range(0, 10):
         pygame.display.update()
         pygame.draw.rect(screen, (255,255,255), (0,0, ANCHO, ALTO), 2)
 
-
-
-def colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str):
-    for navio in barcos.keys():
-        barco_elegido = navio
-        longitud = barcos[barco_elegido][0]
-        color =  barcos[barco_elegido][1]
-
+# Función que permite colocar los barcos del usuario
+def colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual):
+    # Bucle que recorre el diccionario de barcos y  recoge los valores necesarios
+    for navio, valor in barcos_indice.items():
+        indice=navio
+        barco=valor[0]
+        longitud =valor[1]
+        color =  valor[2]
+        # Validamos que el indice del barco sea igual que el barco que se debe colocar en cada momento,
+        # en caso de que un barco sea colocado, la variable "barco_actual" se incrementa y no permite repetir barcos
+        if indice == str(barco_actual):
         # Funcionalidad del paquete PySimpleGUI que me permite mostrar una pantalla para introducir datos
-        layout = [[sg.Text("Seleccione orientacion (h/v): "), sg.InputText()],
-                [sg.Text("Seleccione fila (0-9): "), sg.InputText()],
-                [sg.Text("Seleccione columna (0-9): "), sg.InputText()],
-                [sg.Button(f"Colocar {barco_elegido}")]]
-        # Funcionalidad que me introduce las caracteristicas de la ventana para introducir datos
-        window = sg.Window(f"Colocar {barco_elegido} de longitud {longitud}", layout, location=(ANCHO/3, ALTO - 180), keep_on_top=True)
-        
-        event, values = window.read()
-        window.close()
-        if event != f"Colocar {barco_elegido}":
-            continue
-        
-        orientation = values[0]
-        row = int(values[1])
-        col = int(values[2])
-        
-        if orientation == "h":
-            for i in range(longitud):
-                if (row, col+i) in coordenadas:
-                    sg.popup("Este lugar esta ocupado, por favor selecciona otro.")
-                    return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str)
-                coordenadas.append((row, col+i))
-    
-                coordenadas_str.append(str(row)+str(col+i))
-                #coordenadas_barcos.append(str(fila)+str(columna+i)
-                if barco_elegido=="acorazado":
-                    acorazado.append(coordenadas_str)
-                if barco_elegido=="portaaviones":
-                    portaaviones.append(coordenadas_str)
-                if barco_elegido=="crucero":
-                    crucero.append(coordenadas_str)
-                if barco_elegido=="submarino":
-                    submarino.append(coordenadas_str)
-                if barco_elegido=="destructor":
-                    destructor.append(coordenadas_str)
-                pygame.draw.rect(screen, color, (int((col+i)*cell_size)+80+ANCHO/2, int(row*cell_size)+80, cell_size, cell_size))
-        elif orientation == "v":
-            for i in range(longitud):
-                if (row+i, col) in coordenadas:
-                    sg.popup("Este lugar esta ocupado, por favor selecciona otro.")
-                    return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str)
-                coordenadas.append((row+i, col))
-                coordenadas_str.append(str(row+i)+str(col))
-                if barco_elegido=="acorazado":
-                    acorazado.append(coordenadas_str)
-                if barco_elegido=="portaaviones":
-                    portaaviones.append(coordenadas_str)
-                if barco_elegido=="crucero":
-                    crucero.append(coordenadas_str)
-                if barco_elegido=="submarino":
-                    submarino.append(coordenadas_str)
-                if barco_elegido=="destructor":
-                    destructor.append(coordenadas_str)
-                pygame.draw.rect(screen, color, (int(col*cell_size)+80+ANCHO/2, int((row+i)*cell_size)+80, cell_size, cell_size))
-        # Guardamos los barcos y sus coordenadas en un diccionario
-        todos_barcos["acorazado"]=acorazado
-        todos_barcos["portaaviones"]=portaaviones
-        todos_barcos["crucero"]=crucero
-        todos_barcos["submarino"]=submarino
-        todos_barcos["destructor"]=destructor
-        pygame.display.update()
-
-colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str)
-
-
-
+            layout = [[sg.Text("Seleccione orientacion (h/v) del barco actual "+str(barco_actual)), sg.InputText()],
+                    [sg.Text("Seleccione fila (0-9)"), sg.InputText()],
+                    [sg.Text("Seleccione columna (0-9): "), sg.InputText()],
+                    [sg.Button(f"Colocar {barco}")]]
+            
+            # Funcionalidad que me introduce las caracteristicas de la ventana para introducir datos
+            window = sg.Window(f"Colocar {barco} de longitud {longitud}", layout, location=(ANCHO/3, ALTO - 180), keep_on_top=True)
+            # Se captura el evento y los valores introducidos antes de cerrar la ventana
+            event, values = window.read()
+            window.close()
+            if event != f"Colocar {barco}":
+                continue
+            
+            orientation = values[0]
+            row = int(values[1])
+            col = int(values[2])
+            # Si la orientación es horizontal
+            if orientation == "h":
+                for i in range(longitud):
+                    if (row, col+i) in coordenadas:
+                        sg.popup("Este lugar esta ocupado, por favor selecciona otro.")
+                        # En caso de que la coordenada esté ocupada volvemos a inicializar la función
+                        return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)
+                    # Guardamos las coordenadas en las listas correspondientes
+                    coordenadas.append((row, col+i))
+                    coordenadas_str.append(str(row)+str(col+i))
+                    #coordenadas_barcos.append(str(fila)+str(columna+i)
+                    if barco=="acorazado":
+                        acorazado.append(coordenadas_str)
+                    if barco=="portaaviones":
+                        portaaviones.append(coordenadas_str)
+                    if barco=="crucero":
+                        crucero.append(coordenadas_str)
+                    if barco=="submarino":
+                        submarino.append(coordenadas_str)
+                    if barco=="destructor":
+                        destructor.append(coordenadas_str)
+                    # pinta los cuadrados de cada barco con el color y las medidas correspondientes
+                    pygame.draw.rect(screen, color, (int((col+i)*cell_size)+80+ANCHO/2, int(row*cell_size)+80, cell_size, cell_size))
+            elif orientation == "v":
+                for i in range(longitud):
+                    if (row+i, col) in coordenadas:
+                        sg.popup("Este lugar esta ocupado, por favor selecciona otro.")
+                        return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)
+                    coordenadas.append((row+i, col))
+                    coordenadas_str.append(str(row+i)+str(col))
+                    if barco=="acorazado":
+                        acorazado.append(coordenadas_str)
+                    if barco=="portaaviones":
+                        portaaviones.append(coordenadas_str)
+                    if barco=="crucero":
+                        crucero.append(coordenadas_str)
+                    if barco=="submarino":
+                        submarino.append(coordenadas_str)
+                    if barco=="destructor":
+                        destructor.append(coordenadas_str)
+                    pygame.draw.rect(screen, color, (int(col*cell_size)+80+ANCHO/2, int((row+i)*cell_size)+80, cell_size, cell_size))
+            # Guardamos los barcos y sus coordenadas en un diccionario
+            todos_barcos["acorazado"]=acorazado
+            todos_barcos["portaaviones"]=portaaviones
+            todos_barcos["crucero"]=crucero
+            todos_barcos["submarino"]=submarino
+            todos_barcos["destructor"]=destructor
+            barco_actual+=1
+            pygame.display.update()
 
 def colocar_barcos_ia():
     
@@ -202,8 +227,6 @@ def colocar_barcos_ia():
                             for i in range(longitud):
                                 coordenadas_ia.append((fila + i, columna))
 
-
-
 # Antes de dibujar el acierto del ordenador, se debe borrar el cuadrado del barco
 def borrar_posicion(fila, columna):
     pygame.draw.rect(screen, (0,0,0), (int(columna*cell_size)+80+ANCHO/2, int(fila*cell_size)+80,cell_size,cell_size))
@@ -237,7 +260,7 @@ def buscar_alrededor():
         # seleccionamos la fila y la columna de la ultima tirada acertada por el ordenador
         fila=int(aciertos_computer[-1][0])
         columna=int(aciertos_computer[-1][1])
-        # Inicializamos la variable eleccion
+        # Inicializamos la variable eleccion, que será el tiro que se ha elegido para disparar, según la lógica de la función
         eleccion=(fila,columna)
         # Dirección de la tirada consecutiva (0 = ninguna, 1 = horizontal, 2 = vertical
         direccion_tirada = 0
@@ -257,7 +280,7 @@ def buscar_alrededor():
                     else:
                         columna = random.choice([columna-1,columna+1])
                     eleccion=(fila,columna)
-
+                # Comprobación de si hay dos aciertos en la misma columna
                 elif aciertos_computer[-1][1] == aciertos_computer[-2][1]:
                     direccion_tirada = 2
                     columna = int(aciertos_computer[-1][1])
@@ -282,8 +305,10 @@ def buscar_alrededor():
             aproximaciones=[(fila-1,columna), (fila+1,columna), (fila,columna-1), (fila,columna+1)]
             # Creamos una lista de aproximaciones válidas, que serán las que no se salgan del tablero
             valid_aproximaciones = [aprox for aprox in aproximaciones if aprox[0] >= 0 and aprox[0] <= 9 and aprox[1] >= 0 and aprox[1] <= 9]
+            # Mezclamos las aproximaciones para realizar una tirada al azar entre las aproximaciones validadas
             random.shuffle(valid_aproximaciones)
             for aprox in valid_aproximaciones:
+                # Validamos que la aproximación no esté en los disparos ya realizados por el ordendor
                 if aprox not in disparos_realizados_ai:
                     eleccion=aprox
                     break
@@ -426,11 +451,6 @@ def disparo_ia(todos_barcos,coordenadas,tiradasPosibles):
             turno="usuario"
 
 
-# Llamamos a la función que nos colocará los barcos del ordenador
-colocar_barcos_ia()
-print("Coordenadas Ordenador",coordenadas_ia)
-print(tiradasPosibles)
-
 # Antes de dibujar el acierto del usuario, se debe borrar el punto de agua
 def borrar_posicion_ia(fila, columna):
     pygame.draw.circle(screen, (0,0,0),  (int(columna*cell_size)+100, int(fila*cell_size)+100), 10)
@@ -453,6 +473,7 @@ def dibujar_fallo_user(fila, columna):
     pygame.draw.circle(screen, (255,0,0),  (int(columna*cell_size)+100, int(fila*cell_size)+100), 10)
     pygame.display.update()
 
+# Función que permite realizar el disparo al usuario según las coordenadas introducidas
 def disparo_user():
     global turno
     disparo=0
@@ -500,7 +521,7 @@ def turnos():
             if len(coordenadas_ia) == 0:
                 running = False
                 print("Has ganado")
-                sg.popup("Has ganado al ordenador, enhorabuena")
+                sg.popup("Has ganado al ordenador, enhorabuena",  keep_on_top=True)
                 break
             else:
                 turno = "IA"
@@ -509,14 +530,25 @@ def turnos():
             if len(coordenadas) == 0:
                 running = False
                 print("El ordenador ha ganado")
-                sg.popup("El ordenador te ha ganado, puedes cerrar la ventana")
+                sg.popup("El ordenador te ha ganado, puedes cerrar la ventana",  keep_on_top=True)
                 break
             else:
                 turno = "usuario"
 
+
+colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)
+
+# Llamamos a la función que nos colocará los barcos del ordenador
+colocar_barcos_ia()
+print("Coordenadas Ordenador",coordenadas_ia)
+print(tiradasPosibles)
 print("Coordenadas_usuario", coordenadas)
 turnos()
+
+
+#Botón de cierre
 # Bucle que permite seguir jugando
+# Bucle que permite seguir jugando y captura el evento de cierre
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -524,11 +556,3 @@ while running:
 
     # Funcionalidad de pygame que permite actualizar la visualización del juego
     pygame.display.update()
-
-
-
-
-
-
-
-
