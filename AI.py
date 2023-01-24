@@ -49,7 +49,3 @@ class Barcos_ia:
                         continue
                     for i in range(longitud):
                         self.radar.coordenadas_barcos_ia.append((fila + i, columna))
-tablero = Radar()
-barcos = Barcos_ia(tablero)
-barcos.colocar_barcos_ia()
-print(tablero.coordenadas_barcos_ia)

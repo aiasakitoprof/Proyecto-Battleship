@@ -2,9 +2,11 @@ import random
 from Jugador import Tablero
 
 class Barcos_rapidos: # Creamos la clase barcos ia
+    
     def __init__(self, tablero): # Definicion del objeto barcos ia
         self.tablero = tablero
         self.barcos = {"acorazado": 5, "portaaviones": 4, "crucero": 3, "submarino": 2, "destructor": 2} # Diccionario con barcos y sus longitudes
+    
     def colocar_barcos_rapidos(self): # Definimos la funcion de la colocacion de barcos la cual se hara aleatoriamente
         for barco_elegido, longitud in self.barcos.items(): # Recorremos los barcos en el diccionario "self.barcos"
             posicion_ocupada = True # Posicion ocupada la inicializamos en true
