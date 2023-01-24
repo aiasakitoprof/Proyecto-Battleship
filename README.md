@@ -150,34 +150,34 @@ Juego:
 * menu: Nos permite seleccionar las opciones del menú  
 
 ## Webgrafía
-* Colores rgb  
-https://www.calculadoraconversor.com/colores-rgb  
+* Colores rgb   
+https://www.calculadoraconversor.com/colores-rgb   
 
-* Ejemplos de juegos similares  
+* Ejemplos de juegos similares   
 https://www.pygame.org/tags/ship  
 
-* Ejemplo juego battleship  
-htt ps://framagit.org/bailandoconbuitres/pybattleship-classic/-/tree/master  
+* Ejemplo juego battleship   
+https://framagit.org/bailandoconbuitres/pybattleship-classic/-/tree/master  
 
-* Fuentes en windows 10  
+* Fuentes en windows 10   
 https://learn.microsoft.com/en-us/typography/fonts/windows_10_font_list
 
-* Pygame
+* Pygame 
 https://github.com/josecodetech/Pygame
 
-* Sonidos
+* Sonidos  
 https://freesound.org/people/bareform/sounds/218721/
 
-* 6 videos de juego battleships
+* 6 videos de juego battleships  
 https://www.youtube.com/watch?v=GmWHhAGvaQA&list=PLpeS0xTwoWAsn3SwQbSsOZ26pqZ-0CG6i&index=6
 
-* visual studio code y github
+* visual studio code y github  
 https://www.youtube.com/watch?v=qdec2M4NwT0
 
 http://programarcadegames.com/index.php?lang=es&chapter=labs
 
 https://github.com/GrizzlyH/Battleship_Walkthrough
 
-* Colorama
+* Colorama  
 https://recursospython.com/guias-y-manuales/colorama-texto-fondo-coloreados-la-consola/
 
