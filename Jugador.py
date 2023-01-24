@@ -1,3 +1,4 @@
+from colorama import Fore, Style
 def clear_terminal():
     import os
     import platform
@@ -21,12 +22,12 @@ class Tablero:
     
     def view_tablero(self): # Printeo de tablero.
         
-        print("          Tablero")
-        print("    0 1 2 3 4 5 6 7 8 9") # Cabecera del tablero
+        print(Fore.BLUE +"          Tablero" +Style.RESET_ALL)
+        print(Fore.CYAN +"    0 1 2 3 4 5 6 7 8 9" +Style.RESET_ALL) # Cabecera del tablero
         print("  ┌─────────────────────┐")
         
         for i, row in enumerate(self.tablero): # Coordenadas de filas (A la derecha del tablero).
-            print(i, end=" │ ")
+            print(Fore.CYAN+ str(i) + Style.RESET_ALL, end=" │ ")
             print(" ".join(row),"│")
         
         print("  └─────────────────────┘") # Pie del tablero.
@@ -118,14 +119,14 @@ class Barcos:
                 if not posicion_ocupada: 
                     if orientacion == "h": 
                         for i in range(longitud): 
-                            self.tablero.tablero[fila][columna + i] = self.barcos_input[barco_elegido][0].upper()
+                            self.tablero.tablero[fila][columna + i] = Fore.YELLOW + self.barcos_input[barco_elegido][0].upper() + Style.RESET_ALL
                         barco_colocado = True
                         self.tablero.barco_colocado(barco_elegido)
                         print(f"Barco {self.barcos_input[barco_elegido]} colocado en posición {fila}, {columna} con orientación horizontal.")
                         
                     elif orientacion == "v":
                         for i in range(longitud):
-                            self.tablero.tablero[fila + i][columna] = self.barcos_input[barco_elegido][0].upper()
+                            self.tablero.tablero[fila + i][columna] =  Fore.YELLOW + self.barcos_input[barco_elegido][0].upper() + Style.RESET_ALL
                         barco_colocado = True
                         self.tablero.barco_colocado(barco_elegido)
                         print(f"Barco {self.barcos_input[barco_elegido]} colocado en posición {fila}, {columna} con orientación vertical.")

@@ -1,5 +1,6 @@
 import random
 from Jugador import Tablero
+from colorama import Fore, Style
 
 class Barcos_rapidos: # Creamos la clase barcos ia
     
@@ -23,7 +24,7 @@ class Barcos_rapidos: # Creamos la clase barcos ia
                     if posicion_ocupada:
                         continue
                     for i in range(longitud):
-                        self.tablero.tablero[fila][columna + i] = barco_elegido[0].upper()  # Colocamos el barco en el tablero
+                        self.tablero.tablero[fila][columna + i] = Fore.YELLOW + barco_elegido[0].upper() + Style.RESET_ALL  # Colocamos el barco en el tablero
                 else:   # Si la orientacion elegida es vertical
                     fila = random.randint(0, self.tablero.height - longitud)    # Elegimos poscion aleatoria en el tablero
                     columna = random.randint(0, self.tablero.width - 1) 
@@ -34,4 +35,4 @@ class Barcos_rapidos: # Creamos la clase barcos ia
                     if posicion_ocupada:    # De lo contrario seguiriamos el bucle para colocar el barco
                         continue
                     for i in range(longitud):
-                        self.tablero.tablero[fila + i][columna] = barco_elegido[0].upper() # Colocamos el barco en el tablero
+                        self.tablero.tablero[fila + i][columna] = Fore.YELLOW + barco_elegido[0].upper() + Style.RESET_ALL # Colocamos el barco en el tablero
