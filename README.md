@@ -1,6 +1,6 @@
 # Proyecto-Battleship
 
-## Creacion del documento IDC
+## Creación del documento IDC
 
 Cómo jugar al Battleship (1persona vs IA)
 
@@ -28,3 +28,37 @@ Cómo jugar al Battleship (1persona vs IA)
 ### 4. - Reglas del turno
 
 1. Cada jugador solo dispondra de un disparo por turno
+
+## Creación del documento TEP
+
+### Preparación
+
+Creamos un tablero para el jugador con arrays
+
+Creamos los barcos
+
+Añadimos los barcos al tablero
+
+Creamos otro tablero para la IA con arrays
+
+Añadimos los barcos en el tablero de la IA
+
+Creamos un random para colocar los barcos
+
+Creamos listas para guardar los barcos en los tableros
+
+### Jugar turnos
+
+Se crea un bucle para gestionar los turnos mientras queden barcos por hundir
+
+Si el turno es del usuario, debera introducir las coordenadas
+
+Si el turno es de la IA con un random escogera sus coordenadas
+
+### Interacción del jugador
+
+Se mostrará por pantalla un menú en el que el jugador podra escoger si quiere una partida rapida o normal
+
+Si escoge partida rapida los barcos se colocaran con un random aleatoriamente en su tablero y en el de la IA
+
+
