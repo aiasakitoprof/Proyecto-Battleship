@@ -72,9 +72,13 @@ class Barcos:
                 clear_terminal()
                 self.tablero.view_tablero()
                 coord = input(f"Barco elegido: {self.barcos_input[barco_elegido]} / Oriantación elegida: {orientacion}\nIntroduce la coordenada para colocar el barco (ejemplo: '00')\n\n >  ")
+                
+                while len(coord) < 2 or len(coord) > 2 or coord[0] < 0 or coord[0] > 9 or coord[1] < 0 or coord[1]:
+                    coord = input(f"Barco elegido: {self.barcos_input[barco_elegido]} / Oriantación elegida: {orientacion}\nIntroduce unas coordenadas válidas para colocar el barco (ejemplo: '00')\n\n >  ")
+                
                 fila = int(coord[0])
                 columna = int(coord[1])
-                
+
                 if orientacion == "h" and (columna + longitud > len(self.tablero.tablero[0])): # Si queremos poner el barco en hoizontal.
                     print("Barco fuera del tablero.")                                          # Comprobamos que el barco no sobresalga del tablero. Premisa: Si sumamos la longitud del
                     continue                                                                   # barco al numero de la columna y supera la longitud de la fila, está fuera del tablero
