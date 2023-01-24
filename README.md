@@ -1,6 +1,6 @@
 # Proyecto-Battleship
 
-## Creación del documento IDC
+## Creacion del documento IDC
 
 Cómo jugar al Battleship (1persona vs IA)
 
@@ -33,75 +33,77 @@ Cómo jugar al Battleship (1persona vs IA)
 
 ### Preparación
 
-Creamos un tablero para el jugador con arrays
+* Creamos un tablero para el jugador con arrays
 
-Creamos los barcos
+* Creamos los barcos
 
-Añadimos los barcos al tablero
+* Añadimos los barcos al tablero
 
-Creamos otro tablero para la IA con arrays
+* Creamos otro tablero para la IA con arrays
 
-Añadimos los barcos en el tablero de la IA
+* Añadimos los barcos en el tablero de la IA
 
-Creamos un random para colocar los barcos
+* Creamos un random para colocar los barcos
 
-Creamos listas para guardar los barcos en los tableros
+* Creamos listas para guardar los barcos en los tableros
 
 ### Jugar turnos
 
-Se crea un bucle para gestionar los turnos mientras queden barcos por hundir
+* Se crea un bucle para gestionar los turnos mientras queden barcos por hundir
 
-Si el turno es del usuario, debera introducir las coordenadas
+* Si el turno es del usuario, debera introducir las coordenadas
 
-Si el turno es de la IA con un random escogera sus coordenadas
+* Si el turno es de la IA con un random escogera sus coordenadas
 
 ### Interacción del jugador
 
-Se mostrará por pantalla un menú en el que el jugador podra escoger si quiere una partida rapida o normal
+* Se mostrará por pantalla un menú en el que el jugador podra escoger si quiere una partida rapida o normal
 
-Si escoge partida rapida los barcos se colocaran con un random aleatoriamente en su tablero y en el de la IA
+* Si escoge partida rapida los barcos se colocaran con un random aleatoriamente en su tablero y en el de la IA
 
-Se le pedira al jugador que escoja unas coordenadas para disparar (fila, columna)
+* Se le pedira al jugador que escoja unas coordenadas para disparar (fila, columna)
 
-Se mostrara si el usuario ha acertado a uno de los barcos 'X' o no 'O'
+* Se mostrara si el usuario ha acertado a uno de los barcos 'X' o no 'O'
 
-Se mostrara si el jugador ha ganado la partida o ha perdido
+* Se mostrara si el jugador ha ganado la partida o ha perdido
 
-Si escoge partida normal
+* Si escoge partida normal
 
-El usuario debera colocaro los barcos asignando sus coordenadas de donde sera la punta del barco usando un bucle
+* El usuario debera colocaro los barcos asignando sus coordenadas de donde sera la punta del barco usando un bucle
 
-Tambien debera asignarle si lo quiere colocar en vertical o horizontal usando un buble
+* Tambien debera asignarle si lo quiere colocar en vertical o horizontal usando un buble
 
-Asi hasta el total de 5 barcos
+* Asi hasta el total de 5 barcos
 
-Seguidamente se le pedira al usuario que escoja unas coordenadas para disparar (fila, columna)
+* Seguidamente se le pedira al usuario que escoja unas coordenadas para disparar (fila, columna)
 
-Se mostrara si el usuario ha acertado a uno de los barcos 'X' o no 'O'
+* Se mostrara si el usuario ha acertado a uno de los barcos 'X' o no 'O'
 
-Se mostrara si el jugador ha ganado la partida o  ha perdido
+* Se mostrara si el jugador ha ganado la partida o  ha perdido
 
 ### Interacción de la IA
 
-En los dos modos de juego se asignaran con un random los barcos a la IA
+* En los dos modos de juego se asignaran con un random los barcos a la IA
 
-En cada turno de la IA en su tablero aparecera si ha acertado con una 'X' o si ha fallado con 'O'
+* En cada turno de la IA en su tablero aparecera si ha acertado con una 'X' o si ha fallado con 'O'
 
-Cada turno de la IA sera con un random
+* Cada turno de la IA sera con un random
 
-Se hara un bucle para que si acierta se le sume o se le reste cerca de la posicion, asi haremos que la IA sea mas inteligente y descubra un barco entero en menos disparos
+* Se hara un bucle para que si acierta se le sume o se le reste cerca de la posicion, asi haremos que la IA sea mas inteligente y descubra un barco entero en menos disparos
 
 ### Terminar Partida
 
-Cuando el bucle principal a medida que le vamos restando las posciones donde se encuentra cada uno de los barcos hasta llegar a 0.
+* Cuando el bucle principal a medida que le vamos restando las posciones donde se encuentra cada uno de los barcos hasta llegar a 0.
 
-Si el jugador llega antes a 0 ganará el jugador
+* Si el jugador llega antes a 0 ganará el jugador
 
-En el caso contrario ganará la IA
+* En el caso contrario ganará la IA
 
-No puede haber empate
+* No puede haber empate
 
-Al finalizar saldra el mensaje de si el jugador ha ganado o ha perdido
+* Al finalizar saldra el mensaje de si el jugador ha ganado o ha perdido
+
+
 
 
 
