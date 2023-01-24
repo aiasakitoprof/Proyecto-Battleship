@@ -14,7 +14,8 @@ def clear_terminal():
 class Tablero:
 
     def __init__(self, width=10, height=10): # Definición del objeto tablero.
-        
+        self.width = width
+        self.height = height
         self.tablero = [["·" for i in range(width)] for i in range(height)] # Bucle para crear el tablero.
         self.barcos_colocados = {} # Guarda los barcos ya colocados.
     
@@ -101,14 +102,14 @@ class Barcos:
                 if not posicion_ocupada: 
                     if orientacion == "h": 
                         for i in range(longitud): 
-                            self.tablero.tablero[fila][columna + i] = self.barcos_input[barco_elegido][0]
+                            self.tablero.tablero[fila][columna + i] = self.barcos_input[barco_elegido][0].upper()
                         barco_colocado = True
                         self.tablero.barco_colocado(self.barcos_input[barco_elegido])
                         print(f"Barco {self.barcos_input[barco_elegido]} colocado en posición {fila}, {columna} con orientación horizontal.")
                         
                     elif orientacion == "v":
                         for i in range(longitud):
-                            self.tablero.tablero[fila + i][columna] = self.barcos_input[barco_elegido][0]
+                            self.tablero.tablero[fila + i][columna] = self.barcos_input[barco_elegido][0].upper()
                         barco_colocado = True
                         self.tablero.barco_colocado(self.barcos_input[barco_elegido])
                         print(f"Barco {self.barcos_input[barco_elegido]} colocado en posición {fila}, {columna} con orientación vertical.")

@@ -1,12 +1,17 @@
 from Jugador import *
+from Jugador_rapido import *
 from AI import *
+from Menu_y_extras import *
 
 class Juego:
     def __init__(self):
         self.tablero = Tablero()
         self.radar = Radar()
+        
         self.barcos = Barcos(self.tablero)
+        self.barcos_rapidos = Barcos_rapidos(self.tablero)
         self.barcos_ia = Barcos_ia(self.radar)
+        
         self.disparos_realizados_jg = []
         self.disparos_realizados_ai = []
 
@@ -75,8 +80,18 @@ class Juego:
 
 
     def jugar(self):
-        self.barcos.colocar_barcos()
-        self.barcos_ia.colocar_barcos_ia()
+        
+        x = menu()
+        
+        if x == "0":
+            self.barcos_rapidos.colocar_barcos_rapidos()
+            self.barcos_ia.colocar_barcos_ia()
+        
+        if x == "1":
+            self.barcos.colocar_barcos()
+            self.barcos_ia.colocar_barcos_ia()
+        
+        
         while True:
             clear_terminal()
             print(self.radar.coordenadas_barcos_ia)
@@ -86,10 +101,6 @@ class Juego:
             if self.disparo_ia():
                 break
 
-# partida = Juego()
-# partida.jugar()
+partida = Juego()
+partida.jugar()
 # print(partida.barcos_ia)
-
-from Menu_y_extras import menu
-
-menu()

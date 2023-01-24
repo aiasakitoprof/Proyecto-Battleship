@@ -55,7 +55,6 @@ def menu():
     
     while True:
       starter = "b"
-      modo = "-1"
       break
     
 
@@ -86,8 +85,8 @@ def menu():
           titulo()
           modo = str(input("\n\nSelecciona el modo de juego:\n\n  0 - Juego rápido\n  1 - Colocación manual\n  b - Volver atrás\n  q - Para salir\n\n Selecciona una opción válida >  "))
 
-          if modo in ["b","q"]:
-            starter = modo
+        if modo in ["b","q"]:
+          starter = modo
 
       elif starter == "1":
         
