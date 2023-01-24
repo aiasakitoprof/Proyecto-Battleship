@@ -14,16 +14,16 @@ def clear_terminal():
 
 def titulo():
     print(Fore.GREEN + f'''  {Fore.BLACK+'▄█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█▄' + Style.RESET_ALL}
-▄█▀                                                                                                                       ▀█▄
-{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE + '████████▄     ▄█▀▀▀▀▀▀█▄    ██       ██       ██         ▄█▀▀▀▀▀▀▀▀   ▄███████▄    ▄█        █▄     ██     ▄██████▄'+ Style.RESET_ALL}     █
-█   ██      ██   ██        ██   ██       ██       ██         ██          ██       ██   ██        ██            ██      ██   █
-█   ██      ██   ██        ██   ██▀▀▀▀   ██▀▀▀▀   ██         ██          ▀█▄           ██        ██     ██     ██      ██   █
-█   █████████    ██▀▀▀▀▀▀▀▀██   ██       ██       ██         ██▄▄▄▄▄▄      ██████▄     ██▄▄▄▄▄▄▄▄██     ██     ███████▀     █
-█   ██      ██   ██        ██   ██       ██       ██         ██                  ▀█▄   ██        ██     ██     ██           █
-█   ██      ██   ██        ██   ██       ██       ██         ██          ██       ██   ██        ██     ██     ██           █
-█   ████████▀    ██        ██    ▀█▄▄▄    ▀█▄▄▄   ██▄▄▄▄▄▄   ▀█▄▄▄▄▄▄▄▄   ▀███████▀    ▀█        █▀     ██     ██           █
-▀█▄                                                                                                                       ▄█▀
-  ▀█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▀''' + Style.RESET_ALL)
+{Fore.BLACK+'▄█▀'+Style.RESET_ALL}                                                                                                                       {Fore.BLACK+ '▀█▄'+ Style.RESET_ALL}
+{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE+'████████▄     ▄█▀▀▀▀▀▀█▄    ██       ██       ██         ▄█▀▀▀▀▀▀▀▀   ▄███████▄    ▄█        █▄     ██     ▄██████▄'+ Style.RESET_ALL}     {Fore.BLACK+'█'+Style.RESET_ALL}
+{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE+'██      ██   ██        ██   ██       ██       ██         ██          ██       ██   ██        ██            ██      ██'+ Style.RESET_ALL}   {Fore.BLACK+'█'+Style.RESET_ALL}
+{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE+'██      ██   ██        ██   ██▀▀▀▀   ██▀▀▀▀   ██         ██          ▀█▄           ██        ██     ██     ██      ██'+ Style.RESET_ALL}   {Fore.BLACK+'█'+Style.RESET_ALL}
+{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE+'█████████    ██▀▀▀▀▀▀▀▀██   ██       ██       ██         ██▄▄▄▄▄▄      ██████▄     ██▄▄▄▄▄▄▄▄██     ██     ███████▀'+ Style.RESET_ALL}     {Fore.BLACK+'█'+Style.RESET_ALL}
+{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE+'██      ██   ██        ██   ██       ██       ██         ██                  ▀█▄   ██        ██     ██     ██'+ Style.RESET_ALL}           {Fore.BLACK+'█'+Style.RESET_ALL}
+{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE+'██      ██   ██        ██   ██       ██       ██         ██          ██       ██   ██        ██     ██     ██'+ Style.RESET_ALL}           {Fore.BLACK+'█'+Style.RESET_ALL}
+{Fore.BLACK+'█'+ Style.RESET_ALL}   {Fore.BLUE+'████████▀    ██        ██    ▀█▄▄▄    ▀█▄▄▄   ██▄▄▄▄▄▄   ▀█▄▄▄▄▄▄▄▄   ▀███████▀    ▀█        █▀     ██     ██'+ Style.RESET_ALL}           {Fore.BLACK+'█'+Style.RESET_ALL}
+{Fore.BLACK+'▀█▄'+ Style.RESET_ALL}                                                                                                                       {Fore.BLACK+'▄█▀'+ Style.RESET_ALL}
+{Fore.BLACK+   '  ▀█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▀'+ Style.RESET_ALL}''')
 
 def instrucciones():
     print(f'''\n\nBienvenido a las instrucciones de Battleship. 
