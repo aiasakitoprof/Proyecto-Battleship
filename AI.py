@@ -4,8 +4,8 @@ class Radar:
     def __init__(self, width=10, height=10):
         self.width = width
         self.height = height
-        self.radar = [["·" for i in range(width)] for i in range(height)]
-        self.coordenadas_barcos_ia = []
+        self.radar = [["·" for i in range(width)] for i in range(height)]  # Matriz del radar.
+        self.coordenadas_barcos_ia = []  # Lista para los barcos de la ia.
 
     def view_radar(self):
         print("  ", end="")
