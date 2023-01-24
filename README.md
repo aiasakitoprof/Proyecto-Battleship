@@ -113,35 +113,34 @@ A continuación se han ido haciendo funciones en cada clase para ir llamandolas 
 Tenemos las siguientes clases, cada una con sus funciones correspondientes:  
 ### Archivo Jugador.py  
 Tablero:  
-    * init: Función que define el objeto tablero   
-    * view_tablero: Función que pinta el tablero por pantalla  
-    * barco_colocado: Función que define el estado del barco  
+* init: Función que define el objeto tablero   
+* view_tablero: Función que pinta el tablero por pantalla  
+* barco_colocado: Función que define el estado del barco  
 
 Barcos:  
-    * init : Función que llama al objeto Tablero  
-    * colocar_barcos: Función que nos permite colocar todos los barcos del usuario  
+* init : Función que llama al objeto Tablero  
+* colocar_barcos: Función que nos permite colocar todos los barcos del usuario  
 
 ### Archivo AI.py  
 Radar:  
-    + init : Función que define el objeto Radar, basicamente es el tablero donde el jugador lanzará sus ataques hacia el ordenador  
-    + view_radar: Función que pinta por pantalla el tablero con las actualizaciones de los ataques  
+* init : Función que define el objeto Radar, basicamente es el tablero donde el jugador lanzará sus ataques hacia el ordenador  
+* view_radar: Función que pinta por pantalla el tablero con las actualizaciones de los ataques  
 Barcos_ia:  
-    * init: Función que define el objeto, indica los barcos que dispone y sus longitudes en un diccionario    
-    * colocar_barcos_ia: Función que coloca los barcos del ordenador de manera aleatoria  
+* init: Función que define el objeto, indica los barcos que dispone y sus longitudes en un diccionario    
+* colocar_barcos_ia: Función que coloca los barcos del ordenador de manera aleatoria  
 
 ### Archivo Jugador_rapido.py  
 Barcos_rapidos:  
-    * init: Define el objeto y sus caracteristicas  
-    * colocar_barcos_rapidos: Permite colocar los barcos del usuario aleatoriamente  
+* init: Define el objeto y sus caracteristicas  
+* colocar_barcos_rapidos: Permite colocar los barcos del usuario aleatoriamente  
 
 ### Archivo Battleship.py  
 Este archivo es el que permite iniciar el juego, importa las clases para poder emplearlas  
 Juego:  
-    * init: Función que define el objeto Juego e inicializa las funciones de cada clase  
-    * realizar_disparo: En esta función se recogen los valores del tiro del usuario y se validan  
-    * disparo_ia: En esta función se realiza el disparo del ordenador, comprobando que no ha sido realizado anteriormente  
-    * print_ambos_tableros: Esta función pinta por pantalla los tableros del ordenador y del usuario con sus barcos  
-    * jugar: Permite inicializar el juego permitiendo que juegue el usuario y el ordenador en un turno cada vez, también actualiza el tablero con las jugadas realizadas.  
+* init: Función que define el objeto Juego e inicializa las funciones de cada clase  
+* realizar_disparo: En esta función se recogen los valores del tiro del usuario y se validan  * disparo_ia: En esta función se realiza el disparo del ordenador, comprobando que no ha sido realizado anteriormente  
+* print_ambos_tableros: Esta función pinta por pantalla los tableros del ordenador y del usuario con sus barcos  
+* jugar: Permite inicializar el juego permitiendo que juegue el usuario y el ordenador en un turno cada vez, también actualiza el tablero con las jugadas realizadas.  
 
 ### Archivo Menu_y_extras.py  
 * Instrucciones: Informa al usuario de las instrucciones para jugar y la descripción del juego  
