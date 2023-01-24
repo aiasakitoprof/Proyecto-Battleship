@@ -1,3 +1,4 @@
+from colorama import Fore, Style
 def clear_terminal():
     import os
     import platform
@@ -118,14 +119,14 @@ class Barcos:
                 if not posicion_ocupada: 
                     if orientacion == "h": 
                         for i in range(longitud): 
-                            self.tablero.tablero[fila][columna + i] = self.barcos_input[barco_elegido][0].upper()
+                            self.tablero.tablero[fila][columna + i] = Fore.YELLOW + self.barcos_input[barco_elegido][0].upper() + Style.RESET_ALL
                         barco_colocado = True
                         self.tablero.barco_colocado(barco_elegido)
                         print(f"Barco {self.barcos_input[barco_elegido]} colocado en posición {fila}, {columna} con orientación horizontal.")
                         
                     elif orientacion == "v":
                         for i in range(longitud):
-                            self.tablero.tablero[fila + i][columna] = self.barcos_input[barco_elegido][0].upper()
+                            self.tablero.tablero[fila + i][columna] =  Fore.YELLOW + self.barcos_input[barco_elegido][0].upper() + Style.RESET_ALL
                         barco_colocado = True
                         self.tablero.barco_colocado(barco_elegido)
                         print(f"Barco {self.barcos_input[barco_elegido]} colocado en posición {fila}, {columna} con orientación vertical.")
