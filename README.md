@@ -118,7 +118,7 @@ Tenemos las siguientes clases, cada una con sus funciones correspondientes:
 Tablero:  
 * init: Función que define el objeto tablero   
 * view_tablero: Función que pinta el tablero por pantalla  
-* barco_colocado: Función que define el estado del barco  
+* barco_colocado: Función que guarda en un diccionario el estado del barco  
 
 Barcos:  
 * init : Función que llama al objeto Tablero  
@@ -181,3 +181,36 @@ https://github.com/GrizzlyH/Battleship_Walkthrough
 * Colorama  
 https://recursospython.com/guias-y-manuales/colorama-texto-fondo-coloreados-la-consola/
 
+* Tabulate
+https://python-para-impacientes.blogspot.com/2017/01/tablas-con-estilo-con-tabulate.html
+
+* W3chools
+https://www.w3schools.com/python/default.asp
+
+* Chat-GPT (Solución de errores y aprendizaje de programación orientada a objetos)
+https://chat.openai.com/chat  /  https://openai.com/blog/chatgpt/qwe.sh/%2F../
+
+* Python-tutor
+https://pythontutor.com/visualize.html#mode=edit
+
+## Creación del documento PCE
+### (Errores en las pruebas unitarias e integradas)
+
+El 90% de los fallos derivan del input del usuario. Estos se pueden solucionar mediante control de errores. Un ejemplo práctico:
+Pedimos al usuario unas coordenadas para disparar en el formato '00'. El usuario por error o de forma intencional podría introducir '0', '123'
+'p4', '1021', 'qw', etc. Todo esto provocaría un fallo fatal en el programa, para ello se introfuce lo siguiente:
+
+        while disparo in self.disparos_realizados_jg:
+                    coord = input("Selecciona coordenadas de disparo no repetidas:\n >  ")
+                    while True:
+                        if len(coord) == 2:
+                            if coord[0] in ["0","1","2","3","4","5","6","7","8","9"]:
+                                if coord[1] in ["0","1","2","3","4","5","6","7","8","9"]:
+                                    break
+
+Esto se traduce en, mientras el disparo sea repetido, pido coordenadas, si estas no son de longitud dos, y sus dos componentes no están entre 0 y 9 (estos incluidos), y además son repetidas, no aceptará el imput como válido. De esta forma evitamos la introducción de letras o signos que no se pueden traducir a número (int), coordenadsa fuera del tablero o de longitud diferente a 2.
+
+Otro ejemplo es el siguiente, con el que se evita que el usuario introduzca valores fuera de aquellos que queremos.
+
+        while orientacion not in ["v","h"]:  # Control de errores.
+            orientacion = input()
