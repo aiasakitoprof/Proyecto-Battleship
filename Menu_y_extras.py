@@ -54,7 +54,7 @@ A continuación se muestra una partida empezada como referencia:
 
 def menu():
     
-    while True:
+    while True:  # Ceramos las variables del menú.
       starter = "b"
       modo = ""
       break
@@ -62,7 +62,7 @@ def menu():
 
     while True:
     
-      if starter == "b":
+      if starter == "b":  # Sección principal.
         
         clear_terminal()
         titulo()
@@ -70,20 +70,20 @@ def menu():
         starter = str(input(" >  "))
         
         
-        while starter not in ["0","1","2","q"]: # Control de errores.
+        while starter not in ["0","1","2","q"]:  # Control de errores.
             clear_terminal()
             titulo()
             print(Fore.GREEN + "\n\nBienvenvenido, selecciona como quieres proceder:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\nSelecciona una opción válida." + Style.RESET_ALL)
             starter = str(input(" >  "))
     
     
-      if starter == "0":
+      if starter == "0":  # Sección de juego.
         
         clear_terminal()
         titulo()
         print(Fore.GREEN + "\n\nSelecciona el modo de juego:\n\n  0 - Juego rápido\n  1 - Colocación manual\n  b - Volver atrás\n  q - Para salir\n\n" + Style.RESET_ALL)
         modo = str(input(" >  "))
-        while modo not in ["0","1","b","q"]:
+        while modo not in ["0","1","b","q"]:  # Control de errores.
           
           clear_terminal()
           titulo()
@@ -93,7 +93,7 @@ def menu():
         if modo in ["b","q"]: # Control de errores.
           starter = modo
 
-      elif starter == "1":
+      elif starter == "1":  # Sección de instruciones.
         
         clear_terminal()
         titulo()
@@ -109,7 +109,7 @@ def menu():
           print(Fore.GREEN + "\n  b - Volver atrás\n  q - Para salir\n\nSelecciona una opción válida." + Style.RESET_ALL)
           starter = str(input(" >  "))
     
-      elif starter == "2":
+      elif starter == "2":  # Sección de github.
         
         clear_terminal()
         titulo()
@@ -125,7 +125,7 @@ def menu():
           print(Fore.GREEN + "\n  b - Volver atrás\n  q - Para salir\n\nSelecciona una opción válida." + Style.RESET_ALL)
           starter = str(input(" >  "))
 
-      elif starter == "q":
+      elif starter == "q":  # Cierre del programa.
         clear_terminal()
         titulo()
         print(Fore.GREEN + "\n\nQue tengas un buen día.\n" + Style.RESET_ALL)
