@@ -106,23 +106,23 @@ class Barcos:
 
             # ---| Comprobación de longitud |---
                 if orientacion == "h" and (columna + longitud > len(self.tablero.tablero[0])): # Si queremos poner el barco en hoizontal.
-                    print("Barco fuera del tablero.")                                          # Comprobamos que el barco no sobresalga del tablero. Premisa: Si sumamos la longitud del
-                    continue                                                                   # barco al numero de la columna y supera la longitud de la fila, está fuera del tablero
+                    continue                                                                   # Comprobamos que el barco no sobresalga del tablero. Premisa: Si sumamos la longitud del
+                                                                                               # barco al numero de la columna y supera la longitud de la fila, está fuera del tablero
                                                                                                # Al ser un cuadrado no importa la fila con la que se realice la comprobación.
 
                 if orientacion == "v" and (fila + longitud > len(self.tablero.tablero)): # Realizamos la misma operación si queremos que el barco esté en vertical.  
-                    print("Barco fuera del tablero.")                                    # Premisa: Si sumamos la longitud del barco al número de la fila y el resultado            
-                    continue                                                             # es mayor que la longitud del tablero (Si su índice es mayor que el del tablero), está fuera del tablero.                                     
+                    continue                                                             # Premisa: Si sumamos la longitud del barco al número de la fila y el resultado            
+                                                                                         # es mayor que la longitud del tablero (Si su índice es mayor que el del tablero), está fuera del tablero.                                     
                 
             # --| Comprobación de coordenadas |---
                 posicion_ocupada = False
-                for i in range(longitud): # Rango = longitud del barco.
-                    if orientacion == "h": # Si la orientación es horizontal.
-                        if self.tablero.tablero[fila][columna + i] != "·": # Si la posición de inicio del barco es diferente al agua.
+                for i in range(longitud):  # Rango = longitud del barco.
+                    if orientacion == "h":  # Si la orientación es horizontal.
+                        if self.tablero.tablero[fila][columna + i] != "·":  # Si la posición de inicio del barco es diferente al agua.
                             print("Posición ocupada.")
                             posicion_ocupada = True
                             break
-                    elif orientacion == "v": # Si la orientación es vertical.
+                    elif orientacion == "v":  # Si la orientación es vertical.
                         if self.tablero.tablero[fila + i][columna] != "·":  
                             print("Posición ocupada.")
                             posicion_ocupada = True
@@ -134,12 +134,9 @@ class Barcos:
                         for i in range(longitud): 
                             self.tablero.tablero[fila][columna + i] = Fore.YELLOW + self.barcos_input[barco_elegido][0].upper() + Style.RESET_ALL  # Ponemos el baco en el tablero.
                         barco_colocado = True
-                        self.tablero.barco_colocado(barco_elegido)  # Guardamos el barco colocado en el diccionario del inicio.
-                        print(f"Barco {self.barcos_input[barco_elegido]} colocado en posición {fila}, {columna} con orientación horizontal.")
-                        
+                        self.tablero.barco_colocado(barco_elegido)  # Guardamos el barco colocado en el diccionario del inicio.                        
                     elif orientacion == "v":
                         for i in range(longitud):
                             self.tablero.tablero[fila + i][columna] =  Fore.YELLOW + self.barcos_input[barco_elegido][0].upper() + Style.RESET_ALL
                         barco_colocado = True
                         self.tablero.barco_colocado(barco_elegido)
-                        print(f"Barco {self.barcos_input[barco_elegido]} colocado en posición {fila}, {columna} con orientación vertical.")
