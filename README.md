@@ -5,4 +5,4 @@ El objetivo del juego es ser el primero en hundir todos los barcos del oponente.
 
 Para colocar los barcos, el jugador y la IA deben ingresar las coordenadas de fila y columna en las que desean colocar cada barco. Los barcos tienen un tamaño de 2 casillas cada uno.
 
-El juego cuenta con una interfaz gráfica que permite al jugador ver su tablero, su radar y el tablero de la IA, así como también verificar las coordenadas de los barcos que aún no han sido hundidos.
+El juego cuenta con una interfaz gráfica que permite al jugador ver su tablero, su radar y el tablero de la IA, así como también verificar las coordenadas de los barcos que aún no han sido hundidos..
