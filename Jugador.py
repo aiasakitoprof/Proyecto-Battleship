@@ -22,12 +22,12 @@ class Tablero:
     
     def view_tablero(self): # Printeo de tablero.
         
-        print("          Tablero")
-        print("    0 1 2 3 4 5 6 7 8 9") # Cabecera del tablero
+        print(Fore.BLUE +"          Tablero" +Style.RESET_ALL)
+        print(Fore.CYAN +"    0 1 2 3 4 5 6 7 8 9" +Style.RESET_ALL) # Cabecera del tablero
         print("  ┌─────────────────────┐")
         
         for i, row in enumerate(self.tablero): # Coordenadas de filas (A la derecha del tablero).
-            print(i, end=" │ ")
+            print(Fore.CYAN+ str(i) + Style.RESET_ALL, end=" │ ")
             print(" ".join(row),"│")
         
         print("  └─────────────────────┘") # Pie del tablero.
