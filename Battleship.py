@@ -2,6 +2,7 @@ from Jugador import *
 from Jugador_rapido import *
 from AI import *
 from Menu_y_extras import *
+from colorama import Fore,Style    # Fore.BLACK +     + Style.RESET_ALL
 
 class Juego:
     def __init__(self):
@@ -27,14 +28,14 @@ class Juego:
         
         if disparo in self.radar.coordenadas_barcos_ia:
             self.disparos_realizados_jg.append(disparo)
-            self.radar.radar[fila][columna] = "X"
+            self.radar.radar[fila][columna] = Fore.RED +"X"+ Style.RESET_ALL
             self.radar.coordenadas_barcos_ia.remove(disparo)
             print("¡Hundiste un barco!")
             if len(self.radar.coordenadas_barcos_ia) == 0:
                 print("¡Has ganado!")
                 return True
         else:
-            self.radar.radar[fila][columna] = "O"
+            self.radar.radar[fila][columna] = Fore.BLUE +"O"+ Style.RESET_ALL
             print("Disparo fallido")
         return False
 
@@ -50,11 +51,11 @@ class Juego:
             self.disparos_realizados_ai.append(disparo)
             
             if self.tablero.tablero[fila][columna] != "·":
-                self.tablero.tablero[fila][columna] = "X"
+                self.tablero.tablero[fila][columna] = Fore.RED +"X"+ Style.RESET_ALL
                 print("Tocado")
                 vida -= 1
             else: 
-                self.tablero.tablero[fila][columna] = "O"
+                self.tablero.tablero[fila][columna] = Fore.BLUE +"O"+ Style.RESET_ALL
                 print("Agua")
             
             if vida == 0:
