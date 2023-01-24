@@ -92,24 +92,15 @@ class Barcos:
                 coord = input(f"Barco elegido: {self.barcos_input[barco_elegido]}, Lon: {self.barcos[self.barcos_input[barco_elegido]]} / Oriantación elegida: {orientacion}\n\nIntroduce la coordenada para colocar el barco (ejemplo: '00')\n\n >  ")
                 
                 while True:
-                    try:
-                        coord = int(coord)
-                        coord = str(coord)
-                        if len(coord) == 2 and 0 <= coord[0] <= 9 and 0 <= coord[1] <= 9:
-                            break
-                    except ValueError:
-                        clear_terminal()
-                        self.tablero.view_tablero()
-                        coord = input(f"Barco elegido: {self.barcos_input[barco_elegido]}, Lon: {self.barcos[self.barcos_input[barco_elegido]]} / Oriantación elegida: {orientacion}\n\nIntroduce la coordenada válidas para colocar el barco (ejemplo: '00')\n\n >  ")
+                    
+                    if len(coord) == 2:
+                        if coord[0] in ["0","1","2","3","4","5","6","7","8","9"]:
+                            if coord[1] in ["0","1","2","3","4","5","6","7","8","9"]:
+                                break
+                    clear_terminal()
+                    self.tablero.view_tablero()
+                    coord = input(f"Barco elegido: {self.barcos_input[barco_elegido]}, Lon: {self.barcos[self.barcos_input[barco_elegido]]} / Oriantación elegida: {orientacion}\n\nIntroduce la coordenada válidas para colocar el barco (ejemplo: '00')\n\n >  ")
 
-
-
-
-
-
-                # while len(coord) < 2 or len(coord) > 2 or int(coord[0]) < 0 or int(coord[0]) > 9 or int(coord[1]) < 0 or int(coord[1]) > 9: # Control de errores.
-                #     coord = input(f"Barco elegido: {self.barcos_input[barco_elegido]}, Lon: {self.barcos[self.barcos_input[barco_elegido]]} / Oriantación elegida: {orientacion}\n\nIntroduce unas coordenadas válidas para colocar el barco (ejemplo: '00')\n\n >  ")
-                
                 fila = int(coord[0])
                 columna = int(coord[1])
 
