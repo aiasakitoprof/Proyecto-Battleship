@@ -1,4 +1,4 @@
-## Proyecto en Pygame 
+# Proyecto en Pygame 
 ______________________
 ### Objetivos y descripción  
 ____________________________
@@ -73,7 +73,7 @@ El modo "hundir" pretende acabar con los barcos, así que si obtiene un acierto,
 
 ### PCE
 #### (Errores en las pruebas unitarias e integradas)  
-______________________________________________________-
+______________________________________________________  
 ***Fallo:***  
 Posicionamiento de los barcos en el tablero y posicionamiento del tiro.    
 ***Solución:***  
@@ -116,7 +116,7 @@ Fallo general del juego, cierre automático.
 Verificar la terminal para encontrar los errores indicados y arreglar dichos errores. Muchos de estos errores se debian a variables no inicializadas correctamente, listas que se vaciaban al volver a definirlas dentro del código o variables no introducidas en los parametros de la función.  
 
 
-#### Mejoras a realizar
+### Mejoras a realizar
 ________________________
 * Se deberían dividir la lógica del juego en archivo diferentes por clases y llamarlas en un archivo inicial de juego  
 * Se debe depurar más el código para descartar algunos fallos.  
@@ -124,7 +124,7 @@ ________________________
 * Se puede mejorar mucho más el juego, este es un pequeño ejemplo de como realizar un juego de hundir la flota en pygame. 
 
 
-#### Algunos enlaces de interes para poder ejecutar el juego
+### Algunos enlaces de interes para poder ejecutar el juego
 Instalación de pygame  
 https://aprendewindows.org/como-instalar-pygame-en-windows-10/  
 Uso e instalacion de pySimpleGUI  
