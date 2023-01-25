@@ -24,20 +24,57 @@ Con pygame se ha hecho una primera prueba básica de crear una pantalla visual c
 Seguidamente se ha procedido a crear la codificación para la numeración de filas y columnas y la parte donde debe introducir los datos el usuario, con una ventana de pySimpleGUI.  
 En el proceso de creación de funciones se han empleado algunas de las funciones creadas para el juego en terminal y se han añadido de nuevas para adaptar el juego al formato de pygame.  
 ##### Descripción de funciones
-* colocar_barco: Función que permite colocar los barcos del usuario según las posiciones de fila y columna definidas por el usuario, el usuario introduce la orientación, v- vertical u h- horizontal y la fila y columna de inicio del barco y la función hace el proceso de colocación y verificación de posiciones.
-* colocar_barcos_ia: La siguiente función permite que el ordenador coloque sus barcos de manera random respetando los limites del tablero y colocando todos los barcos según su longitud de manera vertical u horizontal.
-* disparo_ia: Función que permite que el ordenador realize un disparo según dos modos de tiro, buscar y hundir. En el modo buscar se activa una función que permite crear tiradas random y en el modo hundir se activa otra función que permite refinar el tiro por parte del ordenador.
-* posicion_azar: Función a la que llama la función disparo_ia para crear tiradas random.
-* buscar_alrededor: Función que permite seguir una serie de estrategias de disparo mas eficientes según los aciertos y su número.
-* borrar_posicion: Función que pinta un cuadrado en negro(color pantalla) antes de crear la imagen de acierto o fallo.
-* dibujar_acierto: Función que permite dibujar una X en verde si el tiro ha sido un acierto por parte del ordenador, que se dibujará en el segundo tablero
-* dibujar_fallo: Función que permite dibujar un circulo en rojo en cada tirada fallida por parte del ordenador.  
-* borrar_posicion_ia: Función que pinta un circulo negro (color pantalla) antes de crear un acierto o fallo por parte del usuario.
-* dibujar_acierto_user: Función que permite dibujar una X en verde si el tiro ha sido un acierto por parte del usuario, que se dibujará en el primer tablero.
-* disparo_user: Función que permite realizar un disparo al usuario, abre una ventana de introducción de datos y valida si estos datos no han sido repetidos. Según sea un acierto o un fallo, llama a las funciones correspondientes.
-* turnos: Función que decide cual es el turno de cada usuario y cuando gana uno de los jugadores.  
+** colocar_barco:  
+Función que permite colocar los barcos del usuario según las posiciones de fila y columna definidas por el usuario, el usuario introduce la orientación, v- vertical u h- horizontal y la fila y columna de inicio del barco y la función hace el proceso de colocación y verificación de posiciones.
+** colocar_barcos_ia:   
+La siguiente función permite que el ordenador coloque sus barcos de manera random respetando los limites del tablero y colocando todos los barcos según su longitud de manera vertical u horizontal.
+** disparo_ia:  
+Función que permite que el ordenador realize un disparo según dos modos de tiro, buscar y hundir. En el modo buscar se activa una función que permite crear tiradas random y en el modo hundir se activa otra función que permite refinar el tiro por parte del ordenador.
+** posicion_azar:  Función a la que llama la función disparo_ia para crear tiradas random.
 
-La funciones llamadas son colocar_barco, colocar_barcos_ia y turnos, estas conectan a todas las demás en el codigo.
+** buscar_alrededor:  
+Función que permite seguir una serie de estrategias de disparo mas eficientes según los aciertos y su número.
+** borrar_posicion:  
+Función que pinta un cuadrado en negro(color pantalla) antes de crear la imagen de acierto o fallo.
+** dibujar_acierto:  
+Función que permite dibujar una X en verde si el tiro ha sido un acierto por parte del ordenador, que se dibujará en el segundo tablero
+** dibujar_fallo:  
+Función que permite dibujar un circulo en rojo en cada tirada fallida por parte del ordenador.  
+** borrar_posicion_ia:  
+Función que pinta un circulo negro (color pantalla) antes de crear un acierto o fallo por parte del usuario.
+** dibujar_acierto_user:  
+Función que permite dibujar una X en verde si el tiro ha sido un acierto por parte del usuario, que se dibujará en el primer tablero.
+**  disparo_user:  
+Función que permite realizar un disparo al usuario, abre una ventana de introducción de datos y valida si estos datos no han sido repetidos. Según sea un acierto o un fallo, llama a las funciones correspondientes.
+** turnos:  
+Función que decide cual es el turno de cada usuario y cuando gana uno de los jugadores.  
+
+La funciones llamadas son colocar_barco, colocar_barcos_ia y turnos, estas conectan a todas las demás en el codigo.  
+
+### Lógica de la ia en el juego
+___________________________
+Cuando es el turno del ordenador se inicia la función disparo_ia().  
+Esta tiene dos modos de juego, el modo "buscar" y el modo "hundir"  
+En el modo "buscar" se llama a la función posicion_azar() que crea una tirada de fila y columna random entre 0 y 9  
+En el modo "hundir" se llama a la función buscar_alrededor(), que se activa cuando ha habido aciertos por parte del ordenador.  
+En esta función hay diferentes estrategias de juego, inicialmente se crean las variables fila y columna que contienen los datos de la última tirada válida.  
+Teniendo esto en cuenta, en caso de que haya más de un acierto consecutivo, se buscará en que dirección se encuentran los aciertos.  
+En caso de que la dirección sea horizontal (coinciden dos aciertos en la misma fila) dirigiremos el disparo a una posición que no se haya tirado anteriormente y se cambiará la posición de la columna, manteniendose en la misma fila.  
+En caso de que la dirección sea vertical (coinciden dos aciertos en la misma columna) dirigiremos el disparo a una posición que no se haya tirado anteriormente y se cambiará la posición de la fila, manteniendose en la misma columna.  
+La estrategia a seguir en caso de que solo haya un acierto es hacer un tiro aproximado en la misma fila o columna siguiente o anterior, siempre que no se salga del tablero.  
+En caso de que el tiro aproximado ya este en la lista de disparos realizados, el disparo se hará en una posición disponible.  
+La elección de modos se realiza en la función disparo_ia()  
+El primer modo, al iniciar el juego es el de "buscar"; en caso de que haya un acierto en el disparo, cambiaremos al modo "hundir".  
+El modo "hundir" pretende acabar con los barcos, así que si obtiene un acierto, seguirá en este modo; en caso de que hunda un barco o el número de tiradas acertadas no sea mayor a 1, volverá al modo "buscar". 
+
+### PCE
+####(Errores en las pruebas unitarias e integradas)
+
+* Posicionamiento de los barcos en el tablero, posicionamiento del tiro y borrado de imagen anterior al cambio hacia acierto o fallo.
+* Posicionamiento de la numeración de las coordenadas.
+* Cuando el usuario seleccionaba una posición en el tablero y se intentaba a colocar otro barco en la misma posición se superponian.
+* Despues de arreglar el error anterior, si se intentaba colocar un barco en la misma posición se volvian a pedir las coordenadas del primer barco, provocando que se añadieran barcos extras.
+* Se ha quedado colgado varias veces el código y era por errores de identación o de variables no inicializadas o no accesibles.
 
 #### Mejoras a realizar
 * Se deberían dividir la lógica del juego en archivo diferentes por clases y llamarlas en un archivo inicial de juego  
@@ -45,12 +82,6 @@ La funciones llamadas son colocar_barco, colocar_barcos_ia y turnos, estas conec
 * Se puede mejorar mucho más el juego, este es un pequeño ejemplo de como realizar un juego de hundir la flota en pygame. 
 * Queria añadir un botón de cierre del juego, pero por alguna razón no he conseguido hacerlo funcionar.
 
-#### Errores solucionados
-* Posicionamiento de los barcos en el tablero, posicionamiento del tiro y borrado de imagen anterior al cambio hacia acierto o fallo.
-* Posicionamiento de la numeración de las coordenadas.
-* Cuando el usuario seleccionaba una posición en el tablero y se intentaba a colocar otro barco en la misma posición se superponian.
-* Despues de arreglar el error anterior, si se intentaba colocar un barco en la misma posición se volvian a pedir las coordenadas del primer barco, provocando que se añadieran barcos extras.
-* Se ha quedado colgado varias veces el código y era por errores de identación o de variables no inicializadas o no accesibles.
 
 #### Algunos enlaces de interes para poder ejecutar el juego
 Instalación de pygame  
