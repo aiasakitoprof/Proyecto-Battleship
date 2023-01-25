@@ -25,29 +25,29 @@ Seguidamente se ha procedido a crear la codificación para la numeración de fil
 En el proceso de creación de funciones se han empleado algunas de las funciones creadas para el juego en terminal y se han añadido de nuevas para adaptar el juego al formato de pygame.  
 ##### Descripción de funciones
 **colocar_barco:**  
-Función que permite colocar los barcos del usuario según las posiciones de fila y columna definidas por el usuario, el usuario introduce la orientación, v- vertical u h- horizontal y la fila y columna de inicio del barco y la función hace el proceso de colocación y verificación de posiciones.
-**colocar_barcos_ia:**   
-La siguiente función permite que el ordenador coloque sus barcos de manera random respetando los limites del tablero y colocando todos los barcos según su longitud de manera vertical u horizontal.
-**disparo_ia:**   
-Función que permite que el ordenador realize un disparo según dos modos de tiro, buscar y hundir. En el modo buscar se activa una función que permite crear tiradas random y en el modo hundir se activa otra función que permite refinar el tiro por parte del ordenador.
-**posicion_azar:**    
-Función a la que llama la función disparo_ia para crear tiradas random.
-**buscar_alrededor:**    
-Función que permite seguir una serie de estrategias de disparo mas eficientes según los aciertos y su número.
-**borrar_posicion:**    
-Función que pinta un cuadrado en negro(color pantalla) antes de crear la imagen de acierto o fallo.
-**dibujar_acierto:**   
-Función que permite dibujar una X en verde si el tiro ha sido un acierto por parte del ordenador, que se dibujará en el segundo tablero
-**dibujar_fallo:**    
-Función que permite dibujar un circulo en rojo en cada tirada fallida por parte del ordenador.  
+Función que permite colocar los barcos del usuario según las posiciones de fila y columna definidas por el usuario, el usuario introduce la orientación, v- vertical u h- horizontal y la fila y columna de inicio del barco y la función hace el proceso de colocación y verificación de posiciones.  
+**colocar_barcos_ia:**     
+La siguiente función permite que el ordenador coloque sus barcos de manera random respetando los limites del tablero y colocando todos los barcos según su longitud de manera vertical u horizontal.  
+**disparo_ia:**     
+Función que permite que el ordenador realize un disparo según dos modos de tiro, buscar y hundir. En el modo buscar se activa una función que permite crear tiradas random y en el modo hundir se activa otra función que permite refinar el tiro por parte del ordenador.  
+**posicion_azar:**      
+Función a la que llama la función disparo_ia para crear tiradas random.  
+**buscar_alrededor:**      
+Función que permite seguir una serie de estrategias de disparo mas eficientes según los aciertos y su número.  
+**borrar_posicion:**      
+Función que pinta un cuadrado en negro(color pantalla) antes de crear la imagen de acierto o fallo.  
+**dibujar_acierto:**     
+Función que permite dibujar una X en verde si el tiro ha sido un acierto por parte del ordenador, que se dibujará en el segundo tablero.  
+**dibujar_fallo:**      
+Función que permite dibujar un circulo en rojo en cada tirada fallida por parte del ordenador.    
 **borrar_posicion_ia:**   
-Función que pinta un circulo negro (color pantalla) antes de crear un acierto o fallo por parte del usuario.
-**dibujar_acierto_user:**    
-Función que permite dibujar una X en verde si el tiro ha sido un acierto por parte del usuario, que se dibujará en el primer tablero.
-**disparo_user:**      
-Función que permite realizar un disparo al usuario, abre una ventana de introducción de datos y valida si estos datos no han sido repetidos. Según sea un acierto o un fallo, llama a las funciones correspondientes.
-**turnos:**     
-Función que decide cual es el turno de cada usuario y cuando gana uno de los jugadores.  
+Función que pinta un circulo negro (color pantalla) antes de crear un acierto o fallo por parte del usuario.  
+**dibujar_acierto_user:**      
+Función que permite dibujar una X en verde si el tiro ha sido un acierto por parte del usuario, que se dibujará en el primer tablero.  
+**disparo_user:**       
+Función que permite realizar un disparo al usuario, abre una ventana de introducción de datos y valida si estos datos no han sido repetidos. Según sea un acierto o un fallo, llama a las funciones correspondientes.  
+**turnos:**      
+Función que decide cual es el turno de cada usuario y cuando gana uno de los jugadores.    
 
 La funciones llamadas son colocar_barco, colocar_barcos_ia y turnos, estas conectan a todas las demás en el codigo.  
 
@@ -68,7 +68,7 @@ El primer modo, al iniciar el juego es el de "buscar"; en caso de que haya un ac
 El modo "hundir" pretende acabar con los barcos, así que si obtiene un acierto, seguirá en este modo; en caso de que hunda un barco o el número de tiradas acertadas no sea mayor a 1, volverá al modo "buscar". 
 
 ### PCE
-####(Errores en las pruebas unitarias e integradas)
+#### (Errores en las pruebas unitarias e integradas)  
 ***Fallo:***  
 Posicionamiento de los barcos en el tablero y posicionamiento del tiro.  
 ***Solución:***  
