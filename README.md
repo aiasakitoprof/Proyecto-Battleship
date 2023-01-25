@@ -25,3 +25,9 @@ El juego acaba cuando uno de los dos jugadores ha destruido todos los barcos del
 * Cuando el usuario seleccionaba una posición en el tablero y se intentaba a colocar otro barco en la misma posición se superponian.
 * Despues de arreglar el error anterior, si se intentaba colocar un barco en la misma posición se volvian a pedir las coordenadas del primer barco, provocando que se añadieran barcos extras.
 * Se ha quedado colgado varias veces el código y era por errores de identación o de variables no inicializadas o no accesibles.
+
+### Algunos enlaces de interes para poder ejecutar el juego
+Instalación de pygame
+https://aprendewindows.org/como-instalar-pygame-en-windows-10/
+Uso e instalacion de pySimpleGUI
+https://decodigo.com/crear-una-interfaz-con-pysimplegui
