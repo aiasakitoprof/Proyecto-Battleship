@@ -9,6 +9,7 @@ También sale una pequeña ventana donde introducir los datos para colocar cada 
 ![Imagen inicial del juego de hundir la flota](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/juego1.jpg)  
 Una vez colocados los 5 barcos por sus medidas y colores se inicia la ventana de tiradas del usuario, por cada tirada del usuario
 se lanzará una tirada del ordenador.  
+![Imagen de barcos colocados e inicio de tirada](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/juego.jpg)  
 El juego acaba cuando uno de los dos jugadores ha destruido todos los barcos del oponente.  
 #### Mejoras a realizar
 * Se deberían dividir la lógica del juego en archivo diferentes por clases y llamarlas en un archivo inicial de juego  
