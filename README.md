@@ -149,49 +149,6 @@ Juego:
 * Instrucciones: Informa al usuario de las instrucciones para jugar y la descripción del juego  
 * menu: Nos permite seleccionar las opciones del menú  
 
-## Webgrafía
-* Colores rgb   
-https://www.calculadoraconversor.com/colores-rgb   
-
-* Ejemplos de juegos similares   
-https://www.pygame.org/tags/ship  
-
-* Ejemplo juego battleship   
-https://framagit.org/bailandoconbuitres/pybattleship-classic/-/tree/master  
-
-* Fuentes en windows 10   
-https://learn.microsoft.com/en-us/typography/fonts/windows_10_font_list
-
-* Pygame 
-https://github.com/josecodetech/Pygame
-
-* Sonidos  
-https://freesound.org/people/bareform/sounds/218721/
-
-* 6 videos de juego battleships  
-https://www.youtube.com/watch?v=GmWHhAGvaQA&list=PLpeS0xTwoWAsn3SwQbSsOZ26pqZ-0CG6i&index=6
-
-* visual studio code y github<br>
-https://www.youtube.com/watch?v=qdec2M4NwT0  
-http://programarcadegames.com/index.php?lang=es&chapter=labs  
-https://github.com/GrizzlyH/Battleship_Walkthrough
-
-* Colorama  
-https://recursospython.com/guias-y-manuales/colorama-texto-fondo-coloreados-la-consola/
-
-* Tabulate
-https://python-para-impacientes.blogspot.com/2017/01/tablas-con-estilo-con-tabulate.html
-
-* W3chools
-https://www.w3schools.com/python/default.asp
-
-* Chat-GPT (Solución de errores y aprendizaje de programación orientada a objetos)<br>
-https://chat.openai.com/chat  
-https://openai.com/blog/chatgpt/qwe.sh/%2F../
-
-* Python-tutor
-https://pythontutor.com/visualize.html#mode=edit
-
 ## Creación del documento PCE
 ### (Errores en las pruebas unitarias e integradas)
 
@@ -345,3 +302,46 @@ Instalación de pygame
 https://aprendewindows.org/como-instalar-pygame-en-windows-10/  
 Uso e instalacion de pySimpleGUI  
 https://decodigo.com/crear-una-interfaz-con-pysimplegui
+
+## Webgrafía
+* Colores rgb   
+https://www.calculadoraconversor.com/colores-rgb   
+
+* Ejemplos de juegos similares   
+https://www.pygame.org/tags/ship  
+
+* Ejemplo juego battleship   
+https://framagit.org/bailandoconbuitres/pybattleship-classic/-/tree/master  
+
+* Fuentes en windows 10   
+https://learn.microsoft.com/en-us/typography/fonts/windows_10_font_list
+
+* Pygame 
+https://github.com/josecodetech/Pygame
+
+* Sonidos  
+https://freesound.org/people/bareform/sounds/218721/
+
+* 6 videos de juego battleships  
+https://www.youtube.com/watch?v=GmWHhAGvaQA&list=PLpeS0xTwoWAsn3SwQbSsOZ26pqZ-0CG6i&index=6
+
+* visual studio code y github<br>
+https://www.youtube.com/watch?v=qdec2M4NwT0  
+http://programarcadegames.com/index.php?lang=es&chapter=labs  
+https://github.com/GrizzlyH/Battleship_Walkthrough
+
+* Colorama  
+https://recursospython.com/guias-y-manuales/colorama-texto-fondo-coloreados-la-consola/
+
+* Tabulate
+https://python-para-impacientes.blogspot.com/2017/01/tablas-con-estilo-con-tabulate.html
+
+* W3chools
+https://www.w3schools.com/python/default.asp
+
+* Chat-GPT (Solución de errores y aprendizaje de programación orientada a objetos)<br>
+https://chat.openai.com/chat  
+https://openai.com/blog/chatgpt/qwe.sh/%2F../
+
+* Python-tutor
+https://pythontutor.com/visualize.html#mode=edit
