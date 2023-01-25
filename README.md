@@ -1,5 +1,7 @@
-## Proyecto en Pygame  
+## Proyecto en Pygame 
+______________________
 ### Objetivos y descripción  
+____________________________
 El objetivo de esta parte del proyecto ha sido la creación del mismo juego de hundir la flota por terminal en formato Pygame, una libreria que permite crear juegos e incluir entorno gráfico en la programación con python.  
 En el archivo battleship_pygame.py está toda la lógica del juego en pygame.     
 Las reglas del juego y su lógica son muy similares al juego realizado en terminal, pero mucho del trabajo ya estaba realizado.    
@@ -18,6 +20,8 @@ El juego acaba cuando uno de los dos jugadores ha destruido todos los barcos del
 
 ### CCF
 #### (Codificación y creación de funciones)
+___________________________________________
+
 El código se ha realizado en un sólo archivo, se han habilitado las librerias principales a utilizar, pygame, PySimpleGUI y random.  
 A continuación se han creado las variables principales necesarias, listas y disccionarios que se han ido modificando y añadiendo a lo largo del proceso de creación.
 Con pygame se ha hecho una primera prueba básica de crear una pantalla visual con las medidas adecuadas para una pantalla de portatil de 15,6" y a continuación se ha procedido a crear los tableros de juego con la codificación de pygame, esto ha sido un proceso algo complicado, ya que se han tenido que hacer varias pruebas de visualización por pantalla.  
@@ -69,49 +73,51 @@ El modo "hundir" pretende acabar con los barcos, así que si obtiene un acierto,
 
 ### PCE
 #### (Errores en las pruebas unitarias e integradas)  
+______________________________________________________-
 ***Fallo:***  
-Posicionamiento de los barcos en el tablero y posicionamiento del tiro.  
+Posicionamiento de los barcos en el tablero y posicionamiento del tiro.    
 ***Solución:***  
-Tener en cuenta en tamaño de la celda para pintar el cuadrado.  
-Variar las posiciones x e y para adaptarlas a la posición del tablero.  
+Tener en cuenta en tamaño de la celda para pintar el cuadrado.    
+Variar las posiciones x e y para adaptarlas a la posición del tablero.    
 
-***Fallo:***  
-Superposición de imagen al introducir las imagenes de acierto o fallo en el tablero de juego.
-***Solución:***  
-Creación de un cuadrado en negro con una función que se activa antes del proceso de creación de las imagenes de acierto o fallo.
+***Fallo:***    
+Superposición de imagen al introducir las imagenes de acierto o fallo en el tablero de juego.  
+***Solución:***    
+Creación de un cuadrado en negro con una función que se activa antes del proceso de creación de las imagenes de acierto o fallo.  
 
-***Fallo:***  
-Posicionamiento de la numeración de las coordenadas.
-***Solución:***  
-Ir probando de posicionar las numeraciones de filas y columnas variando su posicionamiento x e y.
+***Fallo:***    
+Posicionamiento de la numeración de las coordenadas.  
+***Solución:***    
+Ir probando de posicionar las numeraciones de filas y columnas variando su posicionamiento x e y.  
 
-***Fallo:***  
-Superposición de la ventana de pygame con la ventana de pySimpleGUI, provocando que no se vea la ventana para introducir los datos si se cambia la posición de la ventana de pygame.
-***Solución:***  
-Añadir un parametro de visualización de ventana de pySimpleGUI que siempre quede en la parte superior.
+***Fallo:***   
+Superposición de la ventana de pygame con la ventana de pySimpleGUI, provocando que no se vea la ventana para introducir los datos si se cambia la posición de la ventana de pygame.  
+***Solución:***    
+Añadir un parametro de visualización de ventana de pySimpleGUI que siempre quede en la parte superior.  
 
-***Fallo:***  
-Cuando el usuario seleccionaba una posición en el tablero y se intentaba a colocar otro barco en la misma posición se superponen.
-***Solución:***  
-Crear una validación de coordenadas ya colocadas y compararlas con las que se quieren introducir.
-
-***Fallo:***  
-Visualización de la ventana de PySimpleGUI varias veces.
-***Solución:***  
-Cambiar la identación de los bucles y cierre correctos de los mismos.
-
-***Fallo:***  
-si se intenta colocar un barco en la misma posición se vuelven a pedir las coordenadas del primer barco, provocando que se añadan barcos extras.
+***Fallo:***    
+Cuando el usuario seleccionaba una posición en el tablero y se intentaba a colocar otro barco en la misma posición se superponen.  
 ***Solución:***   
-Creación de un nuevo diccionario que incluya los indices de cada barco y un contador de barcos ya colocados y creando una condicion que valide que el barco a colocar coincide con el contador para seguir el proceso de colocación de barcos.
+Crear una validación de coordenadas ya colocadas y compararlas con las que se quieren introducir.  
+
+***Fallo:***    
+Visualización de la ventana de PySimpleGUI varias veces.  
+***Solución:***   
+Cambiar la identación de los bucles y cierre correctos de los mismos.  
 
 ***Fallo:***  
-Fallo general del juego, cierre automático.
-***Solución:***   
-Verificar la terminal para encontrar los errores indicados y arreglar dichos errores. Muchos de estos errores se debian a variables no inicializadas correctamente, listas que se vaciaban al volver a definirlas dentro del código o variables no introducidas en los parametros de la función.
+si se intenta colocar un barco en la misma posición se vuelven a pedir las coordenadas del primer barco, provocando que se añadan barcos extras.  
+***Solución:***     
+Creación de un nuevo diccionario que incluya los indices de cada barco y un contador de barcos ya colocados y creando una condicion que valide que el barco a colocar coincide con el contador para seguir el proceso de colocación de barcos.  
+
+***Fallo:***    
+Fallo general del juego, cierre automático.  
+***Solución:***    
+Verificar la terminal para encontrar los errores indicados y arreglar dichos errores. Muchos de estos errores se debian a variables no inicializadas correctamente, listas que se vaciaban al volver a definirlas dentro del código o variables no introducidas en los parametros de la función.  
 
 
 #### Mejoras a realizar
+________________________
 * Se deberían dividir la lógica del juego en archivo diferentes por clases y llamarlas en un archivo inicial de juego  
 * Se debe depurar más el código para descartar algunos fallos.  
 * Queria añadir un botón de cierre del juego, pero por alguna razón no he conseguido hacerlo funcionar. El problema actual es que si intentas cerrar el juego mediante el botón de cierre de ventana, no se cierra hasta que acaba de ejecutar todos los procesos del juego.
