@@ -191,6 +191,12 @@ se lanzará una tirada del ordenador.
 El juego acaba cuando uno de los dos jugadores ha destruido todos los barcos del oponente.  
 ![pop-up de fin de juego](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/popup.jpg)  
 
+Para instalar Pygame en Windows, MacOS o Linux, abra la terminal y escriba el siguiente comando:  
+pip install pygame  
+Para instalar PySimpleGUI, escriba el siguiente comando en la terminal:  
+pip install pysimplegui  
+Una vez que se completen las instalaciones, podrá ejecutar el programa.
+
 ### CCF
 #### (Codificación y creación de funciones)
 ___________________________________________
@@ -303,13 +309,22 @@ Comprobar los cálculos que se hacian y cambiar las cantidades para adaptarlas a
                     continue      
 
 
-### Mejoras a realizar
+### Mejoras posibles
 ________________________
-* Se deberían dividir la lógica del juego en archivo diferentes por clases y llamarlas en un archivo inicial de juego  
+* Se deberían dividir la lógica del juego en archivo diferentes por clases y llamarlas en un archivo inicial de juego. 
+* Se podría crear una pantalla inicial del juego con la explicación de las reglas y sus carácteristicas.
+* Para hacerlo más fluido se podría hacer uso de las pulsaciones del ratón para ir colocando los barcos y hacer los ataques.
 * Se debe depurar más el código para descartar algunos fallos.  
 * Queria añadir un botón de cierre del juego, pero por alguna razón no he conseguido hacerlo funcionar. El problema actual es que si intentas cerrar el juego mediante el botón de cierre de ventana, no se cierra hasta que acaba de ejecutar todos los procesos del juego.
 * Se puede mejorar mucho más el juego, este es un pequeño ejemplo de como realizar un juego de hundir la flota en pygame. 
-
+* 
+### Intentos de mejora fallidos
+________________________
+* He intentado crear un botón de cierre, por si se quiere cerrar el juego antes de terminar y he averiguado que pySimpleGUI bloquea el uso de la pantalla de pygame cuando su ventana está activa.
+* Otra cosa que he intentado es crear un botón con pygame, pero por la programación de esta libreria, no me permitia cerrar el juego.
+Capturas de los fallos que me daba pygame por el conflicto con pySimpleGUI
+![Imagen de error de pygame1](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/errorPygame.jpg)  
+![Imagen de error de pygame2](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/errorPygame2.jpg)  
 
 ### Algunos enlaces de interes para poder ejecutar el juego
 Instalación de pygame  
