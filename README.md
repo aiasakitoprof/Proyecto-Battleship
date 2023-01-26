@@ -301,7 +301,7 @@ Verificar la terminal para encontrar los errores indicados y arreglar dichos err
 Colocación de los barcos. Por la manera que tenia programado el código, nunca llegaban al borde del tablero.
 
 ***Solución:***    
-Comprobar los cálculos que se hacian y cambiar las cantidades para adaptarlas al tablero.
+Comprobar los cálculos que se hacian y cambiar las cantidades para adaptarlas al tablero.  
      if orientation == "h" and col + longitud >=11:
                 sg.popup("El barco se sale del tablero.", keep_on_top=True)
                 # El barco sale del tablero en fila
@@ -310,7 +310,7 @@ Comprobar los cálculos que se hacian y cambiar las cantidades para adaptarlas a
             elif orientation == "v" and  row + longitud >=11:
                 sg.popup("El barco se sale del tablero.", keep_on_top=True)
                 # El barco sale del tablero en columna
-                return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual) 
+                return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)
 
 ***Fallo:***    
 Fallo al introducir imagenes en el ejecutable.  
