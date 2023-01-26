@@ -190,9 +190,9 @@ Una vez colocados los 5 barcos por sus medidas y colores se inicia la ventana de
 se lanzará una tirada del ordenador.  
 ![Imagen de barcos colocados e inicio de tirada](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/juego.jpg)  
 El juego acaba cuando uno de los dos jugadores ha destruido todos los barcos del oponente.  
-![pop-up de fin de juego](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/popup.jpg)
-Imagen final del juego, con el mensaje de Game Over  
-![Game over](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/end_game.jpg)    
+![pop-up de fin de juego](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/popup.jpg)  
+Imagen final del juego, con el mensaje de Game Over    
+![Game over](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/end_game.jpg)     
 
 Para instalar Pygame en Windows, MacOS o Linux, abra la terminal y escriba el siguiente comando:  
 pip install pygame  
@@ -322,7 +322,7 @@ def resolver_ruta(ruta_relativa):
     return os.path.join(os.path.abspath('.'), ruta_relativa)
 imagen=pygame.image.load(resolver_ruta("game_over.png"))
                 
-##### Enlace de descarga: Solo disponibles para miembros del IES Borja Moll  
+#### Enlace de descarga: Solo disponibles para miembros del IES Borja Moll  
 https://drive.google.com/file/d/1WBrOjEsybVub6lPoHw-cWwwH-X1sFvWG/view?usp=share_link  
 Es muy posible que al realizar la descarga, google la bloquee por ser un ejecutable. Se debe acceder al menú de descargas de google y aceptar la descarga desde allí.
 
