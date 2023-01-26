@@ -377,3 +377,9 @@ https://openai.com/blog/chatgpt/qwe.sh/%2F../
 
 * Python-tutor
 https://pythontutor.com/visualize.html#mode=edit
+
+* Curso de desarrollo de juego con pygame  
+https://www.udemy.com/course/crea-tu-propio-juego-con-python/
+
+* Convertir archivos python en un ejecutable .exe  
+https://www.youtube.com/watch?v=FFE1VNMAZfc
