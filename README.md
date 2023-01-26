@@ -288,6 +288,20 @@ Fallo general del juego, cierre automático.
 ***Solución:***    
 Verificar la terminal para encontrar los errores indicados y arreglar dichos errores. Muchos de estos errores se debian a variables no inicializadas correctamente, listas que se vaciaban al volver a definirlas dentro del código o variables no introducidas en los parametros de la función.  
 
+***Fallo:***    
+Colocación de los barcos. Por la manera que tenia programado el código, nunca llegaban al borde del tablero.
+''' if orientacion == "h" and columna + longitud >=11:  
+                    # El barco sale del tablero en fila  
+                     continue  
+                # El valor de la suma no puede ser 11 o mayor a 11, ej. si longitud = 5  
+                # fila=5, la suma es 10, valido  
+                elif orientacion == "v" and  fila + longitud >=11:  
+                    # El barco sale del tablero en columna  
+                    continue  
+'''
+***Solución:***    
+Comprobar los cálculos que se hacian y cambiar las cantidades para adaptarlas al tablero.
+
 
 ### Mejoras a realizar
 ________________________
