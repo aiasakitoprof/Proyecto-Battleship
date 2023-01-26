@@ -302,15 +302,18 @@ Colocación de los barcos. Por la manera que tenia programado el código, nunca 
 
 ***Solución:***    
 Comprobar los cálculos que se hacian y cambiar las cantidades para adaptarlas al tablero.
-      if orientacion == "h" and columna + longitud >=11:  
-                    # El barco sale del tablero en fila  
-                     continue  
-                # El valor de la suma no puede ser 11 o mayor a 11, ej. si longitud = 5  
-                # fila=5, la suma es 10, valido  
-                elif orientacion == "v" and  fila + longitud >=11:  
-                    # El barco sale del tablero en columna  
-                    continue      
+     if orientation == "h" and col + longitud >=11:
+                sg.popup("El barco se sale del tablero.", keep_on_top=True)
+                # El barco sale del tablero en fila
+                return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)
 
+            elif orientation == "v" and  row + longitud >=11:
+                sg.popup("El barco se sale del tablero.", keep_on_top=True)
+                # El barco sale del tablero en columna
+                return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)  
+                
+* Enlace de descarga: Solo disponibles para miembros del IES Borja Moll  
+https://drive.google.com/file/d/1MVjwtu5u8aRQlC_qWRsBYmA51r21eTrG/view?usp=share_link
 
 ### Mejoras posibles
 ________________________
@@ -328,6 +331,7 @@ ________________________
 Capturas de los fallos que me daba pygame por el conflicto con pySimpleGUI
 ![Imagen de error de pygame1](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/errorPygame.jpg)  
 ![Imagen de error de pygame2](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/errorPygame2.jpg)  
+* También he intentado incluir una imagen con el ejecutable, pero me daba error.
 
 ### Algunos enlaces de interes para poder ejecutar el juego
 Instalación de pygame  
@@ -383,3 +387,6 @@ https://www.udemy.com/course/crea-tu-propio-juego-con-python/
 
 * Convertir archivos python en un ejecutable .exe  
 https://www.youtube.com/watch?v=FFE1VNMAZfc
+
+* Incluir imagenes en el ejecutable  
+https://www.youtube.com/watch?v=diZ4a4pTtUU
