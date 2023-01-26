@@ -310,10 +310,22 @@ Comprobar los cálculos que se hacian y cambiar las cantidades para adaptarlas a
             elif orientation == "v" and  row + longitud >=11:
                 sg.popup("El barco se sale del tablero.", keep_on_top=True)
                 # El barco sale del tablero en columna
-                return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)  
+                return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual) 
+
+***Fallo:***    
+Fallo al introducir imagenes en el ejecutable.  
+***Solución:***    
+Añadir una función que acceda a la ruta de la imagen y cargar la imagen con esta función.
+def resolver_ruta(ruta_relativa):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, ruta_relativa)
+    return os.path.join(os.path.abspath('.'), ruta_relativa)
+# Variable que inicia la ventana con las medidas definidas
+imagen=pygame.image.load(resolver_ruta("game_over.png"))
                 
 * Enlace de descarga: Solo disponibles para miembros del IES Borja Moll  
-https://drive.google.com/file/d/1MVjwtu5u8aRQlC_qWRsBYmA51r21eTrG/view?usp=share_link
+https://drive.google.com/file/d/1WBrOjEsybVub6lPoHw-cWwwH-X1sFvWG/view?usp=share_link  
+Es muy posible que al realizar la descarga, google la bloquee por ser un ejecutable. Se debe acceder al menú de descargas de google y aceptar la descarga desde allí.
 
 ### Mejoras posibles
 ________________________
@@ -323,7 +335,7 @@ ________________________
 * Se debe depurar más el código para descartar algunos fallos.  
 * Queria añadir un botón de cierre del juego, pero por alguna razón no he conseguido hacerlo funcionar. El problema actual es que si intentas cerrar el juego mediante el botón de cierre de ventana, no se cierra hasta que acaba de ejecutar todos los procesos del juego.
 * Se puede mejorar mucho más el juego, este es un pequeño ejemplo de como realizar un juego de hundir la flota en pygame. 
-* 
+
 ### Intentos de mejora fallidos
 ________________________
 * He intentado crear un botón de cierre, por si se quiere cerrar el juego antes de terminar y he averiguado que pySimpleGUI bloquea el uso de la pantalla de pygame cuando su ventana está activa.
@@ -331,7 +343,7 @@ ________________________
 Capturas de los fallos que me daba pygame por el conflicto con pySimpleGUI
 ![Imagen de error de pygame1](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/errorPygame.jpg)  
 ![Imagen de error de pygame2](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/errorPygame2.jpg)  
-* También he intentado incluir una imagen con el ejecutable, pero me daba error.
+
 
 ### Algunos enlaces de interes para poder ejecutar el juego
 Instalación de pygame  
