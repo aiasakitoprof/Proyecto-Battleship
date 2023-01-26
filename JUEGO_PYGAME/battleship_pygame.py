@@ -50,7 +50,9 @@ turno="usuario"
 # Se priorizará el modo "hundir"
 contadorTiros=0
 # Variable necesaria para que no se pueda volver a colocar un barco que ya ha sido colocado
+barco_actual_ia=1
 barco_actual = 1
+button=0
 # Variable que indica que el modo de juego está activo
 running=True
 
@@ -58,6 +60,8 @@ running=True
 screen = pygame.display.set_mode((ANCHO,ALTO))
 # Título del juego que se muestra en la parte superior de la pantalla
 pygame.display.set_caption("Hundir la flota")
+imagen=pygame.image.load("JUEGO_PYGAME\game_over.png")
+
 
 # Actualizar la pantalla
 pygame.display.update()
@@ -109,6 +113,7 @@ for i in range(0, 10):
         pygame.display.update()
         pygame.draw.rect(screen, (255,255,255), (0,0, ANCHO, ALTO), 2)
 
+
 # Función que permite colocar los barcos del usuario
 def colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual):
     # Bucle que recorre el diccionario de barcos y  recoge los valores necesarios
@@ -135,13 +140,38 @@ def colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenad
                 continue
             
             orientation = values[0]
-            row = int(values[1])
-            col = int(values[2])
+            try:
+                row = int(values[1])
+                col = int(values[2])
+                # CONTROL DE ERRORES
+                # Validación de que los numeros introducidos por el usuario no se salen del rango
+                if row<0 or row>9 or col<0 or col>9:
+                    sg.popup("Números invalidos, debe introducir un rango entre 0 y 9", keep_on_top=True)
+                    return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)
+            # En caso de que introduzca letras en lugar de números
+            except ValueError:
+                sg.popup("Números invalidos, debe introducir un rango entre 0 y 9, ha introducido letras", keep_on_top=True)
+                return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)
+            # En caso de que introduzca otra letra
+            if orientation not in ["v","h"]:
+                sg.popup("Debe introducir una orientacion válida, v-vertical, h-horizontal.", keep_on_top=True)
+                return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)
+
+            if orientation == "h" and col + longitud >=11:
+                sg.popup("El barco se sale del tablero.", keep_on_top=True)
+                # El barco sale del tablero en fila
+                return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)
+
+            elif orientation == "v" and  row + longitud >=11:
+                sg.popup("El barco se sale del tablero.", keep_on_top=True)
+                # El barco sale del tablero en columna
+                return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)
+                    
             # Si la orientación es horizontal
             if orientation == "h":
                 for i in range(longitud):
                     if (row, col+i) in coordenadas:
-                        sg.popup("Este lugar esta ocupado, por favor selecciona otro.")
+                        sg.popup("Este lugar esta ocupado, por favor selecciona otro.", keep_on_top=True)
                         # En caso de que la coordenada esté ocupada volvemos a inicializar la función
                         return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)
                     # Guardamos las coordenadas en las listas correspondientes
@@ -163,7 +193,7 @@ def colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenad
             elif orientation == "v":
                 for i in range(longitud):
                     if (row+i, col) in coordenadas:
-                        sg.popup("Este lugar esta ocupado, por favor selecciona otro.")
+                        sg.popup("Este lugar esta ocupado, por favor selecciona otro.", keep_on_top=True)
                         return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)
                     coordenadas.append((row+i, col))
                     coordenadas_str.append(str(row+i)+str(col))
@@ -187,46 +217,57 @@ def colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenad
             barco_actual+=1
             pygame.display.update()
 
-def colocar_barcos_ia():
-    
-        for barco_elegido, valor in barcos.items():
-            barco_colocado=False
-            while barco_colocado==False: # Si no está colocado.
-                longitud = valor[0]
-                posicion_ocupada = True
-                while posicion_ocupada:
-                    posicion_ocupada = False
-                    orientacion = random.choice(['h', 'v'])
-                    fila =random.randint(0,9)
-                    columna = random.randint(0,9)
-        
-                    if orientacion == "h" and columna + longitud > 10: 
-                        barco_colocado=False
-
-                    elif orientacion == "v" and  fila + longitud > 10:
-                        barco_colocado=False
-                    else:
-                        barco_colocado=True
-                        if orientacion == 'h':
-
-                            for i in range(longitud):
-                                if (fila, columna + i) in coordenadas_ia:
-                                    posicion_ocupada = True
+def colocar_barcos_ia(barco_actual_ia):
+    for navio, valor in barcos_indice.items():
+        indice=navio
+        barco=valor[0]
+        longitud =valor[1]
+        posicion_ocupada=True
+        if indice == str(barco_actual_ia):
+            while posicion_ocupada:
+                orientacion = random.choice(['h', 'v'])
+                fila =random.randint(0,9)
+                columna = random.randint(0,9)
+                # El valor de la suma no puede ser 11 o mayor a 11, ej. si longitud = 5
+                # columna=5, la suma es 10, valido
+                if orientacion == "h" and columna + longitud >=11:
+                    # El barco sale del tablero en fila
+                    continue
+                # El valor de la suma no puede ser 11 o mayor a 11, ej. si longitud = 5
+                # fila=5, la suma es 10, valido
+                elif orientacion == "v" and  fila + longitud >=11:
+                    # El barco sale del tablero en columna
+                    continue
+                    
+                else:
+                    # si la posición no está ocupada continua colocando el barco actual
+                    posicion_ocupada=False
+                    # Si la orientación es horizontal
+                    if orientacion == 'h':
+                        # Bucle que recorre el largo del barco y va colocandolo segun su orientación
+                        for i in range(longitud):
+                            # Si la fila y la columna+1 coinciden en algun momento del bucle con las coordenadas
+                            # ya introducidas, vuelve a inicar el bucle
+                            if (fila, columna + i) in coordenadas_ia:
+                                posicion_ocupada = True
                                 break
-                            if posicion_ocupada:
-                                continue
-                            for i in range(longitud):
-                                coordenadas_ia.append((fila, columna + i))
-                        else:
-                            for i in range(longitud):
-                                if (fila + i, columna) in coordenadas_ia:
-                                    posicion_ocupada = True
-                                    break
-                            if posicion_ocupada:
-                                continue
-                            for i in range(longitud):
-                                coordenadas_ia.append((fila + i, columna))
-
+                        if posicion_ocupada:
+                            continue
+                        # En caso de que la posición no esté ocupada, guardamos las coordenadas del barco en la lista
+                        for i in range(longitud):
+                            coordenadas_ia.append((fila, columna + i))
+                    elif orientacion == 'v':
+                        for i in range(longitud):
+                            if (fila + i, columna) in coordenadas_ia:
+                                posicion_ocupada = True
+                                break
+                        if posicion_ocupada:
+                            continue
+                        for i in range(longitud):
+                            coordenadas_ia.append((fila + i, columna))
+                    # Incrementamos el valor del indice del barco para no volverlo a colocar
+                    barco_actual_ia+=1
+        
 # Antes de dibujar el acierto del ordenador, se debe borrar el cuadrado del barco
 def borrar_posicion(fila, columna):
     pygame.draw.rect(screen, (0,0,0), (int(columna*cell_size)+80+ANCHO/2, int(fila*cell_size)+80,cell_size,cell_size))
@@ -486,6 +527,9 @@ def disparo_user():
     vista = sg.Window("Ataque", lista, location=(ANCHO/3, ALTO - 180), keep_on_top=True, background_color='#ff0000')
 
     while continuar:
+        # Validación para poder cerrar el juego y que no nos pida jugadas, en caso contrario realizaba todo el bucle
+        if len(coordenadas)==0:
+            break
         event, values = vista.read()
         if event in (sg.WIN_CLOSED, "Disparar"):
             if values[0] is not None and values[1] is not None:
@@ -512,6 +556,12 @@ def disparo_user():
             vista.close()
             turno = "IA"
 
+# Calculamos el ancho de la pantalla para hallar el punto medio para pintar la imagen de game over
+x = (ANCHO - imagen.get_width()) / 2
+# Calculamos el alto de la pantalla para hallar el punto medio para pintar la imagen de game over
+# y le sumamos 200 pixels
+y = ((ALTO - imagen.get_height()) / 2)+200
+
 def turnos():
     global turno
     running = True
@@ -522,6 +572,8 @@ def turnos():
                 running = False
                 print("Has ganado")
                 sg.popup("Has ganado al ordenador, enhorabuena",  keep_on_top=True)
+                # Cargamos la imagen de game over5 en el centro de la pantalla de pygame, pero en la posición inferior
+                screen.blit(imagen, (x,y))
                 break
             else:
                 turno = "IA"
@@ -531,6 +583,8 @@ def turnos():
                 running = False
                 print("El ordenador ha ganado")
                 sg.popup("El ordenador te ha ganado, puedes cerrar la ventana",  keep_on_top=True)
+                # Cargamos la imagen de game over5 en el centro de la pantalla de pygame, pero en la posición inferior
+                screen.blit(imagen, (x,y))
                 break
             else:
                 turno = "usuario"
@@ -539,20 +593,20 @@ def turnos():
 colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)
 
 # Llamamos a la función que nos colocará los barcos del ordenador
-colocar_barcos_ia()
+colocar_barcos_ia(barco_actual_ia)
 print("Coordenadas Ordenador",coordenadas_ia)
 print(tiradasPosibles)
 print("Coordenadas_usuario", coordenadas)
 turnos()
 
 
-#Botón de cierre
-# Bucle que permite seguir jugando
-# Bucle que permite seguir jugando y captura el evento de cierre
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
     # Funcionalidad de pygame que permite actualizar la visualización del juego
     pygame.display.update()
+    # resto del código del juego aquí
+pygame.quit()
+
