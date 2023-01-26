@@ -290,6 +290,9 @@ Verificar la terminal para encontrar los errores indicados y arreglar dichos err
 
 ***Fallo:***    
 Colocación de los barcos. Por la manera que tenia programado el código, nunca llegaban al borde del tablero.
+
+***Solución:***    
+Comprobar los cálculos que se hacian y cambiar las cantidades para adaptarlas al tablero.
 ''' if orientacion == "h" and columna + longitud >=11:  
                     # El barco sale del tablero en fila  
                      continue  
@@ -297,10 +300,7 @@ Colocación de los barcos. Por la manera que tenia programado el código, nunca 
                 # fila=5, la suma es 10, valido  
                 elif orientacion == "v" and  fila + longitud >=11:  
                     # El barco sale del tablero en columna  
-                    continue  
-'''
-***Solución:***    
-Comprobar los cálculos que se hacian y cambiar las cantidades para adaptarlas al tablero.
+                    continue '''    
 
 
 ### Mejoras a realizar
