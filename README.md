@@ -154,7 +154,7 @@ Juego:
 
 El 90% de los fallos derivan del input del usuario. Estos se pueden solucionar mediante control de errores. Un ejemplo práctico:
 Pedimos al usuario unas coordenadas para disparar en el formato '00'. El usuario por error o de forma intencional podría introducir '0', '123'
-'p4', '1021', 'qw', etc. Todo esto provocaría un fallo fatal en el programa, para ello se introfuce lo siguiente:
+'p4', '1021', 'qw', etc. Todo esto provocaría un fallo fatal en el programa, para ello se introduce lo siguiente:
 
         while disparo in self.disparos_realizados_jg:
                     coord = input("Selecciona coordenadas de disparo no repetidas:\n >  ")
@@ -293,14 +293,14 @@ Colocación de los barcos. Por la manera que tenia programado el código, nunca 
 
 ***Solución:***    
 Comprobar los cálculos que se hacian y cambiar las cantidades para adaptarlas al tablero.
-''' if orientacion == "h" and columna + longitud >=11:  
+      if orientacion == "h" and columna + longitud >=11:  
                     # El barco sale del tablero en fila  
                      continue  
                 # El valor de la suma no puede ser 11 o mayor a 11, ej. si longitud = 5  
                 # fila=5, la suma es 10, valido  
                 elif orientacion == "v" and  fila + longitud >=11:  
                     # El barco sale del tablero en columna  
-                    continue '''    
+                    continue      
 
 
 ### Mejoras a realizar
