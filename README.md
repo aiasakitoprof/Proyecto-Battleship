@@ -314,16 +314,16 @@ Comprobar los cálculos que se hacian y cambiar las cantidades para adaptarlas a
 
 ***Fallo:***    
 Fallo al introducir imagenes en el ejecutable.  
-***Solución:***    
+***Solución:***      
 Añadir una función que acceda a la ruta de la imagen y cargar la imagen con esta función.
 def resolver_ruta(ruta_relativa):
     if hasattr(sys, '_MEIPASS'):
         return os.path.join(sys._MEIPASS, ruta_relativa)
-    return os.path.join(os.path.abspath('.'), ruta_relativa)
+    return os.path.join(os.path.abspath('.'), ruta_relativa)  
 # Variable que inicia la ventana con las medidas definidas
 imagen=pygame.image.load(resolver_ruta("game_over.png"))
                 
-* Enlace de descarga: Solo disponibles para miembros del IES Borja Moll  
+##### Enlace de descarga: Solo disponibles para miembros del IES Borja Moll  
 https://drive.google.com/file/d/1WBrOjEsybVub6lPoHw-cWwwH-X1sFvWG/view?usp=share_link  
 Es muy posible que al realizar la descarga, google la bloquee por ser un ejecutable. Se debe acceder al menú de descargas de google y aceptar la descarga desde allí.
 
