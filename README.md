@@ -175,6 +175,7 @@ Otro ejemplo es el siguiente, con el que se evita que el usuario introduzca valo
 ______________________
 ### Objetivos y descripción  
 ____________________________
+Esta parte del proyecto es una mejora del juego en terminal, tiene las mismas reglas y formatos de juego. No está del todo acabado y depurado, por lo que se ha quedado en un ejemplo de como se podría ir mejorando las funcionalidades del juego teniendo la base de la lógica empleada.
 El objetivo de esta parte del proyecto ha sido la creación del mismo juego de hundir la flota por terminal en formato Pygame, una libreria que permite crear juegos e incluir entorno gráfico en la programación con python.  
 En el archivo battleship_pygame.py está toda la lógica del juego en pygame.     
 Las reglas del juego y su lógica son muy similares al juego realizado en terminal, pero mucho del trabajo ya estaba realizado.    
@@ -189,7 +190,9 @@ Una vez colocados los 5 barcos por sus medidas y colores se inicia la ventana de
 se lanzará una tirada del ordenador.  
 ![Imagen de barcos colocados e inicio de tirada](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/juego.jpg)  
 El juego acaba cuando uno de los dos jugadores ha destruido todos los barcos del oponente.  
-![pop-up de fin de juego](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/popup.jpg)  
+![pop-up de fin de juego](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/popup.jpg)
+Imagen final del juego, con el mensaje de Game Over  
+![Game over](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/end_game.jpg)    
 
 Para instalar Pygame en Windows, MacOS o Linux, abra la terminal y escriba el siguiente comando:  
 pip install pygame  
