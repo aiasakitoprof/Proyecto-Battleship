@@ -62,7 +62,7 @@ def resolver_ruta(ruta_relativa):
     if hasattr(sys, '_MEIPASS'):
         return os.path.join(sys._MEIPASS, ruta_relativa)
     return os.path.join(os.path.abspath('.'), ruta_relativa)
-imagen=pygame.image.load(resolver_ruta("game_over.png"))
+imagen=pygame.image.load(resolver_ruta("JUEGO_PYGAME/game_over.png"))
 #Variable que inicia la ventana con las medidas definidas
 screen = pygame.display.set_mode((ANCHO,ALTO))
 #Título del juego que se muestra en la parte superior de la pantalla
