@@ -154,7 +154,7 @@ Juego:
 
 El 90% de los fallos derivan del input del usuario. Estos se pueden solucionar mediante control de errores. Un ejemplo práctico:
 Pedimos al usuario unas coordenadas para disparar en el formato '00'. El usuario por error o de forma intencional podría introducir '0', '123'
-'p4', '1021', 'qw', etc. Todo esto provocaría un fallo fatal en el programa, para ello se introfuce lo siguiente:
+'p4', '1021', 'qw', etc. Todo esto provocaría un fallo fatal en el programa, para ello se introduce lo siguiente:
 
         while disparo in self.disparos_realizados_jg:
                     coord = input("Selecciona coordenadas de disparo no repetidas:\n >  ")
@@ -175,6 +175,7 @@ Otro ejemplo es el siguiente, con el que se evita que el usuario introduzca valo
 ______________________
 ### Objetivos y descripción  
 ____________________________
+Esta parte del proyecto es una mejora del juego en terminal, tiene las mismas reglas y formatos de juego. No está del todo acabado y depurado, por lo que se ha quedado en un ejemplo de como se podría ir mejorando las funcionalidades del juego teniendo la base de la lógica empleada.
 El objetivo de esta parte del proyecto ha sido la creación del mismo juego de hundir la flota por terminal en formato Pygame, una libreria que permite crear juegos e incluir entorno gráfico en la programación con python.  
 En el archivo battleship_pygame.py está toda la lógica del juego en pygame.     
 Las reglas del juego y su lógica son muy similares al juego realizado en terminal, pero mucho del trabajo ya estaba realizado.    
@@ -190,6 +191,14 @@ se lanzará una tirada del ordenador.
 ![Imagen de barcos colocados e inicio de tirada](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/juego.jpg)  
 El juego acaba cuando uno de los dos jugadores ha destruido todos los barcos del oponente.  
 ![pop-up de fin de juego](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/popup.jpg)  
+Imagen final del juego, con el mensaje de Game Over    
+![Game over](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/end_game.jpg)     
+
+Para instalar Pygame en Windows, MacOS o Linux, abra la terminal y escriba el siguiente comando:  
+pip install pygame  
+Para instalar PySimpleGUI, escriba el siguiente comando en la terminal:  
+pip install pysimplegui  
+Una vez que se completen las instalaciones, podrá ejecutar el programa.
 
 ### CCF
 #### (Codificación y creación de funciones)
@@ -288,13 +297,51 @@ Fallo general del juego, cierre automático.
 ***Solución:***    
 Verificar la terminal para encontrar los errores indicados y arreglar dichos errores. Muchos de estos errores se debian a variables no inicializadas correctamente, listas que se vaciaban al volver a definirlas dentro del código o variables no introducidas en los parametros de la función.  
 
+***Fallo:***    
+Colocación de los barcos. Por la manera que tenia programado el código, nunca llegaban al borde del tablero.
 
-### Mejoras a realizar
+***Solución:***    
+Comprobar los cálculos que se hacian y cambiar las cantidades para adaptarlas al tablero.  
+    if orientation == "h" and col + longitud >=11:  
+                sg.popup("El barco se sale del tablero.", keep_on_top=True)  
+                # El barco sale del tablero en fila  
+                return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)  
+
+            elif orientation == "v" and  row + longitud >=11:  
+                sg.popup("El barco se sale del tablero.", keep_on_top=True)  
+                # El barco sale del tablero en columna  
+                return colocar_barco(barcos, screen, cell_size, ANCHO, ALTO, coordenadas, coordenadas_str, barco_actual)  
+
+***Fallo:***    
+Fallo al introducir imagenes en el ejecutable.  
+***Solución:***      
+Añadir una función que acceda a la ruta de la imagen y cargar la imagen con esta función.  
+def resolver_ruta(ruta_relativa):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, ruta_relativa)
+    return os.path.join(os.path.abspath('.'), ruta_relativa)
+imagen=pygame.image.load(resolver_ruta("game_over.png"))
+                
+#### Enlace de descarga: Solo disponibles para miembros del IES Borja Moll  
+https://drive.google.com/file/d/1WBrOjEsybVub6lPoHw-cWwwH-X1sFvWG/view?usp=share_link  
+Es muy posible que al realizar la descarga, google la bloquee por ser un ejecutable. Se debe acceder al menú de descargas de google y aceptar la descarga desde allí.
+
+### Mejoras posibles
 ________________________
-* Se deberían dividir la lógica del juego en archivo diferentes por clases y llamarlas en un archivo inicial de juego  
+* Se deberían dividir la lógica del juego en archivo diferentes por clases y llamarlas en un archivo inicial de juego. 
+* Se podría crear una pantalla inicial del juego con la explicación de las reglas y sus carácteristicas.
+* Para hacerlo más fluido se podría hacer uso de las pulsaciones del ratón para ir colocando los barcos y hacer los ataques.
 * Se debe depurar más el código para descartar algunos fallos.  
 * Queria añadir un botón de cierre del juego, pero por alguna razón no he conseguido hacerlo funcionar. El problema actual es que si intentas cerrar el juego mediante el botón de cierre de ventana, no se cierra hasta que acaba de ejecutar todos los procesos del juego.
 * Se puede mejorar mucho más el juego, este es un pequeño ejemplo de como realizar un juego de hundir la flota en pygame. 
+
+### Intentos de mejora fallidos
+________________________
+* He intentado crear un botón de cierre, por si se quiere cerrar el juego antes de terminar y he averiguado que pySimpleGUI bloquea el uso de la pantalla de pygame cuando su ventana está activa.
+* Otra cosa que he intentado es crear un botón con pygame, pero por la programación de esta libreria, no me permitia cerrar el juego.
+Capturas de los fallos que me daba pygame por el conflicto con pySimpleGUI
+![Imagen de error de pygame1](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/errorPygame.jpg)  
+![Imagen de error de pygame2](https://github.com/aiasakitoprof/Proyecto-Battleship/blob/pygame/assets/errorPygame2.jpg)  
 
 
 ### Algunos enlaces de interes para poder ejecutar el juego
@@ -345,3 +392,12 @@ https://openai.com/blog/chatgpt/qwe.sh/%2F../
 
 * Python-tutor
 https://pythontutor.com/visualize.html#mode=edit
+
+* Curso de desarrollo de juego con pygame  
+https://www.udemy.com/course/crea-tu-propio-juego-con-python/
+
+* Convertir archivos python en un ejecutable .exe  
+https://www.youtube.com/watch?v=FFE1VNMAZfc
+
+* Incluir imagenes en el ejecutable  
+https://www.youtube.com/watch?v=diZ4a4pTtUU
