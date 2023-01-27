@@ -2,6 +2,8 @@ import pygame
 from pygame.locals import *
 import PySimpleGUI as sg
 import random
+import os
+import sys
 pygame.init()
 #Medidas de la pantalla de juego
 ANCHO = 1100
@@ -55,12 +57,17 @@ barco_actual = 1
 button=0
 # Variable que indica que el modo de juego está activo
 running=True
-
-# Variable que inicia la ventana con las medidas definidas
+# Función que permite encontrar la ruta relativa del archivo
+def resolver_ruta(ruta_relativa):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, ruta_relativa)
+    return os.path.join(os.path.abspath('.'), ruta_relativa)
+imagen=pygame.image.load(resolver_ruta("game_over.png"))
+#Variable que inicia la ventana con las medidas definidas
 screen = pygame.display.set_mode((ANCHO,ALTO))
-# Título del juego que se muestra en la parte superior de la pantalla
+#Título del juego que se muestra en la parte superior de la pantalla
 pygame.display.set_caption("Hundir la flota")
-imagen=pygame.image.load("JUEGO_PYGAME\game_over.png")
+
 
 
 # Actualizar la pantalla
@@ -607,6 +614,6 @@ while running:
             running = False
     # Funcionalidad de pygame que permite actualizar la visualización del juego
     pygame.display.update()
-    # resto del código del juego aquí
+# Sale del juego
 pygame.quit()
 
