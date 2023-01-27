@@ -38,24 +38,23 @@ A continuación se muestra una partida empezada como referencia:
            Radar                       Barcos
     0 1 2 3 4 5 6 7 8 9          0 1 2 3 4 5 6 7 8 9
   ┌─────────────────────┐      ┌─────────────────────┐
-0 │ · · · · {Fore.BLUE +'O'+ Style.RESET_ALL} {Fore.RED +'X'+ Style.RESET_ALL} · · · · │    0 │ · · · {Fore.BLUE +'O'+ Style.RESET_ALL} · · · {Fore.BLUE +'O'+ Style.RESET_ALL} · · │        {Fore.BLUE +'O'+ Style.RESET_ALL} => Representa un disparo fallido (Azul)
-1 │ · · · {Fore.BLUE +'O'+ Style.RESET_ALL} · {Fore.RED +'X'+ Style.RESET_ALL} · · {Fore.BLUE +'O'+ Style.RESET_ALL} · │    1 │ · · {Fore.BLUE +'O'+ Style.RESET_ALL} · {Fore.YELLOW + 'D' + Style.RESET_ALL} {Fore.RED +'X'+ Style.RESET_ALL} · {Fore.YELLOW + 'C' + Style.RESET_ALL} · {Fore.BLUE +'O'+ Style.RESET_ALL} │        {Fore.RED +'X'+ Style.RESET_ALL} => Representa un acierto (Rojo)
-2 │ · · · · · {Fore.RED +'X'+ Style.RESET_ALL} · · · · │    2 │ {Fore.BLUE +'O'+ Style.RESET_ALL} · {Fore.YELLOW + 'P' + Style.RESET_ALL} {Fore.BLUE +'O'+ Style.RESET_ALL} · {Fore.BLUE +'O'+ Style.RESET_ALL} · {Fore.YELLOW + 'C' + Style.RESET_ALL} · · │        {Fore.YELLOW + 'A' + Style.RESET_ALL} => Representa los navíos del jugador (Naranja)
-3 │ · · · · · {Fore.RED +'X'+ Style.RESET_ALL} · · · · │    3 │ · · {Fore.YELLOW + 'P' + Style.RESET_ALL} · · · · {Fore.YELLOW + 'C' + Style.RESET_ALL} {Fore.BLUE +'O'+ Style.RESET_ALL} · │
-4 │ · · · {Fore.BLUE +'O'+ Style.RESET_ALL} · {Fore.RED +'X'+ Style.RESET_ALL} · · · · │    4 │ {Fore.BLUE +'O'+ Style.RESET_ALL} · {Fore.YELLOW + 'P' + Style.RESET_ALL} {Fore.BLUE +'O'+ Style.RESET_ALL} · · · · · · │        En el caso de {Fore.BLUE +'O'+ Style.RESET_ALL} y {Fore.RED +'X'+ Style.RESET_ALL}, ambos son iguales tanto para la
-5 │ · · · · · {Fore.BLUE +'O'+ Style.RESET_ALL} · · · · │    5 │ · · {Fore.YELLOW + 'P' + Style.RESET_ALL} · · · · · · · │        ia como para el jugador.
-6 │ · · · · {Fore.BLUE +'O'+ Style.RESET_ALL} · · · · · │    6 │ · · · · · · · · · · │
-7 │ · · · · · · · {Fore.BLUE +'O'+ Style.RESET_ALL} · · │    7 │ · · · · {Fore.BLUE +'O'+ Style.RESET_ALL} {Fore.RED +'X'+ Style.RESET_ALL} {Fore.RED +'X'+ Style.RESET_ALL} {Fore.RED +'X'+ Style.RESET_ALL} {Fore.YELLOW + 'A' + Style.RESET_ALL} {Fore.YELLOW + 'A' + Style.RESET_ALL} │
-8 │ {Fore.BLUE +'O'+ Style.RESET_ALL} · {Fore.BLUE +'O'+ Style.RESET_ALL} · · · · · · · │    8 │ {Fore.BLUE +'O'+ Style.RESET_ALL} · · · · · · · · · │
-9 │ · · · · {Fore.BLUE +'O'+ Style.RESET_ALL} · · · · · │    9 │ {Fore.YELLOW + 'S' + Style.RESET_ALL} {Fore.YELLOW + 'S' + Style.RESET_ALL} · · · · · · · · │
+0 │ · · · · O X · · · · │    0 │ · · · O · · · O · · │
+1 │ · · · O · X · · O · │    1 │ · · O · d X · c · O │
+2 │ · · · · · X · · · · │    2 │ O · p O · O · c · · │
+3 │ · · · · · X · · · · │    3 │ · · p · · · · c O · │
+4 │ · · · O · X · · · · │    4 │ O · p O · · · · · · │
+5 │ · · · · · O · · · · │    5 │ · · p · · · · · · · │
+6 │ · · · · O · · · · · │    6 │ · · · · · · · · · · │
+7 │ · · · · · · · O · · │    7 │ · · · · O a a X a a │
+8 │ O · O · · · · · · · │    8 │ O · · · · · · · · · │
+9 │ · · · · O · · · · · │    9 │ s s · · · · · · · · │
   └─────────────────────┘      └─────────────────────┘
 ''')
-# {Fore.YELLOW +  + Style.RESET_ALL}
-# {Fore.RED +'X'+ Style.RESET_ALL}
-# {Fore.BLUE +'O'+ Style.RESET_ALL}
+
+
 def menu():
     
-    while True:  # Ceramos las variables del menú.
+    while True:
       starter = "b"
       modo = ""
       break
@@ -63,7 +62,7 @@ def menu():
 
     while True:
     
-      if starter == "b":  # Sección principal.
+      if starter == "b":
         
         clear_terminal()
         titulo()
@@ -71,20 +70,20 @@ def menu():
         starter = str(input(" >  "))
         
         
-        while starter not in ["0","1","2","q"]:  # Control de errores.
+        while starter not in ["0","1","2","q"]: # Control de errores.
             clear_terminal()
             titulo()
             print(Fore.GREEN + "\n\nBienvenvenido, selecciona como quieres proceder:\n\n  0 - Jugar\n  1 - Instruciones del juego\n  2 - Link a nuestro Github\n  q - Para salir\n\nSelecciona una opción válida." + Style.RESET_ALL)
             starter = str(input(" >  "))
     
     
-      if starter == "0":  # Sección de juego.
+      if starter == "0":
         
         clear_terminal()
         titulo()
         print(Fore.GREEN + "\n\nSelecciona el modo de juego:\n\n  0 - Juego rápido\n  1 - Colocación manual\n  b - Volver atrás\n  q - Para salir\n\n" + Style.RESET_ALL)
         modo = str(input(" >  "))
-        while modo not in ["0","1","b","q"]:  # Control de errores.
+        while modo not in ["0","1","b","q"]:
           
           clear_terminal()
           titulo()
@@ -94,7 +93,7 @@ def menu():
         if modo in ["b","q"]: # Control de errores.
           starter = modo
 
-      elif starter == "1":  # Sección de instruciones.
+      elif starter == "1":
         
         clear_terminal()
         titulo()
@@ -110,7 +109,7 @@ def menu():
           print(Fore.GREEN + "\n  b - Volver atrás\n  q - Para salir\n\nSelecciona una opción válida." + Style.RESET_ALL)
           starter = str(input(" >  "))
     
-      elif starter == "2":  # Sección de github.
+      elif starter == "2":
         
         clear_terminal()
         titulo()
@@ -126,7 +125,7 @@ def menu():
           print(Fore.GREEN + "\n  b - Volver atrás\n  q - Para salir\n\nSelecciona una opción válida." + Style.RESET_ALL)
           starter = str(input(" >  "))
 
-      elif starter == "q":  # Cierre del programa.
+      elif starter == "q":
         clear_terminal()
         titulo()
         print(Fore.GREEN + "\n\nQue tengas un buen día.\n" + Style.RESET_ALL)
@@ -138,3 +137,22 @@ def menu():
         break
       else: pass
     return modo
+
+
+def victoria():
+  print('''█▄        ▄█   ██     ▄█▀▀▀▀▀   ██       ▄█▀▀▀▀▀▀▀█▄   ▄█▀▀▀▀▀█▄     ██    ▄█▀▀▀▀▀▀█▄
+▀█▄      ▄█▀        ▄█▀         ██▀▀▀▀   █▀       ▀█   ██      █          ██        ██
+ ▀█▄    ▄█▀    ██   ██          ██       █         █   ██▄▄▄▄▄█▀     ██   ██        ██
+  ▀█▄  ▄█▀     ██   ██          ██       █         █   ██  ▀█▄       ██   ██▀▀▀▀▀▀▀▀██
+   ▀█▄▄█▀      ██   ▀█▄         ██       █▄       ▄█   ██    ▀█▄     ██   ██        ██
+    ▀██▀       ██     ▀█▄▄▄▄▄    ▀█▄▄▄   ▀█▄▄▄▄▄▄▄█▀   ██      ▀█▄   ██   ██        ██
+''')
+
+def derrota():
+  print('''██▀▀▀▀█▄    ▄█▀▀▀▀▀▀   ▄█▀▀▀▀▀█▄     ▄█▀▀▀▀▀█▄     ▄█▀▀▀▀▀▀▀█▄   ██        ▄█▀▀▀▀▀▀█▄
+██     ▀█   ██         ██      █     ██      █     █▀       ▀█   ██▀▀▀▀   ██        ██
+██      █   ██▄▄▄▄     ██▄▄▄▄▄█▀     ██▄▄▄▄▄█▀     █         █   ██       ██        ██
+██      █   ██         ██  ▀█▄       ██  ▀█▄       █         █   ██       ██▀▀▀▀▀▀▀▀██
+██     ▄█   ██         ██    ▀█▄     ██    ▀█▄     █▄       ▄█   ██       ██        ██
+██▄▄▄▄█▀    ▀█▄▄▄▄▄▄   ██      ▀█▄   ██      ▀█▄   ▀█▄▄▄▄▄▄▄█▀    ▀█▄▄▄   ██        ██
+  ''')
