@@ -8,7 +8,7 @@ Cómo jugar al Battleship (1persona vs IA)
 
 1. Cada jugador recibe un tablero
 2. Cada jugador en su tablero tiene 5 barcos
-3. Cada barco es de distinto tamaño (Acorazado 5, Portaaviones 4, Crucero 3, Submarino 2 y Destructor 2)
+3. Cada barco es de distinto tamaño (Acorazado 5, Portaaviones 4, Crucero 3, Submarino 3 y Destructor 2)
 4. Cada jugador en su turno tiene una oportunidad de disparo
 
 
