@@ -113,7 +113,7 @@ def menu():
         
         clear_terminal()
         titulo()
-        print(Fore.GREEN+ "\n\nGithub-link" + Style.RESET_ALL)
+        print(Fore.GREEN+ "\n\https://github.com/aiasakitoprof/Proyecto-Battleship.git" + Style.RESET_ALL)
         print(Fore.GREEN + "\n  b - Volver atrás\n  q - Para salir\n\n" + Style.RESET_ALL)
         starter = str(input(" >  "))
         

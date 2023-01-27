@@ -30,7 +30,7 @@ class Juego:
 
     def realizar_disparo(self):
 
-        coord = input("Selecciona unas coordenadas de disparo (formato '00'):\n >  ")
+        coord = input("Selecciona unas coordenadas de disparo (formato '00', siempre (fila , columna)):\n >  ")
         while True:
             if len(coord) == 2:
                 if coord[0] in ["0","1","2","3","4","5","6","7","8","9"]:
@@ -38,7 +38,7 @@ class Juego:
                         break
             clear_terminal()
             self.print_ambos_tableros()
-            coord = input("Selecciona unas coordenadas válidas de disparo (formato '00'):\n >  ")
+            coord = input("Selecciona unas coordenadas válidas de disparo (formato '00', siempre (fila , columna)):\n >  ")
         fila = int(coord[0])
         columna = int(coord[1])
         disparo = (fila, columna)
@@ -46,11 +46,11 @@ class Juego:
         while disparo in self.disparos_realizados_jg:
             clear_terminal()
             self.print_ambos_tableros()
-            coord = input("Selecciona coordenadas de disparo no repetidas:\n >  ")
+            coord = input("Selecciona coordenadas de disparo no repetidas (formato '00', siempre (fila , columna)):\n >  ")
             while len(coord) < 2 or len(coord) > 2 or int(coord[0]) < 0 or int(coord[0]) > 9 or int(coord[1]) < 0 or int(coord[1]) > 9: # Control de errores.
                 clear_terminal()
                 self.print_ambos_tableros()
-                coord = input("Selecciona coordenadas válidas de disparo:\n >  ")
+                coord = input("Selecciona coordenadas válidas de disparo (formato '00', siempre (fila , columna)):\n >  ")
                 
             fila = int(coord[0])
             columna = int(coord[1])
@@ -62,7 +62,6 @@ class Juego:
             self.radar.radar[fila][columna] = Fore.RED +"X"+ Style.RESET_ALL
             self.radar.coordenadas_barcos_ia.remove(disparo)
             if len(self.radar.coordenadas_barcos_ia) == 0:
-                print("¡Has ganado!")
                 return True
         else:
             self.radar.radar[fila][columna] = Fore.BLUE +"O"+ Style.RESET_ALL
