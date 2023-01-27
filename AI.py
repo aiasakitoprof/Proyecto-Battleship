@@ -19,7 +19,7 @@ class Radar:
 class Barcos_ia:
     def __init__(self, radar):
         self.radar = radar
-        self.barcos = {"acorazado": 5, "portaaviones": 4, "crucero": 3, "submarino": 2, "destructor": 2}
+        self.barcos = {"acorazado": 5, "portaaviones": 4, "crucero": 3, "submarino": 3, "destructor": 2}
 
     def colocar_barcos_ia(self):
         for barco_elegido, longitud in self.barcos.items():

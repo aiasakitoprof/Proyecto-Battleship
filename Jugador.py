@@ -41,7 +41,7 @@ class Barcos:
         
         self.tablero = tablero # Importa el tablero.
         self.barcos_input = {0:"acorazado", 1:"portaaviones", 2:"crucero", 3:"submarino", 4:"destructor",} # Acceso rápido a los barcos.
-        self.barcos = {"acorazado": 5, "portaaviones":4, "crucero": 3, "submarino": 2, "destructor":2,} # Diccionario con los barcos y sus longitudes.
+        self.barcos = {"acorazado": 5, "portaaviones":4, "crucero": 3, "submarino": 3, "destructor":2,} # Diccionario con los barcos y sus longitudes.
         
     def colocar_barcos(self):
         
