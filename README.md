@@ -400,4 +400,7 @@ https://www.udemy.com/course/crea-tu-propio-juego-con-python/
 https://www.youtube.com/watch?v=FFE1VNMAZfc
 
 * Incluir imagenes en el ejecutable  
-https://www.youtube.com/watch?v=diZ4a4pTtUU
+https://www.youtube.com/watch?v=diZ4a4pTtUU  
+
+* Programar Juegos Arcade con Python y Pygame  
+http://programarcadegames.com/index.php?lang=es&chapter=array_backed_grids
