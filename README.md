@@ -322,9 +322,13 @@ def resolver_ruta(ruta_relativa):
     return os.path.join(os.path.abspath('.'), ruta_relativa)
 imagen=pygame.image.load(resolver_ruta("game_over.png"))
                 
-#### Enlace de descarga: Solo disponibles para miembros del IES Borja Moll  
+#### Enlace de descarga del archivo ejecutable .exe: Solo disponibles para miembros del IES Borja Moll  
 https://drive.google.com/file/d/1WBrOjEsybVub6lPoHw-cWwwH-X1sFvWG/view?usp=share_link  
-Es muy posible que al realizar la descarga, google la bloquee por ser un ejecutable. Se debe acceder al menú de descargas de google y aceptar la descarga desde allí.
+```diff
+- Es muy posible que al realizar la descarga, google la bloquee por ser un ejecutable. Se debe acceder al menú de descargas de google y aceptar la descarga desde allí.
+Una vez descargado, a veces el sistema de seguridad del ordenador también lo bloquea, también se debe desbloquear para poderlo ejecutar.  
+NO ES UN VIRUS!!!
+```
 
 ### Mejoras posibles
 ________________________
